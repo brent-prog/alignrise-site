@@ -1,60 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AlignRise</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="onlylogo.svg">
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: white;
-      line-height: 1.6;
+      background: #0b0b1a;
+      color: #ffffff;
     }
+
     .container {
       max-width: 1000px;
       margin: auto;
       padding: 40px 20px;
     }
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    header img {
+      height: 50px;
+    }
+
     h1 {
-      font-size: 42px;
+      font-size: 40px;
       margin-bottom: 20px;
     }
+
     h2 {
-      font-size: 28px;
       margin-top: 40px;
+      font-size: 26px;
+      color: #9aa4ff;
     }
+
     p {
-      color: #ccc;
+      color: #cfcfff;
+      line-height: 1.6;
     }
+
     .btn {
       display: inline-block;
       margin-top: 20px;
       padding: 12px 20px;
-      background: white;
-      color: black;
+      background: #5f6bff;
+      color: white;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
     }
+
     .section {
-      border-top: 1px solid #222;
+      border-top: 1px solid #222244;
       margin-top: 40px;
       padding-top: 40px;
     }
+
     .grid {
       display: grid;
       gap: 20px;
     }
+
     .grid-3 {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
+
     .card {
-      background: #111;
+      background: #111133;
       padding: 20px;
       border-radius: 10px;
-      border: 1px solid #222;
+      border: 1px solid #222244;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #cfcfff;
     }
   </style>
 </head>
@@ -62,16 +91,23 @@
 <body>
 
   <div class="container">
-    
-    <h1>AlignRise™</h1>
-    <h1>The business alignment system that helps good companies grow up.</h1>
+
+    <!-- Logo -->
+    <header>
+      <img src="Fullnamelogo.svg" alt="AlignRise Logo">
+    </header>
+
+    <!-- Hero -->
+    <h1>Turn your business into a system — not a collection of people.</h1>
 
     <p>
-      AlignRise helps businesses stop running on scattered effort and start operating like a real system — with aligned people, stronger execution, and clearer decisions.
+      AlignRise helps businesses stop running on scattered effort and start operating like a real system —
+      with aligned people, stronger execution, and clearer decisions.
     </p>
 
     <a href="mailto:brent@3psolutions.ca" class="btn">Book a Discovery Call</a>
 
+    <!-- Problem -->
     <div class="section">
       <h2>The Problem</h2>
       <p>
@@ -84,11 +120,9 @@
       </p>
     </div>
 
+    <!-- Solution -->
     <div class="section">
-      <h2>The Solution</h2>
-      <p>
-        AlignRise is a structured system — not ad hoc consulting.
-      </p>
+      <h2>The System</h2>
 
       <div class="grid grid-3">
         <div class="card">
@@ -118,33 +152,29 @@
       </div>
     </div>
 
+    <!-- Audience -->
     <div class="section">
       <h2>Who It’s For</h2>
 
       <div class="grid grid-3">
         <div class="card">
           <h3>Business Owners</h3>
-          <p>
-            See exactly where your business is breaking — and fix it.
-          </p>
+          <p>See exactly where your business is breaking — and fix it.</p>
         </div>
 
         <div class="card">
           <h3>Consultants & Advisors</h3>
-          <p>
-            Use a structured system instead of starting from scratch every time.
-          </p>
+          <p>Use a structured system instead of starting from scratch every time.</p>
         </div>
 
         <div class="card">
           <h3>Leaders</h3>
-          <p>
-            Execute better through aligned decision-making and coaching.
-          </p>
+          <p>Execute better through aligned decision-making and coaching.</p>
         </div>
       </div>
     </div>
 
+    <!-- Outcomes -->
     <div class="section">
       <h2>What You Get</h2>
       <ul>
@@ -156,10 +186,12 @@
       </ul>
     </div>
 
+    <!-- CTA -->
     <div class="section">
       <h2>Get Started</h2>
       <p>
-        Start with a conversation. We’ll look at where your business is today, where alignment is missing, and what to do next.
+        Start with a conversation. We’ll look at where your business is today,
+        where alignment is missing, and what to do next.
       </p>
 
       <a href="mailto:brent@3psolutions.ca" class="btn">Email Brent</a>
