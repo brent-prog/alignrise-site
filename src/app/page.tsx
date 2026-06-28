@@ -1,75 +1,73 @@
 import Image from "next/image";
 
 const symptoms = [
-  "Too much knowledge lives in the owner's head.",
-  "Execution depends on a few key people.",
-  "Priorities are busy, but unclear.",
-  "Processes exist informally or inconsistently.",
-  "Metrics are tracked, but not acted on.",
-  "Growth creates more complexity instead of more freedom.",
+  "The owner is still the escalation path for too many decisions.",
+  "Good people are busy, but priorities are not always clear.",
+  "Processes live in heads, habits, spreadsheets, and side conversations.",
+  "Metrics exist, but they do not always change what happens next.",
+  "Customers get value, but not always the same value every time.",
+  "Growth adds complexity before it creates freedom.",
 ];
 
-const businessLens = [
+const systemCells = [
   {
-    name: "People",
-    text: "Role clarity, capability, coaching, engagement, and the leadership habits that help the team execute.",
+    lens: "People",
+    planning: "Role clarity, goals, incentives, and ownership.",
+    processes: "Hiring, onboarding, coaching, communication, and accountability habits.",
+    performance: "Engagement, capability, retention, coaching quality, and execution follow-through.",
   },
   {
-    name: "Product",
-    text: "Customer value, service quality, delivery consistency, journey design, retention, and trust.",
+    lens: "Product",
+    planning: "Customer promise, journey priorities, service standards, and improvement roadmap.",
+    processes: "Sales, delivery, support, handoffs, SOPs, tools, and customer feedback loops.",
+    performance: "Quality, consistency, retention, referrals, complaints, and customer value created.",
   },
   {
-    name: "Profit",
-    text: "Revenue, margin, cash flow, efficiency, owner return, reinvestment capacity, and business value.",
-  },
-];
-
-const managementLens = [
-  {
-    name: "Planning",
-    text: "Direction, goals, priorities, roles, action plans, and sequencing.",
-  },
-  {
-    name: "Processes",
-    text: "Workflows, SOPs, tools, documentation, journey maps, and repeatability.",
-  },
-  {
-    name: "Performance",
-    text: "KPIs, scorecards, trends, accountability, analysis, and action from data.",
+    lens: "Profit",
+    planning: "Revenue goals, margin targets, cash priorities, and reinvestment decisions.",
+    processes: "Pricing, billing, reporting, forecasting, cost control, and financial cadence.",
+    performance: "Revenue, margin, cash flow, efficiency, business value, and owner return.",
   },
 ];
 
-const steps = [
+const reviewSteps = [
   {
-    name: "Diagnose",
-    text: "Assess the business across People, Product, Profit, and the operating habits underneath them.",
+    number: "01",
+    title: "Diagnose the system",
+    text: "Assess the business across People, Product, Profit and the operating habits underneath them.",
   },
   {
-    name: "Align",
-    text: "Turn the findings into priorities, owners, role clarity, goals, and practical improvement work.",
+    number: "02",
+    title: "Name the real gaps",
+    text: "Separate symptoms from root causes so the team stops chasing the loudest problem.",
   },
   {
-    name: "Execute",
-    text: "Run a weekly accountability rhythm that connects planning, processes, and performance.",
+    number: "03",
+    title: "Prioritize the work",
+    text: "Turn the review into focused actions, owners, timelines, and a weekly accountability rhythm.",
   },
   {
-    name: "Review",
-    text: "Measure what changed, tighten the system, and prepare the business for responsible AI support.",
+    number: "04",
+    title: "Review what changed",
+    text: "Use performance evidence to tighten the system and decide the next best improvement.",
   },
 ];
 
 const audiences = [
   {
-    name: "Owners",
-    text: "Free yourself from being the operating system and see what to fix first.",
+    name: "Business Owners",
+    headline: "Stop being the operating system.",
+    text: "See where the business is too dependent on you, what needs to be clarified, and what to fix first.",
   },
   {
     name: "Consultants and Advisors",
-    text: "Use a structured, repeatable discovery and prioritization system with clients.",
+    headline: "Stop starting from scratch.",
+    text: "Use a structured business review system with clients instead of rebuilding discovery every time.",
   },
   {
-    name: "Leaders",
-    text: "Execute through clearer decision-making, coaching, ownership, and follow-up.",
+    name: "Leaders and Managers",
+    headline: "Execute through people.",
+    text: "Connect priorities, roles, coaching, process, and performance so the team improves consistently.",
   },
 ];
 
@@ -83,7 +81,7 @@ const functions = [
   "Finance",
   "Technology",
   "Administration",
-  "Risk and Compliance",
+  "Legal, Risk, and Compliance",
 ];
 
 export default function Home() {
@@ -92,50 +90,76 @@ export default function Home() {
       <section className="hero" id="home">
         <nav className="nav" aria-label="Main navigation">
           <a className="navBrand" href="#home" aria-label="AlignRISE home">
-            <Image src="/alignrise-icon.svg" alt="" width={44} height={44} priority />
+            <Image src="/alignrise-icon.svg" alt="" width={42} height={42} priority />
             <span>AlignRISE</span>
           </a>
           <div className="navLinks">
-            <a href="#system">How It Works</a>
-            <a href="#owners">For Owners</a>
-            <a href="#resources">Resources</a>
-            <a className="navCta" href="mailto:info@alignrise.ca?subject=AlignRISE%20Business%20Alignment%20Review">Book a Review</a>
+            <a href="#problem">Problem</a>
+            <a href="#system">System</a>
+            <a href="#review">Review</a>
+            <a href="#who">Who It&apos;s For</a>
+            <a className="navCta" href="mailto:info@alignrise.ca?subject=AlignRISE%20Business%20Alignment%20Review">
+              Book a Review
+            </a>
           </div>
         </nav>
 
-        <div className="heroInner">
-          <Image className="heroLogo" src="/alignrise-logo.svg" alt="AlignRISE logo" width={300} height={300} priority />
-          <p className="eyebrow">AlignRISE by 3P Solutions</p>
-          <h1>AlignRISE™ Business Alignment System</h1>
-          <p className="heroLead">
-            Build the system your business needs to scale without everything depending on you.
-          </p>
-          <div className="heroActions">
-            <a className="buttonPrimary" href="mailto:info@alignrise.ca?subject=Start%20the%20AlignRISE%20Review">
-              Start the AlignRISE Review
-            </a>
-            <a className="buttonSecondary" href="#system">
-              See the Framework
-            </a>
+        <div className="heroGrid">
+          <div className="heroCopy">
+            <Image className="heroLogo" src="/alignrise-logo.svg" alt="AlignRISE logo" width={260} height={260} priority />
+            <p className="eyebrow">AlignRISE™ by 3P Solutions</p>
+            <h1>Your business is growing. It should not be getting harder to run.</h1>
+            <p className="heroLead">
+              AlignRISE helps owners, advisors, and leaders turn scattered effort into an aligned,
+              repeatable business system across People, Product, and Profit.
+            </p>
+            <div className="heroActions">
+              <a className="buttonPrimary" href="mailto:info@alignrise.ca?subject=Start%20the%20AlignRISE%20Review">
+                Start the AlignRISE Review
+              </a>
+              <a className="buttonSecondary" href="#system">
+                See the System
+              </a>
+            </div>
           </div>
-          <div className="heroProof" aria-label="AlignRISE core lenses">
-            <span>People</span>
-            <span>Product</span>
-            <span>Profit</span>
-            <span>Planning</span>
-            <span>Processes</span>
-            <span>Performance</span>
-          </div>
+
+          <aside className="diagnosticPanel" aria-label="AlignRISE diagnostic summary">
+            <div className="panelTopline">Business Alignment Snapshot</div>
+            <div className="scoreRow">
+              <span>People</span>
+              <strong>Aligned?</strong>
+            </div>
+            <div className="bar"><span className="barAmber" /></div>
+            <div className="scoreRow">
+              <span>Product</span>
+              <strong>Consistent?</strong>
+            </div>
+            <div className="bar"><span className="barBlue" /></div>
+            <div className="scoreRow">
+              <span>Profit</span>
+              <strong>Improving?</strong>
+            </div>
+            <div className="bar"><span className="barPurple" /></div>
+            <div className="panelDivider" />
+            <p>
+              The review shows where the business is clear, where it is drifting, and where the next improvement needs ownership.
+            </p>
+            <div className="panelTags">
+              <span>Planning</span>
+              <span>Processes</span>
+              <span>Performance</span>
+            </div>
+          </aside>
         </div>
       </section>
 
       <section className="section problemSection" id="problem">
-        <div className="sectionHeader">
+        <div className="sectionIntro">
           <p className="eyebrow">The real problem</p>
-          <h2>Most businesses do not struggle because the owner lacks effort.</h2>
+          <h2>Most businesses do not fail because the owner lacks effort.</h2>
           <p>
-            They struggle because the business does not run as a system. The symptoms show up in people,
-            customer experience, profitability, and the owner's calendar.
+            They struggle because the business does not run as a system. When the system is unclear,
+            the owner becomes the memory, the manager, the process, the quality check, and the backup plan.
           </p>
         </div>
         <div className="symptomGrid">
@@ -148,64 +172,60 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section systemSection" id="system">
-        <div className="sectionHeader compact">
-          <p className="eyebrow">The system</p>
-          <h2>Align People, Product, and Profit before growth creates more complexity.</h2>
+      <section className="section darkSection" id="system">
+        <div className="sectionIntro centered">
+          <p className="eyebrow">The AlignRISE system</p>
+          <h2>Align the business through the 3Ps that actually determine whether it works.</h2>
           <p>
-            AlignRISE connects the business health lens with the operating habits that make improvement repeatable.
+            People, Product, and Profit are connected. Planning, Processes, and Performance are how the business improves them.
           </p>
         </div>
 
-        <div className="lensBlock">
-          <div className="lensLabel">3Ps of Business</div>
-          <div className="cardGrid three">
-            {businessLens.map((item) => (
-              <article className="infoCard" key={item.name}>
-                <h3>{item.name}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="lensBlock">
-          <div className="lensLabel">3Ps of Management</div>
-          <div className="cardGrid three">
-            {managementLens.map((item) => (
-              <article className="infoCard" key={item.name}>
-                <h3>{item.name}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
+        <div className="matrix" aria-label="People Product Profit and Planning Processes Performance matrix">
+          <div className="matrixHeader empty">3P Business Lens</div>
+          <div className="matrixHeader">Planning</div>
+          <div className="matrixHeader">Processes</div>
+          <div className="matrixHeader">Performance</div>
+          {systemCells.map((row) => (
+            <div className="matrixRow" key={row.lens}>
+              <div className="matrixLens">{row.lens}</div>
+              <div>{row.planning}</div>
+              <div>{row.processes}</div>
+              <div>{row.performance}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="section processSection" id="how-it-works">
-        <div className="sectionHeader compact">
-          <p className="eyebrow">How it works</p>
-          <h2>Diagnose the gap. Align the work. Run the rhythm.</h2>
+      <section className="section reviewSection" id="review">
+        <div className="reviewIntro">
+          <p className="eyebrow">Business Alignment Review</p>
+          <h2>Not more theory. A practical review that turns into accountable work.</h2>
+          <p>
+            AlignRISE gives the business a repeatable review rhythm. It helps the team see the whole system,
+            decide what matters most, and follow through instead of collecting another list of good ideas.
+          </p>
         </div>
-        <div className="processGrid">
-          {steps.map((step, index) => (
-            <article className="processCard" key={step.name}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{step.name}</h3>
+        <div className="reviewSteps">
+          {reviewSteps.map((step) => (
+            <article className="stepCard" key={step.number}>
+              <span>{step.number}</span>
+              <h3>{step.title}</h3>
               <p>{step.text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section matrixSection" id="resources">
-        <div className="matrixIntro">
-          <p className="eyebrow">Business Alignment Review</p>
-          <h2>A practical map for the 10 core business functions.</h2>
+      <section className="section functionsSection">
+        <div className="sectionIntro splitIntro">
+          <div>
+            <p className="eyebrow">10 core functions</p>
+            <h2>See the whole business, not just the loudest problem.</h2>
+          </div>
           <p>
             Each function can be assessed through People, Product, Profit and through Planning, Processes,
-            and Performance. The goal is not more documentation. The goal is a business that runs with more
-            clarity, consistency, and accountability.
+            and Performance. The goal is clarity, consistency, and accountability.
           </p>
         </div>
         <div className="functionList" aria-label="10 core business functions">
@@ -215,25 +235,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section audienceSection" id="owners">
-        <div className="sectionHeader compact">
+      <section className="section audienceSection" id="who">
+        <div className="sectionIntro centered">
           <p className="eyebrow">Who it is for</p>
-          <h2>Owners, advisors, and leaders who need the business to run better.</h2>
+          <h2>Built for people responsible for making the business run better.</h2>
         </div>
-        <div className="cardGrid three">
+        <div className="audienceGrid">
           {audiences.map((audience) => (
             <article className="audienceCard" key={audience.name}>
-              <h3>{audience.name}</h3>
+              <p className="audienceLabel">{audience.name}</p>
+              <h3>{audience.headline}</h3>
               <p>{audience.text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section nowSection" id="why-now">
+      <section className="section aiSection" id="ai-readiness">
         <div>
-          <p className="eyebrow">Why now</p>
-          <h2>Alignment before automation.</h2>
+          <p className="eyebrow">AI readiness</p>
+          <h2>Build the system before you automate the chaos.</h2>
         </div>
         <p>
           AI can help a business move faster, but it cannot fix unclear goals, inconsistent processes,
@@ -243,9 +264,12 @@ export default function Home() {
       </section>
 
       <section className="finalCta" id="book">
-        <Image src="/alignrise-icon.svg" alt="" width={92} height={92} />
+        <Image src="/alignrise-icon.svg" alt="" width={88} height={88} />
         <p className="eyebrow">Start with the review</p>
         <h2>See where the business is breaking and what to fix first.</h2>
+        <p>
+          The first step is not a bigger plan. It is a clearer diagnosis of the system you already have.
+        </p>
         <a className="buttonPrimary" href="mailto:info@alignrise.ca?subject=Book%20an%20AlignRISE%20Alignment%20Review">
           Book an Alignment Review
         </a>
