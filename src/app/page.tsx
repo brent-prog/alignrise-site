@@ -15,62 +15,67 @@ const symptoms = [
 const systemCells = [
   {
     lens: "People",
-    planning: "Role clarity, goals, incentives, and ownership.",
-    processes: "Hiring, onboarding, coaching, communication, and accountability habits.",
-    performance: "Engagement, capability, retention, coaching quality, and execution follow-through.",
+    planning: "Clarify roles, goals, incentives, responsibilities, and ownership.",
+    processes: "Build the habits for hiring, onboarding, coaching, communication, and accountability.",
+    performance: "Track capability, engagement, retention, coaching quality, and execution follow-through.",
   },
   {
     lens: "Product",
-    planning: "Customer promise, journey priorities, service standards, and improvement roadmap.",
-    processes: "Sales, delivery, support, handoffs, SOPs, tools, and customer feedback loops.",
-    performance: "Quality, consistency, retention, referrals, complaints, and customer value created.",
+    planning: "Define the customer promise, journey priorities, standards, and improvement roadmap.",
+    processes: "Document sales, delivery, support, handoffs, SOPs, tools, and feedback loops.",
+    performance: "Measure quality, consistency, retention, referrals, complaints, and value created.",
   },
   {
     lens: "Profit",
-    planning: "Revenue goals, margin targets, cash priorities, and reinvestment decisions.",
-    processes: "Pricing, billing, reporting, forecasting, cost control, and financial cadence.",
-    performance: "Revenue, margin, cash flow, efficiency, business value, and owner return.",
+    planning: "Set revenue goals, margin targets, cash priorities, and reinvestment decisions.",
+    processes: "Standardize pricing, billing, reporting, forecasting, cost control, and financial rhythm.",
+    performance: "Review revenue, margin, cash flow, efficiency, business value, and owner return.",
   },
 ];
 
 const reviewSteps = [
   {
     number: "01",
-    title: "Diagnose the system",
-    text: "Assess the business across People, Product, Profit and the operating habits underneath them.",
+    title: "Assess",
+    text: "Work through the AlignRISE diagnostic across People, Product, Profit, Planning, Processes, and Performance.",
   },
   {
     number: "02",
-    title: "Name the real gaps",
-    text: "Separate symptoms from root causes so the team stops chasing the loudest problem.",
+    title: "Map the gaps",
+    text: "See where the business is clear, where it is drifting, and where it depends too much on individual memory or effort.",
   },
   {
     number: "03",
-    title: "Prioritize the work",
-    text: "Turn the review into focused actions, owners, timelines, and a weekly accountability rhythm.",
+    title: "Prioritize",
+    text: "Separate noise from the highest-impact system improvements the business should address first.",
   },
   {
     number: "04",
-    title: "Review what changed",
-    text: "Use performance evidence to tighten the system and decide the next best improvement.",
+    title: "Implement",
+    text: "Use the review to guide roles, rhythms, processes, measures, and documentation that make the business easier to run.",
+  },
+  {
+    number: "05",
+    title: "Review",
+    text: "Create a repeatable weekly rhythm to check what changed, what is stuck, and what needs to improve next.",
   },
 ];
 
 const audiences = [
   {
     name: "Business Owners",
-    headline: "Stop being the operating system.",
-    text: "See where the business is too dependent on you, what needs to be clarified, and what to fix first.",
+    headline: "Run the review without waiting for a consultant.",
+    text: "Use AlignRISE to see where the business is too dependent on you and what systems need to be clarified first.",
   },
   {
     name: "Consultants and Advisors",
-    headline: "Stop starting from scratch.",
-    text: "Use a structured business review system with clients instead of rebuilding discovery every time.",
+    headline: "Use a structured operating framework.",
+    text: "Apply AlignRISE with clients as a practical diagnostic system instead of rebuilding discovery from scratch every time.",
   },
   {
     name: "Leaders and Managers",
-    headline: "Execute through people.",
-    text: "Connect priorities, roles, coaching, process, and performance so the team improves consistently.",
+    headline: "Improve execution through better systems.",
+    text: "Connect priorities, roles, coaching, process, and performance so the team can improve consistently.",
   },
 ];
 
@@ -102,10 +107,10 @@ export default function Home() {
           <div className="navLinks">
             <a href="#problem">Problem</a>
             <a href="#system">System</a>
-            <a href="#review">Review</a>
+            <a href="#review">How It Works</a>
             <a href="#who">Who It&apos;s For</a>
             <a className="navCta" href={bookingUrl} target="_blank" rel="noreferrer">
-              Book a Review
+              Get Started
             </a>
           </div>
         </nav>
@@ -116,24 +121,23 @@ export default function Home() {
             <p className="eyebrow">AlignRISE™ by 3P Solutions</p>
             <h1>Your business is growing. It should not be getting harder to run.</h1>
             <p className="heroLead">
-              AlignRISE helps owners, advisors, and leaders turn scattered effort into an aligned,
-              repeatable business system across People, Product, and Profit.
+              AlignRISE is a self-directed business alignment system that helps owners, advisors, and leaders diagnose how the business actually runs and build repeatable systems across People, Product, and Profit.
             </p>
             <div className="heroActions">
               <a className="buttonPrimary" href={bookingUrl} target="_blank" rel="noreferrer">
-                Start the AlignRISE Review
+                Start With AlignRISE
               </a>
-              <a className="buttonSecondary" href="#system">
-                See the System
+              <a className="buttonSecondary" href="#review">
+                See How It Works
               </a>
             </div>
           </div>
 
           <aside className="diagnosticPanel" aria-label="AlignRISE diagnostic summary">
-            <div className="panelTopline">Business Alignment Snapshot</div>
+            <div className="panelTopline">Self-Directed Alignment Snapshot</div>
             <div className="scoreRow">
               <span>People</span>
-              <strong>Aligned?</strong>
+              <strong>Clear?</strong>
             </div>
             <div className="bar"><span className="barAmber" /></div>
             <div className="scoreRow">
@@ -143,17 +147,17 @@ export default function Home() {
             <div className="bar"><span className="barBlue" /></div>
             <div className="scoreRow">
               <span>Profit</span>
-              <strong>Improving?</strong>
+              <strong>Visible?</strong>
             </div>
             <div className="bar"><span className="barPurple" /></div>
             <div className="panelDivider" />
             <p>
-              The review shows where the business is clear, where it is drifting, and where the next improvement needs ownership.
+              Use the review to see where the business is aligned, where it is drifting, and what system needs to be built next.
             </p>
             <div className="panelTags">
-              <span>Planning</span>
-              <span>Processes</span>
-              <span>Performance</span>
+              <span>Assess</span>
+              <span>Prioritize</span>
+              <span>Implement</span>
             </div>
           </aside>
         </div>
@@ -181,9 +185,9 @@ export default function Home() {
       <section className="section darkSection" id="system">
         <div className="sectionIntro centered">
           <p className="eyebrow">The AlignRISE system</p>
-          <h2>Align the business through the 3Ps that actually determine whether it works.</h2>
+          <h2>A practical way to diagnose and improve the business yourself.</h2>
           <p>
-            People, Product, and Profit are connected. Planning, Processes, and Performance are how the business improves them.
+            AlignRISE connects People, Product, and Profit with the management disciplines that make improvement repeatable: Planning, Processes, and Performance.
           </p>
         </div>
 
@@ -205,11 +209,10 @@ export default function Home() {
 
       <section className="section reviewSection" id="review">
         <div className="reviewIntro">
-          <p className="eyebrow">Business Alignment Review</p>
-          <h2>Not more theory. A practical review that turns into accountable work.</h2>
+          <p className="eyebrow">How AlignRISE works</p>
+          <h2>Run the review. Find the gaps. Build the operating system.</h2>
           <p>
-            AlignRISE gives the business a repeatable review rhythm. It helps the team see the whole system,
-            decide what matters most, and follow through instead of collecting another list of good ideas.
+            AlignRISE gives you a structured way to assess the business, identify the highest-impact gaps, and turn the findings into practical work your team can actually execute.
           </p>
         </div>
         <div className="reviewSteps">
@@ -230,8 +233,7 @@ export default function Home() {
             <h2>See the whole business, not just the loudest problem.</h2>
           </div>
           <p>
-            Each function can be assessed through People, Product, Profit and through Planning, Processes,
-            and Performance. The goal is clarity, consistency, and accountability.
+            AlignRISE helps you look across each business function through People, Product, Profit and through Planning, Processes, and Performance. The goal is clarity, consistency, and accountability.
           </p>
         </div>
         <div className="functionList" aria-label="10 core business functions">
@@ -244,7 +246,7 @@ export default function Home() {
       <section className="section audienceSection" id="who">
         <div className="sectionIntro centered">
           <p className="eyebrow">Who it is for</p>
-          <h2>Built for people responsible for making the business run better.</h2>
+          <h2>Built for people who want a practical system, not another vague strategy conversation.</h2>
         </div>
         <div className="audienceGrid">
           {audiences.map((audience) => (
@@ -264,20 +266,19 @@ export default function Home() {
         </div>
         <p>
           AI can help a business move faster, but it cannot fix unclear goals, inconsistent processes,
-          weak documentation, poor accountability, or misaligned decision-making. AlignRISE creates the
-          clarity and knowledge foundation required for AI to assist human leaders responsibly.
+          weak documentation, poor accountability, or misaligned decision-making. AlignRISE helps create the clarity and knowledge foundation required for AI to assist human leaders responsibly.
         </p>
       </section>
 
       <section className="finalCta" id="book">
         <Image src="/alignrise-icon.svg" alt="" width={88} height={88} />
-        <p className="eyebrow">Start with the review</p>
-        <h2>See where the business is breaking and what to fix first.</h2>
+        <p className="eyebrow">Start with the system</p>
+        <h2>Run your own business alignment review.</h2>
         <p>
-          The first step is not a bigger plan. It is a clearer diagnosis of the system you already have.
+          AlignRISE gives you a structured way to see where the business is breaking, what needs to be clarified, and what to build first.
         </p>
         <a className="buttonPrimary" href={bookingUrl} target="_blank" rel="noreferrer">
-          Book an Alignment Review
+          Start With AlignRISE
         </a>
       </section>
 
@@ -288,11 +289,10 @@ export default function Home() {
               <span>Align</span><strong>RISE</strong>
             </a>
             <p>
-              AlignRISE™ helps owners, advisors, and leaders diagnose where the business is breaking and build an aligned,
-              repeatable system across People, Product, and Profit.
+              AlignRISE™ is a self-directed business alignment system built to help owners, advisors, and leaders diagnose and improve the business across People, Product, and Profit.
             </p>
             <a className="footerCta" href={bookingUrl} target="_blank" rel="noreferrer">
-              Book an Alignment Review
+              Start With AlignRISE
             </a>
           </div>
 
@@ -300,7 +300,7 @@ export default function Home() {
             <h2>Site</h2>
             <a href="#problem">Problem</a>
             <a href="#system">System</a>
-            <a href="#review">Review</a>
+            <a href="#review">How It Works</a>
             <a href="#who">Who It&apos;s For</a>
           </div>
 
