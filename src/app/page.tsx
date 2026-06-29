@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 const bookingUrl = "https://calendly.com/brent3p/30min";
+const linkedInUrl = "https://www.linkedin.com/company/3psolutionscanada";
 
 const symptoms = [
   "The owner is still the escalation path for too many decisions.",
@@ -314,6 +315,7 @@ export default function Home() {
           <div className="footerLinkGroup">
             <h2>Contact</h2>
             <a href="https://3psolutions.ca" target="_blank" rel="noreferrer">3P Solutions</a>
+            <a href={linkedInUrl} target="_blank" rel="noreferrer">LinkedIn</a>
             <a href="mailto:brent@3psolutions.ca">brent@3psolutions.ca</a>
             <a href={bookingUrl} target="_blank" rel="noreferrer">Calendly</a>
           </div>
