@@ -92,8 +92,9 @@ export default function Home() {
       <section className="hero" id="home">
         <nav className="nav" aria-label="Main navigation">
           <a className="navBrand" href="#home" aria-label="AlignRISE home">
-            <Image src="/alignrise-icon.svg" alt="" width={42} height={42} priority />
-            <span>AlignRISE</span>
+            <span className="navWordmark">
+              <span>Align</span><strong>RISE</strong>
+            </span>
           </a>
           <div className="navLinks">
             <a href="#problem">Problem</a>
