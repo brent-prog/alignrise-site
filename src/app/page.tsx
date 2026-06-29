@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+const bookingUrl = "https://calendly.com/brent3p/30min";
+
 const symptoms = [
   "The owner is still the escalation path for too many decisions.",
   "Good people are busy, but priorities are not always clear.",
@@ -98,7 +100,7 @@ export default function Home() {
             <a href="#system">System</a>
             <a href="#review">Review</a>
             <a href="#who">Who It&apos;s For</a>
-            <a className="navCta" href="mailto:info@alignrise.ca?subject=AlignRISE%20Business%20Alignment%20Review">
+            <a className="navCta" href={bookingUrl} target="_blank" rel="noreferrer">
               Book a Review
             </a>
           </div>
@@ -114,7 +116,7 @@ export default function Home() {
               repeatable business system across People, Product, and Profit.
             </p>
             <div className="heroActions">
-              <a className="buttonPrimary" href="mailto:info@alignrise.ca?subject=Start%20the%20AlignRISE%20Review">
+              <a className="buttonPrimary" href={bookingUrl} target="_blank" rel="noreferrer">
                 Start the AlignRISE Review
               </a>
               <a className="buttonSecondary" href="#system">
@@ -270,7 +272,7 @@ export default function Home() {
         <p>
           The first step is not a bigger plan. It is a clearer diagnosis of the system you already have.
         </p>
-        <a className="buttonPrimary" href="mailto:info@alignrise.ca?subject=Book%20an%20AlignRISE%20Alignment%20Review">
+        <a className="buttonPrimary" href={bookingUrl} target="_blank" rel="noreferrer">
           Book an Alignment Review
         </a>
       </section>
