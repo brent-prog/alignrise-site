@@ -613,6 +613,105 @@ p {
   max-width: 620px;
 }
 
+.siteFooter {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(72, 64, 224, 0.2), transparent 32%),
+    linear-gradient(135deg, #090517, #12082e 54%, #05030d);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  padding: 64px clamp(20px, 5vw, 72px) 28px;
+}
+
+.footerInner {
+  display: grid;
+  gap: 42px;
+  grid-template-columns: minmax(280px, 1.4fr) repeat(3, minmax(150px, 0.6fr));
+  margin: 0 auto;
+  max-width: 1220px;
+}
+
+.footerBrand {
+  align-items: baseline;
+  color: var(--white);
+  display: inline-flex;
+  font-size: 2rem;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.footerBrand strong {
+  color: #6f68ff;
+  font-weight: 950;
+}
+
+.footerBrandBlock p {
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 520px;
+}
+
+.footerCta {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: var(--white);
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 950;
+  margin-top: 8px;
+  min-height: 46px;
+  padding: 12px 18px;
+}
+
+.footerCta:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.footerLinkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerLinkGroup h2 {
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.footerLinkGroup a,
+.footerLinkGroup span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.footerLinkGroup a:hover {
+  color: var(--white);
+}
+
+.footerBottom {
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  margin: 54px auto 0;
+  max-width: 1220px;
+  padding-top: 22px;
+}
+
+.footerBottom p {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.86rem;
+  margin-bottom: 0;
+}
+
 @media (max-width: 1020px) {
   .heroGrid,
   .problemSection,
@@ -635,6 +734,10 @@ p {
   }
 
   .functionList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footerInner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -742,7 +845,13 @@ p {
     padding-top: 70px;
   }
 
-  .functionList {
+  .functionList,
+  .footerInner {
     grid-template-columns: 1fr;
+  }
+
+  .footerBottom {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
