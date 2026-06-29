@@ -87,6 +87,8 @@ const functions = [
 ];
 
 export default function Home() {
+  const year = new Date().getFullYear();
+
   return (
     <main>
       <section className="hero" id="home">
@@ -277,6 +279,51 @@ export default function Home() {
           Book an Alignment Review
         </a>
       </section>
+
+      <footer className="siteFooter">
+        <div className="footerInner">
+          <div className="footerBrandBlock">
+            <a className="footerBrand" href="#home" aria-label="AlignRISE home">
+              <span>Align</span><strong>RISE</strong>
+            </a>
+            <p>
+              AlignRISE™ helps owners, advisors, and leaders diagnose where the business is breaking and build an aligned,
+              repeatable system across People, Product, and Profit.
+            </p>
+            <a className="footerCta" href={bookingUrl} target="_blank" rel="noreferrer">
+              Book an Alignment Review
+            </a>
+          </div>
+
+          <div className="footerLinkGroup">
+            <h2>Site</h2>
+            <a href="#problem">Problem</a>
+            <a href="#system">System</a>
+            <a href="#review">Review</a>
+            <a href="#who">Who It&apos;s For</a>
+          </div>
+
+          <div className="footerLinkGroup">
+            <h2>Core Lens</h2>
+            <span>People</span>
+            <span>Product</span>
+            <span>Profit</span>
+            <span>Planning, Processes, Performance</span>
+          </div>
+
+          <div className="footerLinkGroup">
+            <h2>Contact</h2>
+            <a href="https://3psolutions.ca" target="_blank" rel="noreferrer">3P Solutions</a>
+            <a href="mailto:brent@3psolutions.ca">brent@3psolutions.ca</a>
+            <a href={bookingUrl} target="_blank" rel="noreferrer">Calendly</a>
+          </div>
+        </div>
+
+        <div className="footerBottom">
+          <p>© {year} AlignRISE™ by 3P Solutions. All rights reserved.</p>
+          <p>Alignment before automation.</p>
+        </div>
+      </footer>
     </main>
   );
 }
