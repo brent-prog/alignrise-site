@@ -9,16 +9,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AlignRISE | Business Alignment Review",
+  title: "AlignRISE | Self-Directed Business Alignment System",
   description:
-    "AlignRISE helps owners, advisors, and leaders diagnose where the business is breaking and build an aligned, repeatable system across People, Product, and Profit.",
+    "AlignRISE is a self-directed business alignment system that helps owners, advisors, and leaders diagnose where the business is breaking and build repeatable systems across People, Product, and Profit.",
   icons: {
     icon: "/alignrise-icon.svg",
   },
   openGraph: {
-    title: "AlignRISE | Business Alignment Review",
+    title: "AlignRISE | Self-Directed Business Alignment System",
     description:
-      "See where the business is breaking and what to fix first across People, Product, and Profit.",
+      "Run your own business alignment review, see where the business is breaking, and build the system before you automate the chaos.",
     type: "website",
   },
 };
