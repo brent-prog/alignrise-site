@@ -83,30 +83,45 @@ p {
     linear-gradient(135deg, #140936 0%, var(--deep-purple) 50%, #090517 100%);
   color: var(--white);
   min-height: 760px;
-  padding: 24px clamp(20px, 5vw, 72px) 86px;
+  padding: 112px clamp(20px, 5vw, 72px) 86px;
 }
 
 .nav {
   align-items: center;
+  background: rgba(16, 7, 43, 0.9);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   gap: 24px;
   justify-content: space-between;
-  margin: 0 auto;
-  max-width: 1220px;
+  left: 0;
+  margin: 0;
+  padding: 14px clamp(20px, 5vw, 72px);
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
 }
 
 .navBrand {
   align-items: center;
+  color: var(--white);
   display: inline-flex;
-  font-size: 1rem;
-  font-weight: 900;
-  gap: 10px;
-  letter-spacing: -0.02em;
+  font-size: 1.18rem;
+  font-weight: 950;
+  gap: 0;
+  letter-spacing: -0.055em;
 }
 
-.navBrand img {
-  height: 42px;
-  width: 42px;
+.navWordmark {
+  align-items: baseline;
+  display: inline-flex;
+  line-height: 1;
+}
+
+.navWordmark strong {
+  color: #6f68ff;
+  font-weight: 950;
 }
 
 .navLinks {
@@ -139,7 +154,7 @@ p {
   display: grid;
   gap: clamp(34px, 6vw, 78px);
   grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.74fr);
-  margin: 74px auto 0;
+  margin: 46px auto 0;
   max-width: 1220px;
 }
 
@@ -679,11 +694,15 @@ p {
   .hero {
     padding-left: 18px;
     padding-right: 18px;
+    padding-top: 118px;
   }
 
   .nav {
     align-items: flex-start;
     flex-direction: column;
+    gap: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .navLinks {
@@ -696,7 +715,7 @@ p {
   }
 
   .heroGrid {
-    margin-top: 48px;
+    margin-top: 34px;
   }
 
   .heroLogo {
