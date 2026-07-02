@@ -92,6 +92,13 @@ const functions = [
   "Legal, Risk, and Compliance",
 ];
 
+const navLinks = [
+  { href: "#problem", label: "Problem" },
+  { href: "#system", label: "System" },
+  { href: "#review", label: "How It Works" },
+  { href: "#who", label: "Who It's For" },
+];
+
 export default function Home() {
   const year = new Date().getFullYear();
 
@@ -104,11 +111,26 @@ export default function Home() {
               <span>Align</span><strong>RISE</strong>
             </span>
           </a>
-          <div className="navLinks">
-            <a href="#problem">Problem</a>
-            <a href="#system">System</a>
-            <a href="#review">How It Works</a>
-            <a href="#who">Who It&apos;s For</a>
+
+          <div className="navDesktopLinks">
+            {navLinks.map((link) => (
+              <a href={link.href} key={link.href}>{link.label}</a>
+            ))}
+          </div>
+
+          <div className="navControls">
+            <details className="mobileMenu">
+              <summary className="menuButton" aria-label="Open navigation menu">
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
+              </summary>
+              <div className="mobileMenuLinks">
+                {navLinks.map((link) => (
+                  <a href={link.href} key={link.href}>{link.label}</a>
+                ))}
+              </div>
+            </details>
             <a className="navCta" href={bookingUrl} target="_blank" rel="noreferrer">
               Get Started
             </a>
