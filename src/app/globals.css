@@ -124,21 +124,21 @@ p {
   font-weight: 950;
 }
 
-.navLinks {
+.navDesktopLinks,
+.navControls {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
   gap: 18px;
   justify-content: flex-end;
 }
 
-.navLinks a {
+.navDesktopLinks a {
   color: rgba(255, 255, 255, 0.76);
   font-size: 0.92rem;
   font-weight: 800;
 }
 
-.navLinks a:hover {
+.navDesktopLinks a:hover {
   color: var(--white);
 }
 
@@ -146,7 +146,72 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
   color: var(--white) !important;
+  font-size: 0.92rem;
+  font-weight: 900;
   padding: 10px 16px;
+  white-space: nowrap;
+}
+
+.navCta:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.mobileMenu {
+  display: none;
+  position: relative;
+}
+
+.menuButton {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 40px;
+  justify-content: center;
+  list-style: none;
+  width: 44px;
+}
+
+.menuButton::-webkit-details-marker {
+  display: none;
+}
+
+.menuButton span {
+  background: var(--white);
+  border-radius: 999px;
+  display: block;
+  height: 2px;
+  width: 18px;
+}
+
+.mobileMenuLinks {
+  background: rgba(16, 7, 43, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+  display: grid;
+  gap: 2px;
+  min-width: 210px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 52px;
+}
+
+.mobileMenuLinks a {
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.94rem;
+  font-weight: 850;
+  padding: 12px;
+}
+
+.mobileMenuLinks a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
 }
 
 .heroGrid {
@@ -743,6 +808,14 @@ p {
 }
 
 @media (max-width: 820px) {
+  .navDesktopLinks {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: block;
+  }
+
   .matrix {
     display: block;
     border-radius: 24px;
@@ -797,24 +870,25 @@ p {
   .hero {
     padding-left: 18px;
     padding-right: 18px;
-    padding-top: 118px;
+    padding-top: 106px;
   }
 
   .nav {
-    align-items: flex-start;
-    flex-direction: column;
     gap: 12px;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding: 12px 18px;
   }
 
-  .navLinks {
-    gap: 12px;
-    justify-content: flex-start;
+  .navBrand {
+    font-size: 1.06rem;
   }
 
-  .navLinks a {
-    font-size: 0.88rem;
+  .navControls {
+    gap: 8px;
+  }
+
+  .navCta {
+    font-size: 0.84rem;
+    padding: 10px 12px;
   }
 
   .heroGrid {
@@ -853,5 +927,25 @@ p {
   .footerBottom {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 390px) {
+  .nav {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .navBrand {
+    font-size: 0.98rem;
+  }
+
+  .navCta {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .menuButton {
+    width: 40px;
   }
 }
