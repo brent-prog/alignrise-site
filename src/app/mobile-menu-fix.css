@@ -17,3 +17,24 @@
 .menuButton span {
   background: var(--white) !important;
 }
+
+@media (max-width: 680px) {
+  .functionsSection .sectionIntro {
+    margin-bottom: 22px;
+  }
+
+  .functionList {
+    gap: 8px !important;
+  }
+
+  .functionList span {
+    align-items: center;
+    border-radius: 999px !important;
+    border-top: 1px solid var(--line) !important;
+    display: flex;
+    font-size: 0.9rem !important;
+    justify-content: flex-start;
+    min-height: auto !important;
+    padding: 12px 14px !important;
+  }
+}
