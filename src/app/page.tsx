@@ -83,16 +83,46 @@ const audiences = [
 ];
 
 const functions = [
-  "Leadership and Strategy",
-  "Marketing",
-  "Sales",
-  "Operations",
-  "Customer Experience",
-  "Human Resources",
-  "Finance",
-  "Technology",
-  "Administration",
-  "Legal, Risk, and Compliance",
+  {
+    name: "Leadership and Strategy",
+    signal: "Direction, priorities, decision rhythm, and ownership.",
+  },
+  {
+    name: "Marketing",
+    signal: "Right audience, clear message, lead signals, and demand creation.",
+  },
+  {
+    name: "Sales",
+    signal: "Qualification, pipeline discipline, conversion, and handoffs.",
+  },
+  {
+    name: "Operations",
+    signal: "Delivery standards, capacity, process control, and repeatability.",
+  },
+  {
+    name: "Customer Experience",
+    signal: "Promise kept, feedback loops, retention, and referral strength.",
+  },
+  {
+    name: "Human Resources",
+    signal: "Roles, hiring, onboarding, coaching, and accountability.",
+  },
+  {
+    name: "Finance",
+    signal: "Margin, cash, pricing, reporting, and reinvestment choices.",
+  },
+  {
+    name: "Technology",
+    signal: "Tools, data, documentation, automation, and AI readiness.",
+  },
+  {
+    name: "Administration",
+    signal: "Coordination, cadence, records, follow-through, and support systems.",
+  },
+  {
+    name: "Legal, Risk, and Compliance",
+    signal: "Controls, protection, obligations, risk visibility, and discipline.",
+  },
 ];
 
 const navLinks = [
@@ -295,16 +325,19 @@ export default function Home() {
       <section className="section functionsSection">
         <div className="sectionIntro splitIntro">
           <div>
-            <p className="eyebrow">10 core functions</p>
-            <h2>See the whole business, not just the loudest problem.</h2>
+            <p className="eyebrow">Where alignment actually shows up</p>
+            <h2>The business is one system, but the gaps show up in different places.</h2>
           </div>
           <p>
-            AlignRISE helps you look across each business function through People, Product, Profit and through Planning, Processes, and Performance. The goal is clarity, consistency, and accountability.
+            AlignRISE looks across the functions where work gets planned, delivered, measured, and improved. This is how you see whether the business is truly aligned or just held together by effort.
           </p>
         </div>
-        <div className="functionList" aria-label="10 core business functions">
+        <div className="functionList" aria-label="Where alignment shows up across business functions">
           {functions.map((item) => (
-            <span key={item}>{item}</span>
+            <article className="functionItem" key={item.name}>
+              <h3>{item.name}</h3>
+              <p>{item.signal}</p>
+            </article>
           ))}
         </div>
       </section>
