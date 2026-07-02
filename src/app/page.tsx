@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const bookingUrl = "https://calendly.com/brent3p/30min";
 const linkedInUrl = "https://www.linkedin.com/company/3psolutionscanada";
@@ -101,12 +104,44 @@ const navLinks = [
 
 export default function Home() {
   const year = new Date().getFullYear();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    }
+
+    function handleResize() {
+      if (window.innerWidth > 820) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <main>
       <section className="hero" id="home">
         <nav className="nav" aria-label="Main navigation">
-          <a className="navBrand" href="#home" aria-label="AlignRISE home">
+          <a className="navBrand" href="#home" aria-label="AlignRISE home" onClick={() => setIsMenuOpen(false)}>
             <span className="navWordmark">
               <span>Align</span><strong>RISE</strong>
             </span>
@@ -119,19 +154,28 @@ export default function Home() {
           </div>
 
           <div className="navControls">
-            <details className="mobileMenu">
-              <summary className="menuButton" aria-label="Open navigation menu">
+            <div className="mobileMenu" ref={menuRef}>
+              <button
+                className="menuButton"
+                type="button"
+                aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
+                onClick={() => setIsMenuOpen((open) => !open)}
+              >
                 <span aria-hidden="true" />
                 <span aria-hidden="true" />
                 <span aria-hidden="true" />
-              </summary>
-              <div className="mobileMenuLinks">
-                {navLinks.map((link) => (
-                  <a href={link.href} key={link.href}>{link.label}</a>
-                ))}
-              </div>
-            </details>
-            <a className="navCta" href={bookingUrl} target="_blank" rel="noreferrer">
+              </button>
+              {isMenuOpen && (
+                <div className="mobileMenuLinks" id="mobile-navigation">
+                  {navLinks.map((link) => (
+                    <a href={link.href} key={link.href} onClick={() => setIsMenuOpen(false)}>{link.label}</a>
+                  ))}
+                </div>
+              )}
+            </div>
+            <a className="navCta" href={bookingUrl} target="_blank" rel="noreferrer" onClick={() => setIsMenuOpen(false)}>
               Get Started
             </a>
           </div>
