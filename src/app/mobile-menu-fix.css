@@ -1,0 +1,19 @@
+.menuButton {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(16, 7, 43, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  color: var(--white);
+  padding: 0;
+}
+
+.menuButton:hover,
+.menuButton:focus-visible,
+.menuButton[aria-expanded="true"] {
+  background: rgba(72, 64, 224, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.menuButton span {
+  background: var(--white) !important;
+}
