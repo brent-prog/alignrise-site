@@ -18,6 +18,10 @@
   background: var(--white) !important;
 }
 
+.diagnosticPanel::before {
+  display: none !important;
+}
+
 .functionItem {
   background: var(--white);
   border: 1px solid var(--line);
