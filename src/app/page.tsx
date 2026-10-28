@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const bookingUrl = "https://calendly.com/brent3p/30min";
+const bookingUrl = "/foundation";
 const linkedInUrl = "https://www.linkedin.com/company/3psolutionscanada";
 
 const symptoms = [
