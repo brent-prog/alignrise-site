@@ -130,6 +130,7 @@ const navLinks = [
   { href: "#system", label: "System" },
   { href: "#review", label: "How It Works" },
   { href: "#who", label: "Who It's For" },
+  { href: "/about/", label: "About" },
 ];
 
 export default function Home() {
@@ -401,6 +402,7 @@ export default function Home() {
             <a href="#system">System</a>
             <a href="#review">How It Works</a>
             <a href="#who">Who It&apos;s For</a>
+            <a href="/about/">About</a>
           </div>
 
           <div className="footerLinkGroup">
