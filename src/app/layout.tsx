@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body>{children}</body>
+      <body><script dangerouslySetInnerHTML={{ __html: "(function(){var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='reload'&&!location.hash){history.scrollRestoration='manual';window.addEventListener('pageshow',function(){document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,0);requestAnimationFrame(function(){window.scrollTo(0,0);document.documentElement.style.scrollBehavior='';});});}})();" }} />{children}</body>
     </html>
   );
 }
