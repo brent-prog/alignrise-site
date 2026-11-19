@@ -65,7 +65,7 @@ export default function RobCooperOnboarding(){
  const [selected,setSelected] = useState<"work"|"growth">("work");
  const [completed,setCompleted] = useState<number[]>([]);
  const [showInstructions,setShowInstructions]=useState(false);
- const setupReady=[0,1,2,3].every(i=>completed.includes(i));
+ const setupReady=[0,1,2].every(i=>completed.includes(i));
  async function copy(text:string,key:string){
   try {await navigator.clipboard.writeText(text);setCopied(key);window.setTimeout(()=>setCopied(""),2100);} catch {setCopied("error");}
  }
@@ -80,8 +80,8 @@ export default function RobCooperOnboarding(){
   "Open Claude Projects and create a project called Rob Cooper Photography | Business Operating System.",
   "Copy the 3P project instructions below into Claude's Project Instructions and save.",
   "Download the 3P Working Guide and Rob Business Context and upload BOTH files to Claude Project Knowledge.",
-  "Choose which of your two problems to tackle first using the cards further down this page.",
-  "Work with Claude until you have a usable output and your three actions. Save the agreed record for future sessions."
+  "Once those three steps are checked, choose one of your two problems below and copy its starting prompt.",
+  "Start a new chat inside your Claude project, paste the prompt and work with Claude until you have a useful output and three actions."
  ];
  const button:React.CSSProperties={background:"#4338ca",color:"#fff",padding:"12px 17px",border:0,borderRadius:9,fontWeight:750,cursor:"pointer",fontSize:14};
  return <main style={{minHeight:"100vh",background:"#f8fafc",color:"#111827",fontFamily:"Arial,Helvetica,sans-serif"}}>
@@ -95,7 +95,7 @@ export default function RobCooperOnboarding(){
    <p style={{maxWidth:790,fontSize:17,lineHeight:1.65,color:"#475569",marginBottom:28}}>You told Brent you need a better way to juggle different kinds of work, and you want more of the corporate photo/video work you're enjoying with Hospice. That's what we're solving. You already have Claude Pro, so you don't need another subscription or a new app.</p>
    <section id="setup" style={{background:"#fff",border:"1px solid #e3e8f1",padding:23,borderRadius:16,marginTop:27,scrollMarginTop:90}}>
     <h2 style={{fontSize:23,margin:"0 0 10px"}}>First, set up your Claude project (once)</h2>
-    <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>This takes a few steps and makes sure Claude has 3P guidance before you start asking it for help. Check each one off as you go.</p>
+    <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>Complete and check off the first THREE items to unlock the starting prompt below. The last two items guide your first working session.</p>
     <a href="https://claude.ai/projects" rel="noopener noreferrer" target="_blank" style={{...button,display:"inline-block",textDecoration:"none",margin:"7px 0 15px"}}>Open Claude Projects ↗</a>
     {steps.map((s,i)=><label key={i} style={{display:"flex",gap:11,alignItems:"flex-start",padding:"12px 0",borderBottom:i<steps.length-1?"1px solid #edf0f5":"none",lineHeight:1.5,cursor:"pointer",color:completed.includes(i)?"#64748b":"#1f2937"}}>
      <input type="checkbox" checked={completed.includes(i)} onChange={()=>setCompleted(v=>v.includes(i)?v.filter(n=>n!==i):[...v,i])} style={{width:17,height:17,accentColor:"#4338ca",marginTop:3}}/><span>{s}</span>
@@ -108,9 +108,9 @@ export default function RobCooperOnboarding(){
     {showInstructions&&<pre style={{whiteSpace:"pre-wrap",overflowWrap:"anywhere",background:"#f8fafc",border:"1px solid #e5e7eb",borderRadius:10,padding:18,maxHeight:360,overflowY:"auto",fontSize:12,lineHeight:1.65}}>{baseInstructions}</pre>}
     <p style={{fontSize:12,color:"#64748b",lineHeight:1.6,marginBottom:0}}>If Claude calls these sections something slightly different, look inside the project settings for Instructions and Knowledge. The 3P guide and Rob business context are two separate downloadable text files, not a ZIP. Upload BOTH files to Project Knowledge. These are starting facts to verify, not a completed business assessment.</p>
    </section>
-   <h2 id="choices" style={{fontSize:22,margin:"0 0 14px",scrollMarginTop:90}}>Choose which of your two problems to solve</h2>
+   <h2 id="choices" style={{fontSize:22,margin:"24px 0 14px",scrollMarginTop:90}}>Choose which of your two problems to solve</h2>
    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(285px,1fr))",gap:16}}>
-    {cards.map(c=><button key={c.key} onClick={()=>{setSelected(c.key as "work"|"growth");document.getElementById(setupReady?"start-prompt":"setup")?.scrollIntoView({block:"start",behavior:"smooth"});}} style={{textAlign:"left",padding:23,borderRadius:16,background:"#fff",border:selected===c.key?"2px solid #4338ca":"2px solid #e5e7eb",boxShadow:selected===c.key?"0 5px 22px rgba(67,56,202,.08)":"none",cursor:"pointer",color:"#111827"}}>
+    {cards.map(c=><button key={c.key} onClick={()=>{setSelected(c.key as "work"|"growth");document.getElementById("start-prompt")?.scrollIntoView({block:"start",behavior:"smooth"});}} style={{textAlign:"left",padding:23,borderRadius:16,background:"#fff",border:selected===c.key?"2px solid #4338ca":"2px solid #e5e7eb",boxShadow:selected===c.key?"0 5px 22px rgba(67,56,202,.08)":"none",cursor:"pointer",color:"#111827"}}>
      <span style={{fontSize:12,color:"#4338ca",fontWeight:800}}>{c.number} · {c.tag}</span>
      <h3 style={{fontSize:22,letterSpacing:"-.02em",lineHeight:1.25,margin:"12px 0"}}>{c.title}</h3>
      <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>{c.desc}</p>
@@ -120,9 +120,9 @@ export default function RobCooperOnboarding(){
    <section id="start-prompt" style={{marginTop:25,borderRadius:16,background:"#fff",border:"1px solid #e3e8f1",overflow:"hidden",scrollMarginTop:90}}>
     <div style={{padding:"22px 23px",borderBottom:"1px solid #e3e8f1",display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",flexWrap:"wrap"}}>
      <div><p style={{fontSize:12,fontWeight:800,color:"#4338ca",margin:"0 0 6px"}}>START YOUR FIRST WORKING SESSION</p><h2 style={{fontSize:23,margin:0}}>{item.title}</h2></div>
-     <button disabled={!setupReady} onClick={()=>copy(item.prompt,item.key)} style={{...button,opacity:setupReady?1:.45,cursor:setupReady?"pointer":"not-allowed"}}>{!setupReady?"Complete setup first":copied===item.key?"Copied ✓":"Copy this prompt"}</button>
+     <button disabled={!setupReady} onClick={()=>copy(item.prompt,item.key)} style={{...button,opacity:setupReady?1:.45,cursor:setupReady?"pointer":"not-allowed"}}>{!setupReady?"Complete steps 1–3 to copy":copied===item.key?"Copied ✓":"Copy this prompt"}</button>
     </div>
-    <div style={{padding:"18px 23px"}}>{!setupReady&&<p style={{background:"#fff7ed",color:"#9a3412",padding:14,borderRadius:9,fontWeight:700}}>Complete the first four setup steps, including both knowledge uploads, before using the working prompts. <a href="#setup">Back to setup</a></p>}
+    <div style={{padding:"18px 23px"}}>{!setupReady&&<p style={{background:"#fff7ed",color:"#9a3412",padding:14,borderRadius:9,fontWeight:700}}>Complete setup steps 1–3 above (create your project, install instructions, and upload both knowledge files). Then the Copy this prompt button will unlock. <a href="#setup">Back to setup</a></p>}
      <p style={{fontSize:14,lineHeight:1.6,color:"#475569",marginTop:0}}>After setting up your project, create a new chat inside it. Paste this exact prompt and answer Claude's questions. It should help you produce something usable today, not another general assessment.</p>
      <pre style={{fontFamily:"ui-monospace,Consolas,monospace",background:"#f8fafc",padding:18,borderRadius:10,whiteSpace:"pre-wrap",overflowWrap:"anywhere",fontSize:12,lineHeight:1.68,maxHeight:450,overflowY:"auto",border:"1px solid #e5e7eb"}}>{item.prompt}</pre>
      <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>Want to work on the other problem next? Select its card above and open a <strong>separate chat in the same Claude project</strong>. Both chats can use the same 3P instructions and business context.</p>
