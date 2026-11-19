@@ -80,7 +80,7 @@ export default function RobCooperOnboarding(){
   "Open Claude Projects and create a project called Rob Cooper Photography | Business Operating System.",
   "Copy the 3P project instructions below into Claude's Project Instructions and save.",
   "Download the 3P Working Guide and Rob Business Context and upload BOTH files to Claude Project Knowledge.",
-  "After setup is complete, choose a problem and paste its start prompt into a NEW chat inside your project.",
+  "Choose which of your two problems to tackle first using the cards further down this page.",
   "Work with Claude until you have a usable output and your three actions. Save the agreed record for future sessions."
  ];
  const button:React.CSSProperties={background:"#4338ca",color:"#fff",padding:"12px 17px",border:0,borderRadius:9,fontWeight:750,cursor:"pointer",fontSize:14};
