@@ -14,28 +14,24 @@ export const prospectPages: Record<string, ProspectPageData> = {
     eyebrow: "A PERSONALIZED PROPOSAL FOR ERIN & LAYTON PHILLIPS",
     title: "You have the therapists. Let's fill the calendars.",
     greeting: "Erin and Layton,",
-    intro: "I've enjoyed following your journey from opening Hand & Stone in Guelph to operating both Guelph and Waterloo. From our recent conversation, you've made meaningful progress on the staffing challenge. The next opportunity is getting more value from the capacity you've built: filling available appointments while giving every guest a reason to return, try another service, and refer someone else.",
+    intro: "You’ve done the hard work of building your team. Now the opportunity is filling open appointments, encouraging guests to rebook, and generating more referrals. Here’s how I think we can help.",
     context: [
-      { heading: "The challenge has changed", body: "For a long time, recruiting enough Registered Massage Therapists was the constraint, especially in Guelph. Now that staffing has improved, available appointment slots create a different opportunity. We should validate the actual utilization and economics before drawing conclusions." },
-      { heading: "The experience is the opportunity", body: "The guest journey—from booking and arrival to their treatment, checkout, follow-up and referral—can help turn a great service into a more consistent source of repeat visits and bookings." },
-      { heading: "Within the franchise model", body: "We'll focus on practical changes your team can control locally, including front-desk conversations, rebooking, service discovery and community referrals, while respecting Hand & Stone's brand standards and franchise requirements." }
+      { heading: "The opportunity", body: "With Guelph better staffed, let’s focus on filling available appointments through a stronger guest experience, repeat bookings and local referrals—within Hand & Stone’s franchise guidelines." }
     ],
     opportunities: [
-      { title: "Rebook before checkout", detail: "Find natural, guest-first opportunities to offer the next appointment before clients leave." },
-      { title: "Introduce complementary services", detail: "Help guests discover relevant facials, skincare and other services without a pushy sales experience." },
-      { title: "Create more referrals", detail: "Examine the moments when happy guests are most likely to recommend the spa, especially during seasonal benefits conversations." },
-      { title: "Use available capacity", detail: "Identify which appointment types and times are open, then connect them to practical front-desk and local marketing actions." }
+      { title: "Rebook", detail: "Make the next appointment a natural part of checkout." },
+      { title: "Expand", detail: "Introduce relevant treatments, including facials." },
+      { title: "Refer", detail: "Help delighted guests recommend you to others." }
     ],
     process: [
-      { heading: "One-day on-site review", detail: "Meet with Erin, observe the booking-to-checkout experience, and speak with front-desk staff plus a small sample of RMT and esthetics team members. Review booking patterns and available operating information with permission." },
-      { heading: "Practical opportunity assessment", detail: "Identify gaps, estimate credible annualized opportunities using available evidence, and prioritize changes that fit the franchise operating model." },
-      { heading: "Executive readout and 90-day plan", detail: "Within one week, provide a prioritized action plan covering opportunities, recommended changes, responsible owners to confirm, impact assumptions and suggested timing. Initial focus: Guelph, with lessons applicable to Waterloo where appropriate." }
+      { heading: "Listen and observe", detail: "Meet with Erin, the front-desk team, an RMT and an aesthetician, and review the real guest journey and booking gaps." },
+      { heading: "Identify and prioritize", detail: "Deliver practical opportunities and a 90-day action plan designed for Guelph, with lessons that may carry over to Waterloo." }
     ],
     normalPrice: 5000,
     price: 2500,
     guarantee: "If the assessment does not identify at least $25,000 in credible annual improvement opportunities, the assessment fee will be refunded. Identified opportunities are not guaranteed realized results.",
-    note: "A one-day rapid customer experience assessment, offered under AlignRISE™ by 3P Solutions. Scope is focused on the Guelph location with Waterloo considered for transferable opportunities; a second full on-site assessment is not included. Price is CAD, plus applicable HST. Subject to scheduling and access to suitable operational information.",
+    note: "AlignRISE KickStart includes a focused on-site CX review in Guelph and a practical improvement plan. Waterloo may benefit from applicable findings; a second on-site review is not included. CAD + HST. Timing and access to operating information to be agreed.",
     contactEmail: "brent@3psolutions.ca",
-    contactSubject: "Hand & Stone — Rapid CX Assessment"
+    contactSubject: "Hand & Stone — AlignRISE KickStart"
   }
 };
