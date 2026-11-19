@@ -14,7 +14,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
   const [margin, setMargin] = useState(35);
   const [locationCount, setLocationCount] = useState(1);
   const rmt = 129.95;
-  const facial = 129.95;
+  const facial = 154.95;
   const revenue = appointments * weeks * locationCount * ((mix / 100) * rmt + ((100 - mix) / 100) * facial);
   const contribution = revenue * margin / 100;
   const required = Math.ceil(25000 / (weeks * locationCount * ((mix / 100) * rmt + ((100 - mix) / 100) * facial) * margin / 100));
@@ -59,7 +59,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
     <section style={{ padding: "47px 0" }}><div style={style.wrap}>
       <p style={{ color: "#4840e0", fontWeight: 800, letterSpacing: ".1em", fontSize: 12 }}>ILLUSTRATIVE OPPORTUNITY CALCULATOR</p>
       <h2 style={style.h2}>What could just a few additional bookings mean?</h2>
-      <p style={{ ...style.body, maxWidth: 810 }}>Adjust the assumptions below. This is an illustrative scenario—not a forecast or claim about current performance. Rates use publicly listed non-member 50-minute RMT massage and Classic Facial prices for Hand & Stone Waterloo – The Boardwalk. Validate actual service mix, available slots, realization and margins during the assessment.</p>
+      <p style={{ ...style.body, maxWidth: 810 }}>Adjust the assumptions below. This is an illustrative scenario—not a forecast or claim about current performance. Rates use publicly listed non-member 50-minute RMT massage and Dermalogica Pro Clear facial prices for Hand & Stone Waterloo – The Boardwalk. Validate actual service mix, available slots, realization and margins during the assessment.</p>
       <div style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "24px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 25 }}>
         <div style={{ display: "grid", gap: 19 }}>
           {([
@@ -77,7 +77,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           <div style={{ borderTop: "1px solid #c7d2fe", paddingTop: 15, fontSize: 14, lineHeight: 1.7 }}>At these assumptions, approximately <strong>{required} extra appointments per week per modelled location</strong> would represent $25,000 annualized contribution margin.</div>
         </div>
       </div>
-      <p style={{ fontSize: 12, lineHeight: 1.6, color: "#64748b" }}>Public non-member service rates used: 50-minute RMT massage {money2(rmt)}; Classic Facial {money2(facial)}. Prices exclude applicable taxes and may change. No assumption of 100% incremental demand, provider availability, or achievable utilization is implied. <a href="https://handandstone.ca/spa-menu/theboardwalk/" target="_blank" rel="noopener noreferrer" style={{ color: "#4840e0" }}>Source: Hand & Stone Waterloo spa menu ↗</a>.</p>
+      <p style={{ fontSize: 12, lineHeight: 1.6, color: "#64748b" }}>Public non-member service rates used: 50-minute RMT massage {money2(rmt)}; Dermalogica Pro Clear facial {money2(facial)}. Prices exclude applicable taxes and may change. No assumption of 100% incremental demand, provider availability, or achievable utilization is implied. <a href="https://handandstone.ca/spa-menu/theboardwalk/" target="_blank" rel="noopener noreferrer" style={{ color: "#4840e0" }}>Source: Hand & Stone Waterloo spa menu ↗</a>.</p>
     </div></section>
     <section id="proposal" style={{ background: "#fff", padding: "45px 0", scrollMarginTop: 20 }}><div style={style.wrap}>
       <p style={{ color: "#4840e0", fontWeight: 800, letterSpacing: ".1em", fontSize: 12 }}>YOUR ONE-DAY RAPID CX ASSESSMENT</p>
