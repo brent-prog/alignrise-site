@@ -33,7 +33,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
     ],
     normalPrice: 5000,
     price: 2500,
-    guarantee: "If the final readout cannot identify at least $25,000 in credible annualized contribution-margin improvement opportunities, with a practical 90-day action plan, the full assessment fee will be refunded. The guarantee concerns opportunities identified, not implementation or realized results.",
+    guarantee: "If the assessment does not identify at least $25,000 in credible annual improvement opportunities, the assessment fee will be refunded. Identified opportunities are not guaranteed realized results.",
     note: "A one-day rapid customer experience assessment, offered under AlignRISE™ by 3P Solutions. Scope is focused on the Guelph location with Waterloo considered for transferable opportunities; a second full on-site assessment is not included. Price is CAD, plus applicable HST. Subject to scheduling and access to suitable operational information.",
     contactEmail: "brent@3psolutions.ca",
     contactSubject: "Hand & Stone — Rapid CX Assessment"
