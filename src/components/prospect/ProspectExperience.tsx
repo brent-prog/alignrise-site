@@ -5,7 +5,6 @@ import Image from "next/image";
 import type { ProspectPageData } from "@/content/prospect-pages";
 
 const money = (n: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(n);
-const money2 = (n: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", minimumFractionDigits: 2 }).format(n);
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
   const [appointments, setAppointments] = useState(5);
@@ -14,7 +13,6 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
   
   const [locationCount, setLocationCount] = useState(1);
   const revenue = appointments * weeks * locationCount * averageValue;
-  const required = Math.ceil(25000 / (weeks * locationCount * averageValue));
   const email = "mailto:" + page.contactEmail + "?subject=" + encodeURIComponent(page.contactSubject) + "&body=" + encodeURIComponent("Hi Brent,\n\nThanks for putting this together. Let's discuss the AlignRISE KickStart for Hand & Stone.\n\nErin");
   const style = {
     shell: { background: "#f8fafc", color: "#111827", fontFamily: "Arial, Helvetica, sans-serif", minHeight: "100vh" } as const,
@@ -60,7 +58,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
       <div style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "24px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 25 }}>
         <div style={{ display: "grid", gap: 19 }}>
           {([
-            ["Additional booked appointments per week", appointments, setAppointments, 0, 30, 1],
+            ["Additional completed appointments per week", appointments, setAppointments, 0, 30, 1],
             ["Average value of an appointment ($)", averageValue, setAverageValue, 80, 200, 5]
           ] as const).map(([label, value, setter, min, max, step]) => <label key={label} style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}><span style={{ display: "flex", justifyContent: "space-between", gap: 8 }}><span>{label}</span><strong style={{ color: "#4840e0" }}>{value}</strong></span><input type="range" style={{ display: "block", width: "100%", marginTop: 12, accentColor: "#4840e0" }} min={min} max={max} step={step} value={value} onChange={e => setter(Number(e.target.value))}/></label>)}
           <label style={{ fontSize: 13, fontWeight: 700 }}>Locations modelled <select aria-label="Locations modelled" value={locationCount} onChange={e => setLocationCount(Number(e.target.value))} style={{ display: "block", marginTop: 8, padding: 10, width: "100%", border: "1px solid #cbd5e1", borderRadius: 7 }}><option value={1}>1 location</option><option value={2}>Both locations</option></select></label>
