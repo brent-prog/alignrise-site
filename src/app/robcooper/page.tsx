@@ -96,15 +96,15 @@ export default function RobCooperOnboarding(){
  ];
  const button:React.CSSProperties={background:"#4338ca",color:"#fff",padding:"12px 17px",border:0,borderRadius:9,fontWeight:750,cursor:"pointer",fontSize:14};
  return <main style={{minHeight:"100vh",background:"#f8fafc",color:"#111827",fontFamily:"Arial,Helvetica,sans-serif"}}>
-  <header style={{background:"#201060",color:"#fff",padding:"18px max(20px, calc((100vw - 1040px) / 2))",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:10}}>
-   <a href="https://alignrise.ca" target="_blank" rel="noopener noreferrer" aria-label="AlignRISE website" style={{display:"inline-flex",alignItems:"center",flexShrink:0}}><Image src="/alignrise-logo.svg" alt="AlignRISE™" width={112} height={112} priority style={{display:"block",width:"clamp(88px,11vw,112px)",height:"auto"}} /></a><div style={{fontSize:12,opacity:.85}}>3P Solutions · Client workspace</div>
+  <header style={{background:"#201060",color:"#fff",padding:"10px max(20px, calc((100vw - 1040px) / 2))",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:10}}>
+   <a href="https://alignrise.ca" target="_blank" rel="noopener noreferrer" aria-label="AlignRISE website" style={{display:"inline-flex",alignItems:"center",flexShrink:0}}><Image src="/alignrise-logo.svg" alt="AlignRISE™" width={88} height={88} priority style={{display:"block",width:"clamp(72px,9vw,88px)",height:"auto"}} /></a><div style={{fontSize:12,opacity:.85}}>3P Solutions · Client workspace</div>
   </header>
   <nav aria-label="Onboarding navigation" style={{position:"sticky",top:0,zIndex:20,display:"flex",gap:20,flexWrap:"wrap",background:"white",borderBottom:"1px solid #e5e7eb",padding:"12px max(20px, calc((100vw - 1040px)/2))",fontSize:13,fontWeight:700}}><a href="#setup">1. Set up Claude</a><a href="#choices">2. Choose problem</a><a href="#start-prompt">3. Start session</a><a href="#review">4. Review</a></nav>
-  <div style={{maxWidth:1040,margin:"0 auto",padding:"36px 20px 65px"}}>
+  <div style={{maxWidth:1040,margin:"0 auto",padding:"20px 20px 52px"}}>
    <p style={{fontSize:12,fontWeight:800,letterSpacing:".11em",color:"#4338ca",textTransform:"uppercase"}}>Your first day with AlignRISE</p>
-   <h1 style={{fontSize:"clamp(30px,5vw,46px)",maxWidth:830,lineHeight:1.12,letterSpacing:"-.04em",margin:"8px 0 15px"}}>Rob, let's work on the two things you asked for.</h1>
-   <p style={{maxWidth:790,fontSize:17,lineHeight:1.65,color:"#475569",marginBottom:28}}>You told Brent you need a better way to juggle different kinds of work, and you want more of the corporate photo/video work you're enjoying with Hospice. That's what we're solving. You already have Claude Pro, so you don't need another subscription or a new app.</p>
-   <section id="setup" style={{background:"#fff",border:"1px solid #e3e8f1",padding:23,borderRadius:16,marginTop:27,scrollMarginTop:90}}>
+   <h1 style={{fontSize:"clamp(29px,4vw,42px)",color:"#171329",maxWidth:830,lineHeight:1.15,letterSpacing:"-.035em",margin:"5px 0 12px"}}>Rob, let's work on the two things you asked for.</h1>
+   <p style={{maxWidth:790,fontSize:16,lineHeight:1.55,color:"#475569",marginBottom:18}}>You told Brent you need a better way to juggle different kinds of work, and you want more of the corporate photo/video work you're enjoying with Hospice. That's what we're solving. You already have Claude Pro, so you don't need another subscription or a new app.</p>
+   <section id="setup" style={{background:"#fff",border:"1px solid #e3e8f1",padding:23,borderRadius:16,marginTop:14,scrollMarginTop:90}}>
     <h2 style={{fontSize:23,margin:"0 0 10px"}}>First, set up your Claude project (once)</h2>
     <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>Complete the first three setup steps, then run the verification prompt. Confirm Claude reports READY before starting a working session. The checklist is for your reference and does not lock the prompts.</p>
     <a href="https://claude.ai/projects" rel="noopener noreferrer" target="_blank" style={{...button,display:"inline-block",textDecoration:"none",margin:"7px 0 15px"}}>Open Claude Projects ↗</a>
