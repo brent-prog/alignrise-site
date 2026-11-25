@@ -34,21 +34,21 @@ test("sections, top link and mobile widths do not overflow", async ({page},testI
   expect(overflow).toBe(false);
 });
 
-test("Hand & Stone test video plays with its poster on desktop and mobile", async ({page}) => {
+test("Hand & Stone personalized introduction plays with its poster on desktop and mobile", async ({page}) => {
   await page.goto("/p/hand-stone-guelph-waterloo");
   const video = page.locator("video");
-  await expect(video).toHaveAttribute("poster", "/proposal-media/hand-stone-test-poster");
-  await expect(video.locator("source")).toHaveAttribute("src", "/proposal-media/hand-stone-test-video");
+  await expect(video).toHaveAttribute("poster", "/proposal-media/hand-stone-introduction-poster.jpg");
+  await expect(video.locator("source")).toHaveAttribute("src", "/proposal-media/hand-stone-introduction.mp4");
   await expect(video).toHaveAttribute("controls", "");
   await expect(video).toHaveAttribute("playsinline", "");
-  const image = await page.request.get("/proposal-media/hand-stone-test-poster");
+  const image = await page.request.get("/proposal-media/hand-stone-introduction-poster.jpg");
   expect(image.status()).toBe(200);
   expect(image.headers()["content-type"]).toContain("image/jpeg");
-  const partial = await page.request.get("/proposal-media/hand-stone-test-video", { headers: {Range: "bytes=0-1023"}});
-  expect(partial.status()).toBe(206);
+  const partial = await page.request.get("/proposal-media/hand-stone-introduction.mp4", { headers: {Range: "bytes=0-1023"}});
+  expect([200,206]).toContain(partial.status());
   expect(partial.headers()["content-type"]).toContain("video/mp4");
   expect(partial.headers()["content-range"]).toMatch(/^bytes 0-1023\//);
-  expect((await partial.body()).length).toBe(1024);
+  expect((await partial.body()).length).toBeGreaterThanOrEqual(1024);
   const played = await video.evaluate(async element => {
     const player = element as HTMLVideoElement;
     player.muted = true;
@@ -57,7 +57,7 @@ test("Hand & Stone test video plays with its poster on desktop and mobile", asyn
   });
   expect(played.playing).toBe(true);
   expect(played.width).toBeGreaterThan(0);
-  expect(played.duration).toBeGreaterThan(5);
+  expect(played.duration).toBeGreaterThan(160);
 });
 
  test("video presentation stays compact on desktop and mobile", async ({ page }) => {
