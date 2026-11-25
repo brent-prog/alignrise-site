@@ -1,6 +1,6 @@
 # AlignRISE Client Proposal Publishing Playbook
 
-**Status:** Working implementation, November 24, 2026. **Approval state:** draft, not production-released.
+**Status:** Production publishing system, revised November 24, 2026. **Current upgrade:** review in feature branch before release.
 **Owner:** 3P Solutions. **Brand:** AlignRISE™ by 3P Solutions.
 **Reference:** 3P Solutions playbook in `brent-prog/3p-client-proposals/docs/PROPOSAL_PLAYBOOK.md`. Adopt its operational lessons, not its brand, terms, or build implementation.
 
@@ -10,21 +10,21 @@
 - Vercel: existing `alignrise-site` project, ID `prj_ZyiHkw1LeEjzjVs3DxF2IN3Q4ovO`, 3PSolutions team `team_0PWlz9Nyuqrtm2jkVByGa6o6`. GitHub integration verified.
 - Vercel project domains (verified): `alignrise.ca`, `www.alignrise.ca`, `clients.alignrise.ca`, and `alignrise-site.vercel.app`. *Domain listing verifies attachment, not a full DNS/TLS/client-route end-to-end test.*
 - Existing Rob Cooper onboarding: `src/app/robcooper/page.tsx`, preserved unchanged.
-- Prospect functionality is currently on `feature/erin-layton-prospect-page`, not `main`. The proposal branch has a Vercel preview; production must not be described as published.
+- The initial proposal system was merged into `main` at commit `01535d2`. New changes must be developed on a feature branch and verified before promotion.
 - Intended stable public URL convention **after approval and main deployment**: `https://clients.alignrise.ca/p/<client-slug>`. Existing routes must not be renamed without a deliberate redirect.
 - These unlisted URLs are public to anyone holding the link. `noindex` and hard-to-guess slugs are *not* authentication.
 
 ## 2. Architecture and current components
 
 - `src/app/p/[slug]/page.tsx`: Next.js dynamic segment resolved from content map; generates `noindex,nofollow` metadata. Archived records render 404.
-- `src/content/prospect-pages.ts`: per-client data, currently Hand & Stone. Future additions may be separate files imported into the map. Each client retains independent copy, offer and commercial details.
-- `src/components/prospect/ProspectExperience.tsx`: current compact branded page. **Some structure remains Hand & Stone-specific**; extend with optional section primitives before making a materially different proposal, rather than forcing unrelated content into existing sections.
+- `src/content/prospect-pages.ts`: per-client data, currently Hand & Stone. Each record requires actual client brand identity and asset source, independent copy, offer, scope, deliverables, commercial conditions, optional video and optional calculator. Future additions may be separate files imported into the map.
+- `src/components/prospect/ProspectExperience.tsx`: current compact branded page. The shared template is independent of Hand & Stone copy and commercial terms; it renders client data and optional sections. The existing scenario calculator implements an appointments model only; new calculator kinds require separate validated components.
 - `ProspectNavigation.tsx`: sticky Top + proposal-section links + external AlignRISE website.
 - `ProspectVideo.tsx`: optional native `video controls playsInline preload="metadata"`, with supplied poster. This component is implemented but **no end-to-end real client video upload/playback has been verified**.
 - `ScenarioCalculator.tsx`: shared, client-configurable *appointment revenue* calculator with editable numeric fields, synchronized range sliders, two-location option and illustrative disclosure. **Do not reuse this specific financial model for unrelated clients**.
 - `prospect.css`: mobile navigation, video and calculator presentation.
-- All shared components use the existing approved `/alignrise-logo.svg`; preserve existing favicon `/alignrise-icon.svg`. Do not substitute 3P or synthetic logo artwork.
-- Current Hand & Stone terms are specific to that prospect, **not general KickStart terms**.
+- All shared components use the existing approved `/alignrise-logo.svg`; preserve existing favicon `/alignrise-icon.svg`. **Every client page requires the real client logo with brand source attribution and an appropriate dual-brand layout.** The Hand & Stone logo currently references the actual image hosted from Hand & Stone Canada site assets; optimize to a locally approved copy when verified file-upload transport exists. Do not substitute synthetic logo artwork.
+- Current Hand & Stone terms are specific to that prospect, **not general KickStart terms**. Their conditions are presented as proposed terms and indicate where a separately signed engagement agreement must settle issues. A public proposal and mailto button **are not acceptance**.
 
 ## 3. The ChatGPT-led workflow (required)
 
@@ -46,7 +46,7 @@
 - Navigation labels must point to IDs that exist in the rendered page; hide irrelevant links.
 - Keep paragraphs short and eliminate sections that do not serve the particular client.
 - Edit the existing record to retain the URL. To retire a page, mark `archived`, deploy and verify 404. For confidential material, remove content from the public route and consider deletion/remediation of cached or historically served copies.
-- Status `draft` is editorial metadata, **not a privacy boundary**; once its branch is deployed to a reachable preview URL, treat content as potentially public.
+- The status field now controls production output: only `published` pages are included on Vercel production; `draft` pages may render in preview; `archived` is excluded. This is **not authorization, confidentiality, or authentication**; preview URLs and previously published assets can still be accessed.
 
 ## 5. Video and media workflow
 
@@ -81,10 +81,10 @@
 - [ ] Client/decision-maker names correctly spelled; business specifics actually confirmed
 - [ ] No recycled client facts, invented metrics, unsupported ROI promises or incorrect franchise assumptions
 - [ ] Scope, deliverables, exclusions, dates, fees, taxes, guarantees, cancellation/refund and liability reviewed
-- [ ] Next step clearly described; email draft not falsely represented as e-signature
+- [ ] Client agreement status confirmed; proposed terms clearly distinguished from executed terms\n- [ ] Next step clearly described; email draft not falsely represented as e-signature
 - [ ] Prepared date matches publication date if displayed; valid-through date explicitly agreed
 
-### Brand, video and navigation
+### Brand, video and navigation\n- [ ] Official **client** logo and AlignRISE logo displayed at appropriate proportions, sources checked, text alternatives present\n- [ ] Client imagery is authorized for proposal use and does not imply franchise endorsement or partnership
 - [ ] Approved AlignRISE logo, palette, favicon and page title/meta
 - [ ] Top, all section anchors and AlignRISE external link work
 - [ ] Native video play/pause/audio and real poster frame verified if included
@@ -108,11 +108,11 @@
 
 ## 9. Known limitations and backlog
 
-- The client-specific proposal engine is on a feature branch, pending review/merge. The base site and Rob Cooper page remain on main.
-- Shared proposal structure still contains some Hand & Stone-specific composition; for a different offer, add optional generic section definitions and renderer rather than a clone.
+- Initial system is in production; feature upgrades go through preview and are merged only after verification. Rob Cooper onboarding remains separate.
+- Client branding, offer, deliverables, terms and optional sections are data-driven; **appointment calculator model remains specialized** and must not be used for unrelated offers.
 - Video component is implemented but no end-to-end upload or video playback confirmed.
-- Generic e-signature/acceptance is not implemented.
-- No robust automated browser E2E tests or permanent CI test gate has been established.
+- Generic e-signature/acceptance is **not** implemented. Agreement request is a mailto action and requires a separately signed document. Before adding signing, choose an appropriate platform with signer authentication, versioned terms, privacy and audit storage.
+- Browser-based end-to-end and mobile touch testing is still required before declaring a new client page fully QA-approved.
 - Media upload support to Vercel Blob is unverified for the available connected permissions.
 - Preview deployments may have access restrictions and should not be assumed client-accessible.
 - Do not consider GitHub success equivalent to a working deployment.
@@ -120,3 +120,26 @@
 ## 10. Kickoff prompt for another proposal
 
 > Create an AlignRISE client proposal using the current `docs/PROPOSAL_PLAYBOOK.md` in `brent-prog/alignrise-site`. We will develop and approve the proposal here in ChatGPT; I will upload assets here, and you will handle supported GitHub/Vercel actions, previews and QA. Preserve the current site, Rob Cooper onboarding, and Hand & Stone proposal. Prospect: **[company]**, decision maker: **[person]**, stated challenges and intended engagement: **[brief]**. Use actual AlignRISE branding and approved offering terms, personalize the page, use optional video or interactive calculators only if useful, and do not publish or send until I approve. Verify the production client URL before delivering it.
+
+## 11. Amendments after initial publication
+
+- The first release was deployed from `main` at `01535d2` with the Hand & Stone proposal.
+- The next upgrade introduces official client branding in the shared hero, personalized deliverables and offer fields, commercial conditions that disclose unresolved items, explicit request-for-agreement messaging, accurate client metadata, and production status enforcement.
+- **Important media limitation:** the Hand & Stone mark currently references an existing publicly served Hand & Stone Canada logo URL, not an independently stored asset. Before sharing externally verify it loads in normal and mobile browsers; prefer a reviewed first-party asset copy if feasible.
+- **Important agreement limitation:** there is no automatic e-signature, durable audit trail, or final agreement generation. The terms displayed are not legal advice and are **not** substituted for a signed client agreement.
+- **Publication steps:** feature branch → build and review → explicit approval → merge to main → Vercel READY for correct commit → test `https://clients.alignrise.ca/p/<slug>` → only then share.
+- For every new client, first add **actual client logo + source**, check naming permissions and brand usage, then create sections, supporting evidence, commercial terms and optional media. A client without a verified usable logo should not be presented as fully branded.
+
+
+## 12. Repeatable technical QA (2026-11-24 upgrade)
+
+- `src/lib/proposal-calculations.ts` is the isolated tested appointment scenario formula. Do not use the Hand & Stone calculation for a different client without replacing the model and tests.
+- `tests/proposal-calculations.test.mjs` checks revenue maths and invalid input handling.
+- `tests/proposal-data.test.mjs` checks that every published proposal has client identity, an actual HTTPS logo asset URL, offer, deliverables, commercial fields, non-duplicated section identifiers and a contact.
+- `page.sectionOrder` determines **both** the visible order of content blocks and navigation entries. Omit or reorder sections as required; custom `extraSections` can be positioned between any built-in sections.
+- `e2e/proposal.spec.ts` and `playwright.config.ts` run Chromium tests at desktop and iPhone-sized widths against a local production build, checking identity, agreement language, calculator precision changes, keyboard slider changes, section links and overflow.
+- `.github/workflows/proposal-checks.yml` installs dependencies, tests maths and client schema, builds Next.js, then runs browser tests on pull requests targeting main. **Use the reported GitHub Actions conclusion**, not just the existence of a workflow, as evidence of passing QA.
+- The repository does not yet contain an npm package lockfile; CI currently uses `npm install`. Generating a reviewed lockfile and switching to `npm ci` is a recommended follow-up for dependency determinism.
+- Runtime is pinned to Node 24. The current upgrade also moves Next.js and `eslint-config-next` together to `16.4.6` in response to 2026 security advisories; ensure subsequent build and smoke tests pass.
+- The official Hand & Stone Canada logo URL was checked against the publisher's actual image. A remotely hosted image can still change or disappear; keep the source URL in the client brand record, and plan a controlled first-party media copy when an authorized binary transfer method is available.
+- Browser tests operate on a local run in GitHub Actions. They do not substitute for verifying DNS, TLS, and production alias after merging.
