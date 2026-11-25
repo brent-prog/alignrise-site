@@ -1,6 +1,6 @@
 # AlignRISE Client Proposal Publishing Playbook
 
-**Status:** Production publishing system, revised November 24, 2026. **Current upgrade:** review in feature branch before release.
+**Status:** Production publishing system, updated November 24, 2026. **Release:** dual-brand proposal, client-independent sections, commercial safeguards, automated tests and Next.js security update deployed to production from merge commit `e8d2e84`.
 **Owner:** 3P Solutions. **Brand:** AlignRISE™ by 3P Solutions.
 **Reference:** 3P Solutions playbook in `brent-prog/3p-client-proposals/docs/PROPOSAL_PLAYBOOK.md`. Adopt its operational lessons, not its brand, terms, or build implementation.
 
@@ -124,10 +124,10 @@
 ## 11. Amendments after initial publication
 
 - The first release was deployed from `main` at `01535d2` with the Hand & Stone proposal.
-- The next upgrade introduces official client branding in the shared hero, personalized deliverables and offer fields, commercial conditions that disclose unresolved items, explicit request-for-agreement messaging, accurate client metadata, and production status enforcement.
+- The November 24 production upgrade introduced official client branding in the shared hero, personalized deliverables and offer fields, commercial conditions that disclose unresolved items, explicit request-for-agreement messaging, accurate client metadata, and production status enforcement.
 - **Important media limitation:** the Hand & Stone mark currently references an existing publicly served Hand & Stone Canada logo URL, not an independently stored asset. Before sharing externally verify it loads in normal and mobile browsers; prefer a reviewed first-party asset copy if feasible.
 - **Important agreement limitation:** there is no automatic e-signature, durable audit trail, or final agreement generation. The terms displayed are not legal advice and are **not** substituted for a signed client agreement.
-- **Publication steps:** feature branch → build and review → explicit approval → merge to main → Vercel READY for correct commit → test `https://clients.alignrise.ca/p/<slug>` → only then share.
+- **Publication steps:** feature branch → build and review → explicit approval → merge to main → Vercel READY for correct commit → test `https://clients.alignrise.ca/p/<slug>` → only then share. On this release Vercel READY and alias assignment were verified, with browser interactions tested in CI; independent browser access to the custom-domain page was not available from the assistant tool.
 - For every new client, first add **actual client logo + source**, check naming permissions and brand usage, then create sections, supporting evidence, commercial terms and optional media. A client without a verified usable logo should not be presented as fully branded.
 
 
