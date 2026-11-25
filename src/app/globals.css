@@ -950,3 +950,10 @@ p {
     width: 40px;
   }
 }
+
+/* Clear routes to Foundation pricing throughout the homepage. */
+.pricingTextLink { color: var(--white); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; padding: 12px 0; }
+.sectionPricingAction { margin-top: 28px; }
+.centeredPricingAction { text-align: center; }
+.centeredPricingAction p { margin: 0 0 16px; }
+.pricingTextLink:focus-visible, .sectionPricingAction a:focus-visible { outline: 3px solid #a99fff; outline-offset: 5px; }

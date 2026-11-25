@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const bookingUrl = "/foundation";
+const pricingUrl = "/foundation#pricing";
 const linkedInUrl = "https://www.linkedin.com/company/3psolutionscanada";
 
 const symptoms = [
@@ -227,6 +228,7 @@ export default function Home() {
               <a className="buttonSecondary" href="#review">
                 See How It Works
               </a>
+              <a className="pricingTextLink" href={pricingUrl}>See plans and pricing →</a>
             </div>
           </div>
 
@@ -311,6 +313,9 @@ export default function Home() {
           <p>
             AlignRISE gives you a structured way to assess the business, identify the highest-impact gaps, and turn the findings into practical work your team can actually execute.
           </p>
+          <div className="sectionPricingAction">
+            <a className="buttonPrimary" href={pricingUrl}>See plans and pricing →</a>
+          </div>
         </div>
         <div className="reviewSteps">
           {reviewSteps.map((step) => (
@@ -356,6 +361,10 @@ export default function Home() {
               <p>{audience.text}</p>
             </article>
           ))}
+        </div>
+        <div className="sectionPricingAction centeredPricingAction">
+          <p>Find the tools and support that fit your business.</p>
+          <a className="buttonPrimary" href={pricingUrl}>See plans and pricing →</a>
         </div>
       </section>
 
