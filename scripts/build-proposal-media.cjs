@@ -22,3 +22,6 @@ assemble(Array.from({length: 16}, (_,i) => "hand-stone-intro-" + String(i).padSt
  "hand-stone-introduction.mp4", 3983476, "2d197e005567552e4dbb856a6e2000c86e441e95c3c60550596e9a1d4551951f");
 assemble(["hand-stone-intro-poster.b64"],
  "hand-stone-introduction-poster.jpg", 40959, "3702969e074113fdcf63bcab1818e8c96e63bb0f267e1af5b3d6f303ee7d9e32");
+
+assemble(["hand-stone-poster-improved.b64"],
+ "hand-stone-introduction-poster-v2.jpg", 89179, "799cf9b3f009a2c7d6d02068b24ce35618ea45fbdcdb32937d390c4663dafbf9");
