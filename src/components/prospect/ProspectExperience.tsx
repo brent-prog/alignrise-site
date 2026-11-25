@@ -1,18 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import ProspectNavigation from "./ProspectNavigation";
+import ProspectVideo from "./ProspectVideo";
+import ScenarioCalculator from "./ScenarioCalculator";
+import "./prospect.css";
 import type { ProspectPageData } from "@/content/prospect-pages";
 
 const money = (n: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(n);
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
-  const [appointments, setAppointments] = useState(5);
-  const weeks = 48;
-  const [averageValue, setAverageValue] = useState(130);
-  
-  const [locationCount, setLocationCount] = useState(1);
-  const revenue = appointments * weeks * locationCount * averageValue;
   const email = "mailto:" + page.contactEmail + "?subject=" + encodeURIComponent(page.contactSubject) + "&body=" + encodeURIComponent("Hi Brent,\n\nThanks for putting this together. Let's discuss the AlignRISE KickStart for Hand & Stone.\n\nErin");
   const style = {
     shell: { background: "#f8fafc", color: "#111827", fontFamily: "Arial, Helvetica, sans-serif", minHeight: "100vh" } as const,
@@ -21,13 +18,21 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
     body: { fontSize: 16, lineHeight: 1.65, color: "#475569" } as const
   };
   const btn = { display: "inline-block", textDecoration: "none", background: "#4840e0", color: "#fff", borderRadius: 9, padding: "14px 20px", fontSize: 15, fontWeight: 750 } as const;
-  return <main style={style.shell}>
+  return <main id="top" style={style.shell}>
     <header style={{ background: "#201060", padding: "10px 0" }}>
       <div style={{ ...style.wrap, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 15 }}>
         <a href="https://alignrise.ca/" aria-label="AlignRISE home"><Image src="/alignrise-logo.svg" width={108} height={108} style={{ height: 65, width: "auto" }} alt="AlignRISE" priority /></a>
         <span style={{ color: "#ddd6fe", fontSize: 12 }}>AlignRISE™ by 3P Solutions</span>
       </div>
     </header>
+    <ProspectNavigation links={[
+      ...(page.video ? [{id:"introduction",title:"Introduction"}] : []),
+      {id:"opportunity",title:"Opportunity"},
+      {id:"assessment",title:"KickStart"},
+      {id:"calculator",title:"Value"},
+      {id:"proposal",title:"Next step"}
+    ]}/>
+    <ProspectVideo video={page.video}/>
     <section style={{ background: "#fff", borderBottom: "1px solid #e5e7eb", padding: "48px 0 46px" }}>
       <div style={style.wrap}>
         <p style={{ fontSize: 12, fontWeight: 800, letterSpacing: ".1em", color: "#4840e0" }}>{page.eyebrow}</p>
@@ -51,25 +56,11 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         {page.opportunities.map((o, i) => <article key={i} style={{ background: "#fff", borderRadius: 11, padding: 20 }}><span style={{ color: "#4840e0", fontWeight: 800, fontSize: 12 }}>0{i + 1}</span><h3 style={{ color: "#201060", margin: "9px 0", fontSize: 18 }}>{o.title}</h3><p style={{ ...style.body, fontSize: 14, margin: 0 }}>{o.detail}</p></article>)}
       </div>
     </div></section>
-    <section style={{ padding: "47px 0" }}><div style={style.wrap}>
+    <section id="calculator" style={{ padding: "30px 0" }}><div style={style.wrap}>
       <p style={{ color: "#4840e0", fontWeight: 800, letterSpacing: ".1em", fontSize: 12 }}>ILLUSTRATIVE OPPORTUNITY CALCULATOR</p>
       <h2 style={style.h2}>What would a few more appointments be worth?</h2>
       <p style={{ ...style.body, maxWidth: 810 }}>Move the sliders to see potential added service revenue. These are examples, not a forecast.</p>
-      <div style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 16, padding: "24px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 25 }}>
-        <div style={{ display: "grid", gap: 19 }}>
-          {([
-            ["Additional completed appointments per week", appointments, setAppointments, 0, 30, 1],
-            ["Average value of an appointment ($)", averageValue, setAverageValue, 80, 200, 5]
-          ] as const).map(([label, value, setter, min, max, step]) => <label key={label} style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}><span style={{ display: "flex", justifyContent: "space-between", gap: 8 }}><span>{label}</span><strong style={{ color: "#4840e0" }}>{value}</strong></span><input type="range" style={{ display: "block", width: "100%", marginTop: 12, accentColor: "#4840e0" }} min={min} max={max} step={step} value={value} onChange={e => setter(Number(e.target.value))}/></label>)}
-          <label style={{ fontSize: 13, fontWeight: 700 }}>Locations modelled <select aria-label="Locations modelled" value={locationCount} onChange={e => setLocationCount(Number(e.target.value))} style={{ display: "block", marginTop: 8, padding: 10, width: "100%", border: "1px solid #cbd5e1", borderRadius: 7 }}><option value={1}>1 location</option><option value={2}>Both locations</option></select></label>
-        </div>
-        <div style={{ padding: 22, background: "#f0efff", borderRadius: 12 }}>
-          <p style={{ fontSize: 13, fontWeight: 800, color: "#4840e0", margin: 0 }}>POTENTIAL ANNUAL SERVICE REVENUE</p>
-          <p style={{ fontSize: 38, color: "#201060", fontWeight: 850, margin: "10px 0 0" }}>{money(revenue)}</p><p style={{ fontSize: 13, color: "#475569", margin: "0 0 20px" }}>Potential additional service revenue</p>
-          
-          <div style={{ borderTop: "1px solid #c7d2fe", paddingTop: 15, fontSize: 13, lineHeight: 1.6 }}>Based on {weeks} weeks per year. Revenue before costs, taxes and discounts.</div>
-        </div>
-      </div>
+      <ScenarioCalculator defaultAppointments={5} defaultValue={130} weeks={48}/>
       <p style={{ fontSize: 12, lineHeight: 1.6, color: "#64748b" }}>The starting $130 appointment value is illustrative, informed by public <a href="https://handandstone.ca/spa-menu/theboardwalk/" target="_blank" rel="noopener noreferrer" style={{ color: "#4840e0" }}>Hand & Stone service prices</a>. Actual revenue depends on completed appointments, service mix and discounts. It is not profit.</p>
     </div></section>
     <section id="proposal" style={{ background: "#fff", padding: "45px 0", scrollMarginTop: 20 }}><div style={style.wrap}>
@@ -79,7 +70,8 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         {page.process.map((p, i) => <article key={i} style={{ padding: "10px 6px" }}><div style={{ fontWeight: 800, color: "#4840e0" }}>0{i + 1}</div><h3 style={{ color: "#201060", fontSize: 19, margin: "9px 0" }}>{p.heading}</h3><p style={{ ...style.body, fontSize: 14, margin: 0 }}>{p.detail}</p></article>)}
       </div>
     </div></section>
-    <section style={{ padding: "43px 0" }}><div style={style.wrap}>
+    {page.extraSections?.map(section => <section key={section.id} id={section.id} style={{padding:"28px 0", background:"#fff"}}><div style={style.wrap}><h2 style={style.h2}>{section.title}</h2>{section.paragraphs.map((p,i)=><p style={style.body} key={i}>{p}</p>)}</div></section>)}
+    <section id="proposal" style={{ padding: "30px 0" }}><div style={style.wrap}>
       <div style={{ background: "#201060", borderRadius: 16, color: "#fff", padding: "clamp(22px,4vw,42px)" }}>
         <p style={{ color: "#c7d2fe", fontWeight: 800, fontSize: 12, letterSpacing: ".1em" }}>A PERSONAL OFFER</p>
         <h2 style={{ color: "#fff", fontSize: "clamp(26px,3.5vw,36px)", margin: "12px 0" }}>Your KickStart. Half the regular fee.</h2>
