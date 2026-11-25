@@ -183,3 +183,18 @@
 .client-proposal-accept-submit{cursor:pointer;border:0;justify-self:start}
 .client-proposal-accept-fine{font-size:12px!important;color:#64748b!important;margin:0}
 @media(max-width:680px){.client-proposal-acceptance{padding:23px 0 30px}.client-proposal-accept-card{padding:18px 15px}.client-proposal-accept-grid{grid-template-columns:minmax(0,1fr)}.client-proposal-accept-terms{padding:12px 13px}}
+
+
+/* Unified scope + email acceptance: same purple proposal card, no duplicate terms. */
+.client-proposal-accept-inline{margin-top:17px;padding-top:19px;border-top:1px solid #776bb8;scroll-margin-top:85px}
+.client-proposal-accept-inline .client-proposal-accept-eyebrow{font-size:11px;font-weight:800;letter-spacing:.1em;color:#d4ceff;margin:0 0 5px}
+.client-proposal-accept-inline h3{color:#fff;font-size:clamp(20px,2.5vw,25px);margin:0 0 7px}
+.client-proposal-accept-inline .client-proposal-accept-intro{color:#e9e6ff;font-size:14px;margin:0 0 7px;max-width:750px}
+.client-proposal-accept-inline .client-proposal-accept-version{font-size:12px!important;color:#cbc6f7!important;margin:0 0 15px}
+.client-proposal-accept-inline .client-proposal-accept-form label:not(.client-proposal-accept-check){color:#fff}
+.client-proposal-accept-inline .client-proposal-accept-check{color:#f2efff}
+.client-proposal-accept-inline .client-proposal-accept-check input{accent-color:#b7adff}
+.client-proposal-accept-inline .client-proposal-accept-submit{background:#fff;color:#201060!important}
+.client-proposal-accept-inline .client-proposal-accept-submit:hover{background:#ede9ff}
+.client-proposal-accept-inline .client-proposal-accept-fine{color:#d9d3ff!important}
+.client-proposal-terms{margin-bottom:0}

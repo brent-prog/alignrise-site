@@ -116,8 +116,9 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
               ] as const).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
             </dl>
           </details>
-          <p className="client-proposal-nonbinding">Ready to proceed? Review the complete engagement terms and prepare an authorization email. Your email must be sent by an authorized business representative and confirmed by 3P Solutions before work begins.</p>
-          {page.acceptance ? <a href="#accept" className="client-proposal-button client-proposal-button-inverse">Review &amp; accept proposal</a> : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">Email Brent to discuss</a>}
+          {page.acceptance
+            ? <EmailAcceptance page={page}/>
+            : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">Email Brent to discuss</a>}
         </div>
       </div>
     </section>),
@@ -161,7 +162,6 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <div className="client-proposal-container"><h2>{extra.title}</h2>{extra.paragraphs.map((text,i)=><p className="client-proposal-context" key={i}>{text}</p>)}</div>
       </section> : null;
     })()}</Fragment>)}
-    {page.acceptance && <EmailAcceptance page={page}/>}
     <footer className="client-proposal-footer">
       <div className="client-proposal-container">
         <span>AlignRISE™ by 3P Solutions · Prepared for {page.clientName}</span>
