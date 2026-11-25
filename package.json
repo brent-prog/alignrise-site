@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:proposals": "playwright test"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -19,7 +20,8 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.1",
     "eslint-config-next": "16.1.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@playwright/test": "1.65.1"
   },
   "engines": {
     "node": "24.x"
