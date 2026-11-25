@@ -108,24 +108,33 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit AlignRISE">
           <Image src="/alignrise-logo.svg" width={90} height={90} alt="AlignRISE" priority className="client-proposal-alignrise-logo"/>
         </a>
-        <span className="client-proposal-for">A proposal prepared for</span>
-        <div className="client-proposal-client-mark">
-          {/* The client's actual, publicly served brand asset; never redraw client marks. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/>
-        </div>
+        <span className="client-proposal-header-label">A PERSONALIZED ALIGNRISE PROPOSAL</span>
       </div>
     </header>
     <ProspectNavigation links={nav}/>
-    <section className="client-proposal-hero">
+    <section className="client-proposal-hero" aria-labelledby="client-proposal-headline">
       <div className="client-proposal-container">
-        <p className="client-proposal-overline">{page.eyebrow}</p>
-        <h1>{page.title}</h1>
-        <p className="client-proposal-lead"><strong>{page.greeting}</strong> {page.intro}</p>
-        <a className="client-proposal-button" href="#opportunity">Explore the opportunity ↓</a>
+        <div className="client-proposal-hero-identity">
+          <div className="client-proposal-client-mark">
+            {/* Use the client's official mark, never synthetic artwork. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/>
+          </div>
+          <span className="client-proposal-overline">{page.eyebrow}</span>
+        </div>
+        <div className={page.video ? "client-proposal-hero-grid" : "client-proposal-hero-grid client-proposal-hero-grid-no-video"}>
+          <div className="client-proposal-hero-copy">
+            <h1 id="client-proposal-headline">{page.title}</h1>
+            <p className="client-proposal-lead"><strong>{page.greeting}</strong> {page.intro}</p>
+            <div className="client-proposal-hero-actions">
+              <a className="client-proposal-button client-proposal-button-hero" href="#assessment">See how KickStart works</a>
+              <a className="client-proposal-button client-proposal-button-outline" href="#opportunity">See the opportunity</a>
+            </div>
+          </div>
+          {page.video && <ProspectVideo video={page.video} inHero />}
+        </div>
       </div>
     </section>
-    <ProspectVideo video={page.video}/>
     {sectionOrder.map(id => <Fragment key={id}>{sectionContent[id] ?? (() => {
       const extra = page.extraSections?.find(section => section.id === id);
       return extra ? <section className="client-proposal-section" id={extra.id}>
