@@ -39,7 +39,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <h1 style={{ fontSize: "clamp(36px,5.3vw,59px)", maxWidth: 860, lineHeight: 1.08, letterSpacing: "-.045em", margin: "18px 0", color: "#201060" }}>{page.title}</h1>
         <p style={{ ...style.body, maxWidth: 870, fontSize: 18 }}><strong style={{ color: "#111827" }}>{page.greeting}</strong> {page.intro}</p>
         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16, marginTop: 22 }}>
-          <a href="#proposal" style={btn}>See your KickStart</a><a href="#opportunity" style={{ color: "#4840e0", fontWeight: 700 }}>Calculate the opportunity ↓</a>
+          <a href="#assessment" style={btn}>See your KickStart</a><a href="#opportunity" style={{ color: "#4840e0", fontWeight: 700 }}>Calculate the opportunity ↓</a>
         </div>
       </div>
     </section>
@@ -56,19 +56,19 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         {page.opportunities.map((o, i) => <article key={i} style={{ background: "#fff", borderRadius: 11, padding: 20 }}><span style={{ color: "#4840e0", fontWeight: 800, fontSize: 12 }}>0{i + 1}</span><h3 style={{ color: "#201060", margin: "9px 0", fontSize: 18 }}>{o.title}</h3><p style={{ ...style.body, fontSize: 14, margin: 0 }}>{o.detail}</p></article>)}
       </div>
     </div></section>
+    <section id="assessment" style={{ background: "#fff", padding: "30px 0", scrollMarginTop: 20 }}><div style={style.wrap}>
+      <p style={{ color: "#4840e0", fontWeight: 800, letterSpacing: ".1em", fontSize: 12 }}>YOUR ALIGNRISE KICKSTART</p>
+      <h2 style={style.h2}>A focused review. Practical next steps.</h2>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", gap: 18 }}>
+        {page.process.map((p, i) => <article key={i} style={{ padding: "10px 6px" }}><div style={{ fontWeight: 800, color: "#4840e0" }}>0{i + 1}</div><h3 style={{ color: "#201060", fontSize: 19, margin: "9px 0" }}>{p.heading}</h3><p style={{ ...style.body, fontSize: 14, margin: 0 }}>{p.detail}</p></article>)}
+      </div>
+    </div></section>
     <section id="calculator" style={{ padding: "30px 0" }}><div style={style.wrap}>
       <p style={{ color: "#4840e0", fontWeight: 800, letterSpacing: ".1em", fontSize: 12 }}>ILLUSTRATIVE OPPORTUNITY CALCULATOR</p>
       <h2 style={style.h2}>What would a few more appointments be worth?</h2>
       <p style={{ ...style.body, maxWidth: 810 }}>Move the sliders to see potential added service revenue. These are examples, not a forecast.</p>
       <ScenarioCalculator defaultAppointments={5} defaultValue={130} weeks={48}/>
       <p style={{ fontSize: 12, lineHeight: 1.6, color: "#64748b" }}>The starting $130 appointment value is illustrative, informed by public <a href="https://handandstone.ca/spa-menu/theboardwalk/" target="_blank" rel="noopener noreferrer" style={{ color: "#4840e0" }}>Hand & Stone service prices</a>. Actual revenue depends on completed appointments, service mix and discounts. It is not profit.</p>
-    </div></section>
-    <section id="proposal" style={{ background: "#fff", padding: "45px 0", scrollMarginTop: 20 }}><div style={style.wrap}>
-      <p style={{ color: "#4840e0", fontWeight: 800, letterSpacing: ".1em", fontSize: 12 }}>YOUR ALIGNRISE KICKSTART</p>
-      <h2 style={style.h2}>A focused review. Practical next steps.</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", gap: 18 }}>
-        {page.process.map((p, i) => <article key={i} style={{ padding: "10px 6px" }}><div style={{ fontWeight: 800, color: "#4840e0" }}>0{i + 1}</div><h3 style={{ color: "#201060", fontSize: 19, margin: "9px 0" }}>{p.heading}</h3><p style={{ ...style.body, fontSize: 14, margin: 0 }}>{p.detail}</p></article>)}
-      </div>
     </div></section>
     {page.extraSections?.map(section => <section key={section.id} id={section.id} style={{padding:"28px 0", background:"#fff"}}><div style={style.wrap}><h2 style={style.h2}>{section.title}</h2>{section.paragraphs.map((p,i)=><p style={style.body} key={i}>{p}</p>)}</div></section>)}
     <section id="proposal" style={{ padding: "30px 0" }}><div style={style.wrap}>
