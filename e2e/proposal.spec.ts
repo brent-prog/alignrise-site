@@ -5,8 +5,10 @@ test("branded proposal presents correct offer and honest agreement action", asyn
   await expect(page.getByRole("img",{name:/Hand & Stone Massage/})).toBeVisible();
   await expect(page.getByRole("heading",{name:"What you'll receive"})).toBeVisible();
   await expect(page.getByText("CAD + applicable HST")).toBeVisible();
-  const request = page.getByRole("link",{name:"Review & accept proposal"});
-  await expect(request).toHaveAttribute("href","#accept");
+  await expect(page.locator("#proposal #accept")).toHaveCount(1);
+  await expect(page.locator(".client-proposal-terms")).toHaveCount(1);
+  await expect(page.locator(".client-proposal-accept-terms")).toHaveCount(0);
+  await expect(page.locator(".client-proposal-acceptance")).toHaveCount(0);
   await expect(page.getByText("No form details are submitted to the website",{exact:false})).toBeVisible();
 });
 test("calculator recalculates on precise numeric edits and slider moves", async ({page}) => {
@@ -132,13 +134,29 @@ test("Hand & Stone email authorization requires identity and authorization and g
   });
   // A mailto navigation invokes an external mail handler, not a site API. Check all
   // required fields and commercial terms; no network form request is made.
-  await expect(page.locator("#accept")).toContainText("CAD $2,500");
-  await expect(page.locator("#accept")).toContainText("three months");
-  await expect(page.locator("#accept")).toContainText("$25,000");
+  await expect(page.locator("#proposal")).toContainText("CAD $2,500");
+  await expect(page.locator("#proposal")).toContainText("three months");
+  await expect(page.locator("#proposal")).toContainText("$25,000");
   await expect(page.locator("#accept")).toContainText("AR-HS-GW-2026-11-24-v1");
-  await expect(page.locator("#accept")).toContainText("Confidentiality");
-  await expect(page.locator("#accept")).toContainText("liability");
+  await page.locator("#proposal .client-proposal-terms summary").click();
+  await expect(page.locator("#proposal")).toContainText("Confidentiality");
+  await expect(page.locator("#proposal")).toContainText("liability");
   expect(drafts.length).toBe(0);
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2);
   expect(overflow).toBe(false);
+});
+
+test("the proposal uses one complete purple offer and acceptance panel",async({page})=>{
+ await page.goto("/p/hand-stone-guelph-waterloo");
+ const offer=page.locator("#proposal .client-proposal-offer");
+ await expect(offer).toHaveCount(1);
+ await expect(offer.locator(".client-proposal-terms")).toHaveCount(1);
+ await expect(offer.locator("#accept form")).toHaveCount(1);
+ await expect(page.getByRole("heading",{name:"Review and accept by email"})).toHaveCount(0);
+ await expect(page.getByRole("button",{name:"Prepare acceptance email"})).toHaveCount(1);
+ const terms=offer.locator(".client-proposal-terms");
+ await terms.locator("summary").click();
+ await expect(terms).toContainText("Cancellation and refunds");
+ await expect(terms).toContainText("Confidentiality");
+ await expect(terms).toContainText("Liability");
 });
