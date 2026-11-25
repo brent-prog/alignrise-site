@@ -71,8 +71,7 @@
 
 - Specific offer, price, HST treatment, scope, service dates, travel, client responsibilities, authorized entity, cancellation, refunds, guarantee, exclusions, liability and proposal validity must be verified case by case.
 - Do not carry over Pizzaiolo terms or assume the Hand & Stone discounted KickStart pricing applies elsewhere.
-- Current Hand & Stone CTA opens an **email draft**. It is a conversation starter; it is **NOT** electronic acceptance or a signed contract.
-- Native Google Workspace eSignature is the preferred **external signing mechanism** once enabled and checked. A signed agreement and Google audit evidence, not the website CTA, establish the acceptance record. We do not currently initiate signature requests through connected tools; see §13.
+- **Default initial engagement process is email authorization**, modelled on the 3P Pizzaiolo proposal: complete terms, authorized representative's name, business email, legal entity, consent checkbox and a mailto acceptance draft. The client must **send** the email. Do not imply the page submits data or records a digital signature. See §13.
 - Public prospect pages must exclude confidential financials, private assessments, personal information and secrets unless explicitly approved for public sharing.
 
 ## 8. Required pre-publication QA
@@ -111,7 +110,7 @@
 - Initial system is in production; feature upgrades go through preview and are merged only after verification. Rob Cooper onboarding remains separate.
 - Client branding, offer, deliverables, terms and optional sections are data-driven; **appointment calculator model remains specialized** and must not be used for unrelated offers.
 - Video component is implemented but no end-to-end upload or video playback confirmed.
-- **Google Workspace native eSignature is the chosen signing process** for approved, client-specific engagement agreements. A master Google Docs agreement exists; the Google Docs connector cannot initiate an eSignature request, so the authorized 3P Workspace user must perform that step in the Google Docs interface. The website's email CTA is not acceptance. Signing has not yet been tested end-to-end.
+- For initial engagements, use the approved **email-authorization flow** and preserve the sent authorization and 3P confirmation. Google Workspace eSignature is not available on the 3P Business Starter plan; the old Google Docs template remains an optional draft for larger engagements.
 - Browser-based end-to-end and mobile touch testing is still required before declaring a new client page fully QA-approved.
 - Media upload support to Vercel Blob is unverified for the available connected permissions.
 - Preview deployments may have access restrictions and should not be assumed client-accessible.
@@ -126,7 +125,7 @@
 - The first release was deployed from `main` at `01535d2` with the Hand & Stone proposal.
 - The November 24 production upgrade introduced official client branding in the shared hero, personalized deliverables and offer fields, commercial conditions that disclose unresolved items, explicit request-for-agreement messaging, accurate client metadata, and production status enforcement.
 - **Important media limitation:** the Hand & Stone mark currently references an existing publicly served Hand & Stone Canada logo URL, not an independently stored asset. Before sharing externally verify it loads in normal and mobile browsers; prefer a reviewed first-party asset copy if feasible.
-- **Important agreement limitation:** there is no automatic e-signature, durable audit trail, or final agreement generation. The terms displayed are not legal advice and are **not** substituted for a signed client agreement.
+- **Important agreement limitation:** the email authorization form only opens the client's mail application. It does not send mail, verify identity, record consent automatically or generate a digital signature. Save the actual incoming email, reviewed proposal version and 3P confirming reply as evidence of the agreement.
 - **Publication steps:** feature branch → build and review → explicit approval → merge to main → Vercel READY for correct commit → test `https://clients.alignrise.ca/p/<slug>` → only then share. On this release Vercel READY and alias assignment were verified, with browser interactions tested in CI; independent browser access to the custom-domain page was not available from the assistant tool.
 - For every new client, first add **actual client logo + source**, check naming permissions and brand usage, then create sections, supporting evidence, commercial terms and optional media. A client without a verified usable logo should not be presented as fully branded.
 
@@ -145,32 +144,24 @@
 - Browser tests operate on a local run in GitHub Actions. They do not substitute for verifying DNS, TLS, and production alias after merging.
 
 
-## 13. Standard acceptance: Google Workspace eSignature
+## 13. Standard acceptance: Email authorization for initial engagements
 
-**Decision:** Use native Google Workspace eSignature rather than Docusign or a custom web form, subject to confirmation that the 3P Solutions Google Workspace Business Standard account has eSignature enabled. The connected Google Drive account is `brent@3psolutions.ca`, not the personal Gmail account. No separate signing product or signature database is needed for this process.
+**Decision (November 2026):** Follow the 3P Pizzaiolo proposal's existing email acceptance pattern for initial AlignRISE KickStart engagements. Google Workspace Business Starter does not provide native Google eSignature; formal signing platforms are not the default for these smaller deals.
 
-**Verified MASTER document:** [AlignRISE Engagement Agreement — MASTER TEMPLATE](https://docs.google.com/document/d/1i0Z7DNG8xR4MH-j4-JSutVPi0cIhkitY5WVvWKEaao4/edit). Internal draft; **not a signed agreement or approved legal document**. Use the Google Drive connector to make a copy for each client, then tailor the copy. Never send the master template for signature, and never use it as an executed contract.
+1. Present the complete client-specific scope, deliverables, price/HST, Toolkit inclusion, schedule, exclusions, opportunity guarantee, client responsibilities, cancellation, confidentiality, liability and any offer validity terms. Confirm unresolved items explicitly before commencing work.
+2. Reference a unique, dated, immutable proposal version in the acceptance form and email. Preserve a PDF/snapshot or commit-hash record of the **actual terms accepted**, rather than relying only on a mutable public webpage.
+3. Collect **authorized representative name**, **business email**, **exact legal entity name** and required **authorization/terms checkbox**. Use native form validation, accessible labels and responsive styling.
+4. Pressing **Prepare acceptance email** must open a `mailto:brent@3psolutions.ca` email draft with proposal reference and URL, engagement and commercial summary, authorized person and entity. No data is sent to the site's server or directly to 3P; the signer reviews and sends the email manually.
+5. 3P verifies apparent business identity and authority from the reply, reconciles any invoicing or scheduling issues, then replies confirming accepted scope, commercial terms and next steps. Do not start services until confirmation.
+6. Retain incoming acceptance, outgoing confirmation, proposal snapshot/commit and any agreed amendments in restricted client records, linked to HubSpot where appropriate. Email receipt is evidence, not a cryptographic identity check.
+7. Where higher liability, confidentiality, regulatory or contractual complexity warrants, use a separately approved formal contract and suitable signing method. The [AlignRISE master agreement](https://docs.google.com/document/d/1i0Z7DNG8xR4MH-j4-JSutVPi0cIhkitY5WVvWKEaao4/edit) remains an **internal draft template**, not required for initial KickStart email authorizations.
 
-### Procedure ChatGPT manages
+**Do not mistake the CTA for a completed agreement.** It creates a draft and records nothing until the client sends the email; 3P must confirm receipt and terms. Confirm the legal entity and sender authorization; no electronic-signature provider has been implemented.
 
-1. Discuss the prospective client and proposed engagement in the AlignRISE project, and finalize proposal content with Brent before publishing.
-2. Verify the prospective client's **legal contracting entity**, decision-maker, authorized signer name, title and verified email using contacts and prior correspondence; do not infer authority from a first name.
-3. Use the Workspace Google Drive connection to **copy** the master engagement agreement into a distinct client-specific Google Doc (or create a new native Google Doc if a copy action is unavailable). Keep the master unchanged. Maintain a clear document title, version/date and client.
-4. Populate and reconcile agreed scope, deliverables, exclusions, start/end dates, client obligations, fees, HST, payment terms, guarantee (if any), cancellations/refunds, confidentiality, IP, liability, governing law, and references to any SOW. **Do not carry over another prospect's terms.**
-5. Remove all placeholders and the internal checklist from the proposed execution copy. Check legal/business details, formatting and attached references. Client-specific legal provisions should receive suitable review before release.
-6. Give Brent the native Google Docs link to review and approve. No transmission to signers until explicit approval of the specific agreement version and recipients.
-7. **Google Docs manual eSignature step:** In the 3P Workspace account, open the approved client document and select `Tools → eSignature` (availability depends on Workspace setup). Add signature and relevant signer/date fields and initiate the request to the verified authorized client signer(s) and the 3P authorized representative. The assistant's connected Google tools presently **do not have an eSignature send/request action**. Do not claim the assistant sent it.
-8. Confirm request creation and signing status in Google Workspace; do not equate a request being sent with accepted terms. When fully signed, verify Google's completed signed PDF and audit evidence, and retain the file in an access-restricted client folder. Record document version, signer identities, completion date and Drive link in the appropriate client record.
-9. Keep the public client page as a personalized **proposal**. Its button may request an agreement via email, but it must **never say or imply electronic acceptance**. The fully signed Google document is the record of agreement.
-
-### Verification checklist
-
-- [ ] 3P Workspace Business Standard eligibility and eSignature feature **actually visible/enabled** in Google Docs (not verified by subscription assumption)
-- [ ] Approved client-specific signed-version content; final terms and any schedules/SOW fixed
-- [ ] Authorized legal parties and recipient email addresses verified
-- [ ] Signing fields placed correctly; each necessary party included
-- [ ] Google request sent by authorized Workspace user; status verified
-- [ ] Completed PDF and audit history verified, retained and access-controlled
-- [ ] Proposal page remains separate from acceptance; no premature claim of contract execution
-
-**Current limitations:** Workspace plan was reported by Brent as “Standard, I believe”; plan and admin-enabled feature were not verified from the account. Connected Google Drive/Docs actions can create and edit documents but do not expose a Google eSignature request/send or signature-status API action. There is no completed test signature yet. Until those steps are performed, the signing workflow is documented and the template is prepared, **not automated end-to-end**.
+### QA requirements
+- [ ] Client-specific terms are clear and consistent in proposal and acceptance section
+- [ ] Dated proposal version included in the draft and record
+- [ ] Required fields and checkbox prevent accidental blank acceptance drafts
+- [ ] Mobile form, labels, consent and mailto destination tested
+- [ ] No claim of automatic submission, online signature or automated CRM recording
+- [ ] Accepted email and 3P reply retained alongside immutable proposal copy
