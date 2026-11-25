@@ -102,3 +102,46 @@
 .client-proposal-card{padding:15px}
 .client-proposal-offer{padding:20px 16px}
 }
+
+
+/* Integrated two-column hero: video is supporting media, not its own page section. */
+.client-proposal-header{background:#1b174c}
+.client-proposal-marks{min-height:70px;gap:18px}
+.client-proposal-alignrise-logo{width:82px;max-height:64px;object-fit:contain}
+.client-proposal-header-label{margin-left:auto;font-size:11px;letter-spacing:.12em;font-weight:800;color:#dcd7ff;text-align:right}
+.client-proposal-hero{background:linear-gradient(115deg,#201a53 0%,#292760 57%,#37387a 100%);color:#fff;padding:30px 0 37px;border-bottom:0}
+.client-proposal-hero-identity{display:flex;align-items:center;gap:15px;margin-bottom:19px}
+.client-proposal-hero-identity .client-proposal-client-mark{width:180px;min-width:180px;min-height:72px;padding:7px 12px;box-shadow:0 2px 13px #0f123720}
+.client-proposal-hero-identity .client-proposal-client-mark img{max-height:66px}
+.client-proposal-hero .client-proposal-overline{color:#d6d4ff;letter-spacing:.12em;font-size:11px;line-height:1.6;margin:0}
+.client-proposal-hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.95fr);gap:clamp(24px,4vw,54px);align-items:center}
+.client-proposal-hero-grid-no-video{display:block}
+.client-proposal-hero-copy{min-width:0}
+.client-proposal-hero h1{color:#fff;font-size:clamp(33px,4.2vw,53px);max-width:740px;line-height:1.09;letter-spacing:-.035em;margin:4px 0 15px}
+.client-proposal-hero .client-proposal-lead{color:#eeeaff;font-size:16px;line-height:1.6;max-width:670px;margin:0 0 23px}
+.client-proposal-hero .client-proposal-lead strong{color:#fff}
+.client-proposal-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.client-proposal-button-hero{color:#241f55!important;background:#fff}
+.client-proposal-button-hero:hover,.client-proposal-button-hero:focus-visible{background:#e8e7ff}
+.client-proposal-button-outline{border:1px solid #a6a2dc;background:transparent;color:#fff!important}
+.client-proposal-button-outline:hover,.client-proposal-button-outline:focus-visible{background:#ffffff22}
+.client-proposal-hero-video{width:100%;min-width:0;scroll-margin-top:90px}
+.client-proposal-hero-video video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;height:auto;max-height:280px;border:1px solid #8a84ba;background:#0c1020;border-radius:14px;box-shadow:0 14px 25px #11113a4a}
+.client-proposal-hero-video-caption{font-size:12px;color:#d3d2ed;line-height:1.4;margin:8px 2px 0;text-align:center}
+@media(max-width:720px){
+ .client-proposal-marks{min-height:60px}
+ .client-proposal-alignrise-logo{width:68px;max-height:56px}
+ .client-proposal-header-label{font-size:9px;line-height:1.4}
+ .client-proposal-hero{padding:19px 0 25px}
+ .client-proposal-hero-identity{margin-bottom:14px;gap:10px}
+ .client-proposal-hero-identity .client-proposal-client-mark{width:128px;min-width:128px;min-height:59px;padding:6px 9px}
+ .client-proposal-hero-identity .client-proposal-client-mark img{max-height:49px}
+ .client-proposal-hero .client-proposal-overline{font-size:9px}
+ .client-proposal-hero-grid{grid-template-columns:minmax(0,1fr);gap:19px}
+ .client-proposal-hero h1{font-size:clamp(30px,8.2vw,41px);margin:0 0 11px}
+ .client-proposal-hero .client-proposal-lead{font-size:14px;margin-bottom:17px}
+ .client-proposal-hero-actions{gap:8px}
+ .client-proposal-hero-actions .client-proposal-button{font-size:12px;padding:11px 13px}
+ .client-proposal-hero-video{max-width:410px;margin:0 auto}
+ .client-proposal-hero-video video{max-height:none}
+}

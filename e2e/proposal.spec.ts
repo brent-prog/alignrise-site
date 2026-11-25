@@ -66,3 +66,25 @@ test("Hand & Stone test video plays with its poster on desktop and mobile", asyn
   expect(width).toBeLessThanOrEqual(422);
   if ((page.viewportSize()?.width || 0) >= 900) expect(width).toBeGreaterThan(390);
  });
+
+test("video is integrated alongside the proposal headline, not in a separate section", async ({page}, testInfo) => {
+  await page.goto("/p/hand-stone-guelph-waterloo");
+  const hero=page.locator(".client-proposal-hero");
+  const video=hero.locator("#introduction video");
+  const headline=hero.getByRole("heading",{level:1});
+  await expect(headline).toBeVisible();
+  await expect(video).toBeVisible();
+  await expect(hero.getByRole("img",{name:/Hand & Stone Massage/})).toBeVisible();
+  await expect(page.locator("section.proposal-video-section")).toHaveCount(0);
+  const headlineBox=await headline.boundingBox();
+  const videoBox=await video.boundingBox();
+  expect(headlineBox && videoBox).toBeTruthy();
+  if(!headlineBox || !videoBox) return;
+  if(testInfo.project.name.includes("desktop")) {
+    expect(videoBox.x).toBeGreaterThan(headlineBox.x + headlineBox.width - 8);
+    expect(Math.abs(videoBox.y - headlineBox.y)).toBeLessThan(180);
+  } else {
+    expect(videoBox.y).toBeGreaterThan(headlineBox.y);
+    expect(videoBox.width).toBeLessThanOrEqual(page.viewportSize()!.width - 20);
+  }
+});
