@@ -28,6 +28,8 @@ export type ProspectPageData = {
   price: number;
   normalPrice?: number;
   offerName: string;
+  offerHeadline: string;
+  sectionOrder?: string[];
   guarantee?: string;
   note: string;
   terms: {
@@ -83,6 +85,8 @@ export const prospectPages: Record<string, ProspectPageData> = {
     normalPrice: 5000,
     price: 2500,
     offerName: "AlignRISE KickStart — focused CX assessment",
+    offerHeadline: "Let’s make your available capacity work harder.",
+    sectionOrder: ["opportunity", "assessment", "deliverables", "calculator", "proposal"],
     guarantee: "If the assessment does not identify at least $25,000 in credible annual improvement opportunities, the assessment fee will be refunded. Identified opportunities are not guaranteed realized results.",
     note: "This is a personalized commercial proposal—not an executed agreement or a commitment to results. All amounts are Canadian dollars plus applicable HST.",
     terms: {
