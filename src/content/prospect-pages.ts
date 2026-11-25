@@ -114,6 +114,12 @@ export const prospectPages: Record<string, ProspectPageData> = {
       sourceUrl: "https://handandstone.ca/locations/guelph/",
       disclaimer: "The $130 starting appointment value is illustrative. Realized revenue depends on service mix, actual completed bookings, discounts and capacity. Costs, taxes and implementation expenses are excluded."
     },
+    video: {
+      src: "/proposal-media/hand-stone-test-video",
+      poster: "/proposal-media/hand-stone-test-poster",
+      heading: "A quick hello — test video",
+      caption: "A short demonstration of the personalized video introduction that can accompany your proposal."
+    },
     contactEmail: "brent@3psolutions.ca",
     contactSubject: "Hand & Stone — AlignRISE KickStart proposal"
   }
