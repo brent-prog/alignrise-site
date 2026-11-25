@@ -10,6 +10,21 @@ export default function EmailAcceptance({page}:{page: ProspectPageData}) {
   const [authorized, setAuthorized] = useState(false);
   const proposalVersion = page.acceptance?.proposalVersion;
   if (!page.acceptance) return null;
+  const questionSubject = `${page.clientName} — question about AlignRISE KickStart proposal`;
+  const questionBody = [
+    "Hi Brent,",
+    "",
+    `I have a question about the AlignRISE KickStart proposal for ${page.clientName}.`,
+    "",
+    "My question:",
+    "",
+    "",
+    `Proposal reference: ${proposalVersion}`,
+    `Proposal URL: https://clients.alignrise.ca/p/${page.slug}`,
+    "",
+    "Thanks,"
+  ].join("\n");
+  const questionsEmail = `mailto:${page.contactEmail}?subject=${encodeURIComponent(questionSubject)}&body=${encodeURIComponent(questionBody)}`;
   function submit(e:FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !business.trim() || !authorized) return;
@@ -59,7 +74,10 @@ export default function EmailAcceptance({page}:{page: ProspectPageData}) {
             <input id="accept-authorized" type="checkbox" checked={authorized} onChange={e=>setAuthorized(e.target.checked)} required/>
             <span>I am authorized to act on behalf of the named business. I have reviewed the proposal and its terms, including confidentiality and limitation of liability, and want to proceed with acceptance by email.</span>
           </label>
-          <button className="client-proposal-button client-proposal-accept-submit" type="submit">Prepare acceptance email</button>
+          <div className="client-proposal-accept-actions">
+            <button className="client-proposal-button client-proposal-accept-submit" type="submit">Prepare acceptance email</button>
+            <a className="client-proposal-question-link" href={questionsEmail}>Have a question before confirming? Email Brent</a>
+          </div>
           <p className="client-proposal-accept-fine">This opens an email draft. You must review and send it yourself. No form details are submitted to the website, and no agreement is automatically recorded by clicking this button. 3P Solutions will reply to confirm the engagement, outstanding scheduling/payment details and next steps.</p>
         </form>
   </div>;

@@ -198,3 +198,10 @@
 .client-proposal-accept-inline .client-proposal-accept-submit:hover{background:#ede9ff}
 .client-proposal-accept-inline .client-proposal-accept-fine{color:#d9d3ff!important}
 .client-proposal-terms{margin-bottom:0}
+
+
+/* Separate, low-pressure enquiry option beside the authorization action. */
+.client-proposal-accept-actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px 22px}
+.client-proposal-question-link{font-size:13px;font-weight:700;color:#ede9ff;text-decoration:underline;text-underline-offset:3px;line-height:1.5}
+.client-proposal-question-link:hover,.client-proposal-question-link:focus-visible{color:#fff;text-decoration-thickness:2px}
+@media(max-width:680px){.client-proposal-accept-actions{align-items:flex-start;flex-direction:column;gap:12px}}

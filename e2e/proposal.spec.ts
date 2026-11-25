@@ -160,3 +160,20 @@ test("the proposal uses one complete purple offer and acceptance panel",async({p
  await expect(terms).toContainText("Confidentiality");
  await expect(terms).toContainText("Liability");
 });
+
+test("pre-acceptance question email is independent of consent and correctly addressed", async ({page})=>{
+  await page.goto("/p/hand-stone-guelph-waterloo");
+  const question=page.getByRole("link",{name:"Have a question before confirming? Email Brent"});
+  await expect(question).toBeVisible();
+  const href=await question.getAttribute("href");
+  expect(href).toBeTruthy();
+  const mailto=new URL(href!);
+  expect(mailto.protocol).toBe("mailto:");
+  expect(mailto.pathname).toBe("brent@3psolutions.ca");
+  expect(mailto.searchParams.get("subject")).toContain("question about AlignRISE KickStart proposal");
+  expect(mailto.searchParams.get("body")).toContain("AR-HS-GW-2026-11-24-v1");
+  expect(mailto.searchParams.get("body")).not.toContain("I confirm I am authorized");
+  await expect(page.locator("#accept-name")).toHaveValue("");
+  await expect(page.locator("#accept-authorized")).not.toBeChecked();
+  await expect(page.locator("#proposal #accept .client-proposal-accept-actions")).toHaveCount(1);
+});
