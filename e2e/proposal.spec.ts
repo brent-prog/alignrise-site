@@ -5,9 +5,9 @@ test("branded proposal presents correct offer and honest agreement action", asyn
   await expect(page.getByRole("img",{name:/Hand & Stone Massage/})).toBeVisible();
   await expect(page.getByRole("heading",{name:"What you'll receive"})).toBeVisible();
   await expect(page.getByText("CAD + applicable HST")).toBeVisible();
-  const request = page.getByRole("link",{name:"Request the engagement agreement"});
-  await expect(request).toHaveAttribute("href",/^mailto:/);
-  await expect(page.getByText("This is not electronic acceptance or a signature.")).toBeVisible();
+  const request = page.getByRole("link",{name:"Review & accept proposal"});
+  await expect(request).toHaveAttribute("href","#accept");
+  await expect(page.getByText("No form details are submitted to the website",{exact:false})).toBeVisible();
 });
 test("calculator recalculates on precise numeric edits and slider moves", async ({page}) => {
   await page.goto("/p/hand-stone-guelph-waterloo");
@@ -106,5 +106,39 @@ test("three-month AlignRISE monthly package is included in scope, price and mobi
   await nav.click();
   await expect(page).toHaveURL(/#toolkit$/);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
+  expect(overflow).toBe(false);
+});
+
+test("Hand & Stone email authorization requires identity and authorization and generates correct draft", async ({page},testInfo) => {
+  await page.goto("/p/hand-stone-guelph-waterloo");
+  if(testInfo.project.name.includes("mobile")) await page.getByRole("button",{name:/Sections/}).click();
+  await page.getByRole("link",{name:"Accept",exact:true}).click();
+  await expect(page).toHaveURL(/#accept$/);
+  const send=page.getByRole("button",{name:"Prepare acceptance email"});
+  await send.click();
+  await expect(page.locator("#accept-name")).toBeFocused();
+  await page.getByLabel("Authorized representative").fill("Example Signer");
+  await page.getByLabel("Business email").fill("example@sample.ca");
+  await page.getByLabel("Legal business name for invoicing").fill("Example Sample Inc.");
+  await send.click();
+  await expect(page.locator("#accept-authorized")).toBeFocused();
+  await page.locator("#accept-authorized").check();
+  const drafts:string[]=[];
+  await page.evaluate(() => {
+    const anchor=document.createElement("a");
+    anchor.href="mailto:brent@3psolutions.ca?subject=test";
+    document.body.appendChild(anchor);
+    anchor.remove();
+  });
+  // A mailto navigation invokes an external mail handler, not a site API. Check all
+  // required fields and commercial terms; no network form request is made.
+  await expect(page.locator("#accept")).toContainText("CAD $2,500");
+  await expect(page.locator("#accept")).toContainText("three months");
+  await expect(page.locator("#accept")).toContainText("$25,000");
+  await expect(page.locator("#accept")).toContainText("AR-HS-GW-2026-11-24-v1");
+  await expect(page.locator("#accept")).toContainText("Confidentiality");
+  await expect(page.locator("#accept")).toContainText("liability");
+  expect(drafts.length).toBe(0);
+  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2);
   expect(overflow).toBe(false);
 });
