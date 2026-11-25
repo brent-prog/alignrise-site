@@ -88,3 +88,23 @@ test("video is integrated alongside the proposal headline, not in a separate sec
     expect(videoBox.width).toBeLessThanOrEqual(page.viewportSize()!.width - 20);
   }
 });
+
+test("three-month AlignRISE monthly package is included in scope, price and mobile navigation", async ({page}, testInfo) => {
+  await page.goto("/p/hand-stone-guelph-waterloo");
+  const section = page.locator("#toolkit");
+  await expect(section).toBeVisible();
+  await expect(section.getByText("3 months included")).toBeVisible();
+  await expect(section.getByText("Normally $299/month")).toBeVisible();
+  await expect(section.getByRole("heading",{name:"The complete 3P Toolkit"})).toBeVisible();
+  await expect(section.getByRole("heading",{name:"AI-guided Assess → Align → Act"})).toBeVisible();
+  await expect(section.getByRole("heading",{name:"Monthly accountability review"})).toBeVisible();
+  await expect(section.getByText("45-minute")).toBeVisible();
+  await expect(section.getByText("no automatic renewal",{exact:false})).toBeVisible();
+  await expect(page.locator("#proposal")).toContainText("3 months of the AlignRISE monthly package");
+  const nav = page.getByRole("link",{name:"3-month Toolkit"});
+  if(testInfo.project.name.includes("mobile")) await page.getByRole("button",{name:/Sections/}).click();
+  await nav.click();
+  await expect(page).toHaveURL(/#toolkit$/);
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2);
+  expect(overflow).toBe(false);
+});
