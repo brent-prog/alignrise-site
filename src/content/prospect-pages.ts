@@ -55,6 +55,7 @@ export type ProspectPageData = {
   calculator?: ProspectCalculatorData;
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
+  acceptance?: { proposalVersion: string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -114,12 +115,12 @@ export const prospectPages: Record<string, ProspectPageData> = {
       clientResponsibilities: "Arrange access to the owner and an appropriate sample of front-desk, RMT and esthetics team members, plus suitable scheduling and business information. Share only information authorized under franchise and privacy rules.",
       schedule: "On-site assessment date and final readout date to be agreed in writing before engagement. The working target is a concise readout and 90-day plan following the visit.",
       exclusions: "No done-for-you implementation services, advertising spend, additional software purchases, coaching beyond the three included monthly accountability reviews, separate Waterloo site audit or guarantee of booked appointments is included unless separately agreed.",
-      payment: "CAD $2,500 plus applicable HST includes the assessment, deliverables, and the first three months of the AlignRISE monthly package (normally CAD $299/month plus HST). There is no automatic renewal. Payment timing and method will be specified in the signed engagement agreement; no payment is collected through this page.",
-      cancellation: "Cancellation, rescheduling and any refund conditions beyond the stated opportunity guarantee must be specified in the engagement agreement before work begins.",
-      confidentiality: "Any client records supplied for assessment will be used only for the engagement subject to mutually agreed confidentiality, privacy and data-handling provisions; do not upload personal health or guest records through this page.",
-      liability: "Any limitation of liability and related risk allocation will be established in the signed engagement agreement, not by this public proposal page.",
-      validity: "Offer validity and any expiry date will be confirmed in the engagement agreement. No expiry date is implied by this webpage.",
-      contractingEntity: "3P Solutions is the proposed service provider. The client contracting entity and authorized signing representatives must be verified before signature."
+      payment: "CAD $2,500 plus applicable HST includes the assessment, deliverables, and the first three months of the AlignRISE monthly package (normally CAD $299/month plus HST). There is no automatic renewal. 3P Solutions will confirm invoice instructions and due date in writing before work begins; no payment is collected through this page.",
+      cancellation: "The on-site date will be scheduled by mutual agreement. Either party may request rescheduling with reasonable notice. Cancellation before services begin will be confirmed in writing, with any paid but unearned fees returned, less only non-refundable expenses approved in writing in advance. Once work begins, the parties will agree in writing on fees for work completed and any refund due. The stated opportunity guarantee remains available according to its terms.",
+      confidentiality: "3P Solutions will use non-public business information only to perform this engagement, keep it confidential and protect it with reasonable safeguards. Disclosure is limited to professional advisers or service providers bound to confidentiality, or as required by law. These obligations exclude information already public without breach, independently developed, or lawfully received without restriction, and continue after the engagement. Client identification or case studies require advance written permission. Do not provide personal health information or identifiable guest records without a separately approved data-handling arrangement.",
+      liability: "This is an advisory assessment. The client decides whether and how to implement recommendations. To the maximum extent permitted by law, 3P Solutions' total aggregate liability arising from this engagement, including negligence, is limited to CAD $2,500 (excluding HST). 3P Solutions is not liable for indirect or consequential losses, including lost profits or business interruption. This does not reduce the expressly stated opportunity-guarantee refund or exclude fraud, wilful misconduct or liability that cannot lawfully be limited.",
+      validity: "Proposal reference AR-HS-GW-2026-11-24-v1, issued November 24, 2026. The terms remain an offer until changed or withdrawn in writing by 3P Solutions. Scheduling is subject to mutual availability.",
+      contractingEntity: "3P Solutions, a sole proprietorship, is the service provider. The client must identify its full legal contracting entity and the representative authorized to act for it in the acceptance email. No separate electronic signature is required for this initial engagement; the parties confirm the engagement and outstanding logistics by email."
     },
     calculator: {
       kind: "appointments",
@@ -140,6 +141,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
       heading: "A quick hello — test video",
       caption: "A short demonstration of the personalized video introduction that can accompany your proposal."
     },
+    acceptance: { proposalVersion: "AR-HS-GW-2026-11-24-v1" },
     contactEmail: "brent@3psolutions.ca",
     contactSubject: "Hand & Stone — AlignRISE KickStart proposal"
   }
