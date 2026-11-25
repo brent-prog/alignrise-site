@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { appointmentAnnualRevenue } from "@/lib/proposal-calculations";
 export type ScenarioCalculatorProps = { defaultAppointments?: number; defaultValue?: number; weeks?: number; showLocations?: boolean; maxLocations?: number; defaultLocations?: number };
 const cad = (n: number) => new Intl.NumberFormat("en-CA", {style:"currency",currency:"CAD",maximumFractionDigits:0}).format(n);
 function ScenarioInput({label,value,setValue,min,max,step}: {label:string;value:number;setValue:(n:number)=>void;min:number;max:number;step:number}) {
@@ -16,7 +17,7 @@ export default function ScenarioCalculator({defaultAppointments=5,defaultValue=1
   const [appointments,setAppointments] = useState(defaultAppointments);
   const [averageValue,setAverageValue] = useState(defaultValue);
   const [locations,setLocations] = useState(defaultLocations);
-  const annual = appointments * averageValue * weeks * locations;
+  const annual = appointmentAnnualRevenue({appointmentsPerWeek:appointments,averageValue,weeks,locations});
   return <section className="proposal-calc" aria-label="Illustrative revenue scenario">
     <div className="proposal-calc-inputs">
       <ScenarioInput label="Extra completed appointments per week, per location" value={appointments} setValue={setAppointments} min={0} max={30} step={1}/>
