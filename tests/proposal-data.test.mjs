@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { prospectPages } from "../src/content/prospect-pages.ts";
-const allowed = new Set(["opportunity", "assessment", "deliverables", "calculator", "proposal"]);
+const allowed = new Set(["opportunity", "assessment", "deliverables", "toolkit", "calculator", "proposal"]);
 test("published proposals have independently defined client branding and terms", () => {
   for (const [slug,page] of Object.entries(prospectPages)) {
     assert.equal(page.slug,slug);
@@ -13,6 +13,10 @@ test("published proposals have independently defined client branding and terms",
     assert.ok(page.offerName?.trim() && page.offerHeadline?.trim(), "missing offer");
     assert.ok(page.deliverables?.length > 0, "missing deliverables");
     assert.ok(page.contactEmail?.includes("@"), "missing contact email");
+    if (page.toolkit) {
+      assert.ok(page.toolkit.durationMonths > 0 && page.toolkit.features.length > 0, "invalid toolkit inclusion");
+      assert.ok(page.toolkit.continuationNote?.trim(), "missing toolkit continuation terms");
+    }
     assert.ok(page.terms?.scope && page.terms?.contractingEntity, "missing commercial conditions");
     const sectionIds = page.sectionOrder || [];
     assert.equal(new Set(sectionIds).size,sectionIds.length, "duplicate section ID");
