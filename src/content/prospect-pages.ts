@@ -137,7 +137,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
     },
     video: {
       src: "/proposal-media/hand-stone-introduction.mp4",
-      poster: "/proposal-media/hand-stone-introduction-poster.jpg",
+      poster: "/proposal-media/hand-stone-introduction-poster-v2.jpg",
       heading: "A personal introduction",
       caption: "A personal message for Erin and Layton."
     },

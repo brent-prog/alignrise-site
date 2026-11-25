@@ -37,11 +37,11 @@ test("sections, top link and mobile widths do not overflow", async ({page},testI
 test("Hand & Stone personalized introduction plays with its poster on desktop and mobile", async ({page}) => {
   await page.goto("/p/hand-stone-guelph-waterloo");
   const video = page.locator("video");
-  await expect(video).toHaveAttribute("poster", "/proposal-media/hand-stone-introduction-poster.jpg");
+  await expect(video).toHaveAttribute("poster", "/proposal-media/hand-stone-introduction-poster-v2.jpg");
   await expect(video.locator("source")).toHaveAttribute("src", "/proposal-media/hand-stone-introduction.mp4");
   await expect(video).toHaveAttribute("controls", "");
   await expect(video).toHaveAttribute("playsinline", "");
-  const image = await page.request.get("/proposal-media/hand-stone-introduction-poster.jpg");
+  const image = await page.request.get("/proposal-media/hand-stone-introduction-poster-v2.jpg");
   expect(image.status()).toBe(200);
   expect(image.headers()["content-type"]).toContain("image/jpeg");
   const partial = await page.request.get("/proposal-media/hand-stone-introduction.mp4", { headers: {Range: "bytes=0-1023"}});
