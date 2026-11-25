@@ -57,3 +57,12 @@ test("Hand & Stone test video plays with its poster on desktop and mobile", asyn
   expect(played.width).toBeGreaterThan(0);
   expect(played.duration).toBeGreaterThan(5);
 });
+
+ test("video presentation stays compact on desktop and mobile", async ({ page }) => {
+  await page.goto("/p/hand-stone-guelph-waterloo");
+  const player = page.locator("#introduction video");
+  await expect(player).toBeVisible();
+  const width = await player.evaluate(node => (node as HTMLVideoElement).getBoundingClientRect().width);
+  expect(width).toBeLessThanOrEqual(422);
+  if ((page.viewportSize()?.width || 0) >= 900) expect(width).toBeGreaterThan(390);
+ });
