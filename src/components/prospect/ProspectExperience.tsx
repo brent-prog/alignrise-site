@@ -5,6 +5,7 @@ import { Fragment, type ReactNode } from "react";
 import ProspectNavigation from "./ProspectNavigation";
 import ProspectVideo from "./ProspectVideo";
 import ScenarioCalculator from "./ScenarioCalculator";
+import EmailAcceptance from "./EmailAcceptance";
 import type { ProspectPageData } from "@/content/prospect-pages";
 import "./prospect.css";
 
@@ -13,13 +14,12 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 }).format(value);
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
-  const email = "mailto:" + page.contactEmail + "?subject=" + encodeURIComponent(page.contactSubject)
-    + "&body=" + encodeURIComponent("Hi Brent,\n\nI'd like to review the AlignRISE proposal and request a formal engagement agreement.\n\n");
   const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
     ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
-    ...sectionOrder.map(id=>({id,title:sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id}))
+    ...sectionOrder.map(id=>({id,title:sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
+    ...(page.acceptance ? [{id:"accept",title:"Accept"}] : [])
   ];
   const sectionContent: Record<string, ReactNode> = {
     opportunity: (<section className="client-proposal-section" id="opportunity">
@@ -116,9 +116,8 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
               ] as const).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
             </dl>
           </details>
-          <p className="client-proposal-nonbinding">This page is a proposal, not a binding contract. A formal engagement agreement must be reviewed and signed by authorized representatives before work begins.</p>
-          <a href={email} className="client-proposal-button client-proposal-button-inverse">Request the engagement agreement</a>
-          <p className="client-proposal-small client-proposal-cta-explain">Opens an email draft. This is not electronic acceptance or a signature.</p>
+          <p className="client-proposal-nonbinding">Ready to proceed? Review the complete engagement terms and prepare an authorization email. Your email must be sent by an authorized business representative and confirmed by 3P Solutions before work begins.</p>
+          {page.acceptance ? <a href="#accept" className="client-proposal-button client-proposal-button-inverse">Review &amp; accept proposal</a> : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">Email Brent to discuss</a>}
         </div>
       </div>
     </section>),
@@ -162,6 +161,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <div className="client-proposal-container"><h2>{extra.title}</h2>{extra.paragraphs.map((text,i)=><p className="client-proposal-context" key={i}>{text}</p>)}</div>
       </section> : null;
     })()}</Fragment>)}
+    {page.acceptance && <EmailAcceptance page={page}/>}
     <footer className="client-proposal-footer">
       <div className="client-proposal-container">
         <span>AlignRISE™ by 3P Solutions · Prepared for {page.clientName}</span>
