@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Fragment, type ReactNode } from "react";
 import ProspectNavigation from "./ProspectNavigation";
 import ProspectVideo from "./ProspectVideo";
 import ScenarioCalculator from "./ScenarioCalculator";
@@ -14,40 +15,14 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
   const email = "mailto:" + page.contactEmail + "?subject=" + encodeURIComponent(page.contactSubject)
     + "&body=" + encodeURIComponent("Hi Brent,\n\nI'd like to review the AlignRISE proposal and request a formal engagement agreement.\n\n");
+  const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
+  const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
-    ...(page.video ? [{ id: "introduction", title: "Welcome" }] : []),
-    { id: "opportunity", title: "Opportunity" },
-    { id: "assessment", title: "Approach" },
-    { id: "deliverables", title: "What you get" },
-    ...(page.calculator ? [{ id: "calculator", title: "Potential value" }] : []),
-    ...((page.extraSections || []).map(section => ({ id: section.id, title: section.title }))),
-    { id: "proposal", title: "Proposal" }
+    ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
+    ...sectionOrder.map(id=>({id,title:sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id}))
   ];
-  return <main id="top" className="client-proposal">
-    <header className="client-proposal-header">
-      <div className="client-proposal-container client-proposal-marks">
-        <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit AlignRISE">
-          <Image src="/alignrise-logo.svg" width={90} height={90} alt="AlignRISE" priority className="client-proposal-alignrise-logo"/>
-        </a>
-        <span className="client-proposal-for">A proposal prepared for</span>
-        <div className="client-proposal-client-mark">
-          {/* The client's actual, publicly served brand asset; never redraw client marks. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/>
-        </div>
-      </div>
-    </header>
-    <ProspectNavigation links={nav}/>
-    <section className="client-proposal-hero">
-      <div className="client-proposal-container">
-        <p className="client-proposal-overline">{page.eyebrow}</p>
-        <h1>{page.title}</h1>
-        <p className="client-proposal-lead"><strong>{page.greeting}</strong> {page.intro}</p>
-        <a className="client-proposal-button" href="#opportunity">Explore the opportunity ↓</a>
-      </div>
-    </section>
-    <ProspectVideo video={page.video}/>
-    <section className="client-proposal-section" id="opportunity">
+  const sectionContent: Record<string, ReactNode> = {
+    opportunity: (<section className="client-proposal-section" id="opportunity">
       <div className="client-proposal-container">
         <h2>The opportunity</h2>
         {page.context.map((p,i) => <p className="client-proposal-context" key={i}>{p.body}</p>)}
@@ -57,8 +32,8 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           </article>)}
         </div>
       </div>
-    </section>
-    <section className="client-proposal-section client-proposal-section-light" id="assessment">
+    </section>),
+    assessment: (<section className="client-proposal-section client-proposal-section-light" id="assessment">
       <div className="client-proposal-container">
         <p className="client-proposal-overline">{page.offerName}</p>
         <h2>How we'll approach it</h2>
@@ -68,8 +43,8 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           </article>)}
         </div>
       </div>
-    </section>
-    <section className="client-proposal-section" id="deliverables">
+    </section>),
+    deliverables: (<section className="client-proposal-section" id="deliverables">
       <div className="client-proposal-container">
         <h2>What you'll receive</h2>
         <div className="client-proposal-card-grid">
@@ -78,8 +53,8 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           </article>)}
         </div>
       </div>
-    </section>
-    {page.calculator && <section className="client-proposal-section client-proposal-section-light" id="calculator">
+    </section>),
+    calculator: (page.calculator && <section className="client-proposal-section client-proposal-section-light" id="calculator">
       <div className="client-proposal-container">
         <h2>{page.calculator.heading}</h2>
         {page.calculator.explanation && <p className="client-proposal-context">{page.calculator.explanation}</p>}
@@ -93,15 +68,12 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           {page.calculator.sourceUrl && <> <a href={page.calculator.sourceUrl} target="_blank" rel="noopener noreferrer">{page.calculator.sourceLabel || "Service pricing"} ↗</a></>}
         </p>
       </div>
-    </section>}
-    {page.extraSections?.map(section => <section className="client-proposal-section" id={section.id} key={section.id}>
-      <div className="client-proposal-container"><h2>{section.title}</h2>{section.paragraphs.map((p,i) => <p className="client-proposal-context" key={i}>{p}</p>)}</div>
-    </section>)}
-    <section className="client-proposal-section" id="proposal">
+    </section>),
+    proposal: (<section className="client-proposal-section" id="proposal">
       <div className="client-proposal-container">
         <div className="client-proposal-offer">
           <p className="client-proposal-offer-label">PERSONALIZED PROPOSAL · {page.offerName}</p>
-          <h2>Let's make your available capacity work harder.</h2>
+          <h2>{page.offerHeadline}</h2>
           <div className="client-proposal-price">
             {page.normalPrice && <del>{money(page.normalPrice)}</del>}
             <strong>{money(page.price)}</strong>
@@ -128,11 +100,42 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           <p className="client-proposal-small client-proposal-cta-explain">Opens an email draft. This is not electronic acceptance or a signature.</p>
         </div>
       </div>
+    </section>),
+  };
+  return <main id="top" className="client-proposal">
+    <header className="client-proposal-header">
+      <div className="client-proposal-container client-proposal-marks">
+        <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit AlignRISE">
+          <Image src="/alignrise-logo.svg" width={90} height={90} alt="AlignRISE" priority className="client-proposal-alignrise-logo"/>
+        </a>
+        <span className="client-proposal-for">A proposal prepared for</span>
+        <div className="client-proposal-client-mark">
+          {/* The client's actual, publicly served brand asset; never redraw client marks. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/>
+        </div>
+      </div>
+    </header>
+    <ProspectNavigation links={nav}/>
+    <section className="client-proposal-hero">
+      <div className="client-proposal-container">
+        <p className="client-proposal-overline">{page.eyebrow}</p>
+        <h1>{page.title}</h1>
+        <p className="client-proposal-lead"><strong>{page.greeting}</strong> {page.intro}</p>
+        <a className="client-proposal-button" href="#opportunity">Explore the opportunity ↓</a>
+      </div>
     </section>
+    <ProspectVideo video={page.video}/>
+    {sectionOrder.map(id => <Fragment key={id}>{sectionContent[id] ?? (() => {
+      const extra = page.extraSections?.find(section => section.id === id);
+      return extra ? <section className="client-proposal-section" id={extra.id}>
+        <div className="client-proposal-container"><h2>{extra.title}</h2>{extra.paragraphs.map((text,i)=><p className="client-proposal-context" key={i}>{text}</p>)}</div>
+      </section> : null;
+    })()}</Fragment>)}
     <footer className="client-proposal-footer">
       <div className="client-proposal-container">
         <span>AlignRISE™ by 3P Solutions · Prepared for {page.clientName}</span>
-        <a href="mailto:brent@3psolutions.ca">brent@3psolutions.ca</a>
+        <a href={"mailto:"+page.contactEmail}>{page.contactEmail}</a>
       </div>
     </footer>
   </main>;
