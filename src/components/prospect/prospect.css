@@ -162,3 +162,24 @@
  .client-proposal-toolkit-banner{padding:19px 17px}
  .client-proposal-toolkit-banner p{font-size:14px}
 }
+
+
+/* Authorization by email, matching the established 3P client proposal pattern. */
+.client-proposal-acceptance{background:#f8f9fc;border-top:1px solid #e1e4ed;padding:34px 0 40px;scroll-margin-top:85px}
+.client-proposal-accept-card{max-width:870px;margin:0 auto;padding:25px 29px;background:#fff;border:1px solid #dce0eb;border-radius:15px;box-shadow:0 5px 18px #2010600a}
+.client-proposal-accept-card>p{color:#475569;font-size:14px}
+.client-proposal-accept-card h2{margin-bottom:9px}
+.client-proposal-accept-version{font-size:12px!important;color:#636683!important}
+.client-proposal-accept-terms{background:#f8f8fe;border:1px solid #e0def2;border-radius:11px;padding:15px 18px;margin:16px 0}
+.client-proposal-accept-terms p{font-size:13px;color:#394158;line-height:1.57;margin:0 0 12px}
+.client-proposal-accept-terms p:last-child{margin-bottom:0}
+.client-proposal-accept-terms strong{color:#201060}
+.client-proposal-accept-form{display:grid;gap:14px}
+.client-proposal-accept-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.client-proposal-accept-form label:not(.client-proposal-accept-check){display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:#201b48}
+.client-proposal-accept-form input:not([type=checkbox]){width:100%;min-height:44px;padding:10px 12px;background:#fff;border:1px solid #b5bdd0;border-radius:8px;font-size:16px;color:#111827}
+.client-proposal-accept-check{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#334155;line-height:1.48;cursor:pointer}
+.client-proposal-accept-check input{height:18px;width:18px;flex:0 0 18px;margin:2px 0 0;accent-color:#4840e0}
+.client-proposal-accept-submit{cursor:pointer;border:0;justify-self:start}
+.client-proposal-accept-fine{font-size:12px!important;color:#64748b!important;margin:0}
+@media(max-width:680px){.client-proposal-acceptance{padding:23px 0 30px}.client-proposal-accept-card{padding:18px 15px}.client-proposal-accept-grid{grid-template-columns:minmax(0,1fr)}.client-proposal-accept-terms{padding:12px 13px}}
