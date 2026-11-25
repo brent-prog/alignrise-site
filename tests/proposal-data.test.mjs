@@ -18,6 +18,10 @@ test("published proposals have independently defined client branding and terms",
       assert.ok(page.toolkit.continuationNote?.trim(), "missing toolkit continuation terms");
     }
     assert.ok(page.terms?.scope && page.terms?.contractingEntity, "missing commercial conditions");
+    if(page.acceptance){
+      assert.match(page.acceptance.proposalVersion,/^[A-Z0-9-]+-v[0-9]+$/, "versioned acceptance reference required");
+      for(const [key,value] of Object.entries(page.terms)) assert.ok(value.trim(), "missing acceptance term: "+key);
+    }
     const sectionIds = page.sectionOrder || [];
     assert.equal(new Set(sectionIds).size,sectionIds.length, "duplicate section ID");
     for (const id of sectionIds) assert.ok(allowed.has(id) || page.extraSections?.some(s=>s.id===id), "unknown section ID "+id);
