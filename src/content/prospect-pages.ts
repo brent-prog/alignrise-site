@@ -25,6 +25,14 @@ export type ProspectPageData = {
   opportunities: { title: string; detail: string }[];
   process: { heading: string; detail: string }[];
   deliverables: { title: string; detail: string }[];
+  toolkit?: {
+    heading: string;
+    summary: string;
+    durationMonths: number;
+    monthlyPriceCad?: number;
+    features: { heading: string; description: string }[];
+    continuationNote: string;
+  };
   price: number;
   normalPrice?: number;
   offerName: string;
@@ -82,19 +90,31 @@ export const prospectPages: Record<string, ProspectPageData> = {
       { title: "Prioritized 90-day action plan", detail: "Clear actions, estimated impact assumptions and suggested owners for Guelph; identify transferable lessons for Waterloo." },
       { title: "Working review with Erin", detail: "Walk through the findings, assumptions, priorities and immediate next decisions together." }
     ],
+    toolkit: {
+      heading: "Your next 90 days don't end with a report.",
+      summary: "Your KickStart also includes three months of the AlignRISE monthly package: the practical tools and guidance to work through the priorities we identify, rather than leaving you with another assessment to file away.",
+      durationMonths: 3,
+      monthlyPriceCad: 299,
+      features: [
+        { heading: "The complete 3P Toolkit", description: "Use practical planning, process, performance and accountability tools to translate the 90-day plan into repeatable improvements across People, Product and Profit." },
+        { heading: "AI-guided Assess → Align → Act", description: "Use guided prompts to clarify priorities, develop the operating tools you need, and put the changes into practice within your business." },
+        { heading: "Monthly accountability review", description: "One 45-minute accountability session each month for three months to review progress, resolve obstacles and decide what needs attention next." }
+      ],
+      continuationNote: "Three months are included in this KickStart fee at no additional subscription charge. There is no automatic renewal or obligation to continue; any subscription after that period requires a separate agreement."
+    },
     normalPrice: 5000,
     price: 2500,
     offerName: "AlignRISE KickStart — focused CX assessment",
     offerHeadline: "Let’s make your available capacity work harder.",
-    sectionOrder: ["opportunity", "assessment", "deliverables", "calculator", "proposal"],
+    sectionOrder: ["opportunity", "assessment", "deliverables", "toolkit", "calculator", "proposal"],
     guarantee: "If the assessment does not identify at least $25,000 in credible annual improvement opportunities, the assessment fee will be refunded. Identified opportunities are not guaranteed realized results.",
-    note: "This is a personalized commercial proposal—not an executed agreement or a commitment to results. All amounts are Canadian dollars plus applicable HST.",
+    note: "Includes the focused KickStart assessment, deliverables and three months of AlignRISE monthly-package access, with three 45-minute accountability sessions. The total proposed fee is CAD $2,500 plus applicable HST. This webpage is not an executed agreement or a commitment to results.",
     terms: {
-      scope: "Focused on-site guest experience and booking opportunity review at Hand & Stone Guelph. Lessons potentially applicable at Waterloo are included in the findings; a separate Waterloo on-site assessment is not.",
+      scope: "Focused on-site guest experience and booking opportunity review at Hand & Stone Guelph, a 90-day action plan and executive review, plus three months of AlignRISE monthly-package access (3P Toolkit, guided Assess–Align–Act workflow and one 45-minute accountability session per month). Lessons potentially applicable at Waterloo are included in the findings; a separate Waterloo on-site assessment is not.",
       clientResponsibilities: "Arrange access to the owner and an appropriate sample of front-desk, RMT and esthetics team members, plus suitable scheduling and business information. Share only information authorized under franchise and privacy rules.",
       schedule: "On-site assessment date and final readout date to be agreed in writing before engagement. The working target is a concise readout and 90-day plan following the visit.",
-      exclusions: "No implementation services, advertising spend, software purchases, ongoing coaching, separate Waterloo site audit or guarantee of booked appointments is included unless separately agreed.",
-      payment: "CAD $2,500 plus applicable HST. Payment timing and method to be set out in the signed engagement agreement; no payment is collected through this page.",
+      exclusions: "No done-for-you implementation services, advertising spend, additional software purchases, coaching beyond the three included monthly accountability reviews, separate Waterloo site audit or guarantee of booked appointments is included unless separately agreed.",
+      payment: "CAD $2,500 plus applicable HST includes the assessment, deliverables, and the first three months of the AlignRISE monthly package (normally CAD $299/month plus HST). There is no automatic renewal. Payment timing and method will be specified in the signed engagement agreement; no payment is collected through this page.",
       cancellation: "Cancellation, rescheduling and any refund conditions beyond the stated opportunity guarantee must be specified in the engagement agreement before work begins.",
       confidentiality: "Any client records supplied for assessment will be used only for the engagement subject to mutually agreed confidentiality, privacy and data-handling provisions; do not upload personal health or guest records through this page.",
       liability: "Any limitation of liability and related risk allocation will be established in the signed engagement agreement, not by this public proposal page.",

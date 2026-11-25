@@ -145,3 +145,20 @@
  .client-proposal-hero-video{max-width:410px;margin:0 auto}
  .client-proposal-hero-video video{max-height:none}
 }
+
+/* KickStart inclusion: separate the self-directed monthly Toolkit from the assessment. */
+.client-proposal-toolkit-section{background:#f4f3fc}
+.client-proposal-toolkit-banner{background:#24175d;color:#fff;padding:25px 27px;border-radius:14px;margin-bottom:13px}
+.client-proposal-toolkit-badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.10em;color:#bcd7ff;margin-bottom:12px}
+.client-proposal-toolkit-banner h2{color:#fff;max-width:700px;margin-bottom:9px}
+.client-proposal-toolkit-banner p{font-size:15px;max-width:850px;color:#ece9ff;margin:0}
+.client-proposal-toolkit-facts{display:flex;gap:13px;align-items:center;flex-wrap:wrap;border-top:1px solid #655c9d;margin-top:17px;padding-top:13px}
+.client-proposal-toolkit-facts strong{font-size:14px;color:#fff}
+.client-proposal-toolkit-facts span{font-size:12px;color:#cec8f7}
+.client-proposal-toolkit-grid .client-proposal-card{border-color:#d6d2ef}
+.client-proposal-toolkit-continuation{font-size:12px;line-height:1.5;color:#58637b;margin:12px 0 0}
+.client-proposal-offer-includes{font-size:14px;line-height:1.55;color:#fff;background:#ffffff19;border:1px solid #8c83dc;border-radius:10px;padding:11px 14px;margin:11px 0 16px}
+@media(max-width:680px){
+ .client-proposal-toolkit-banner{padding:19px 17px}
+ .client-proposal-toolkit-banner p{font-size:14px}
+}

@@ -15,8 +15,8 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
   const email = "mailto:" + page.contactEmail + "?subject=" + encodeURIComponent(page.contactSubject)
     + "&body=" + encodeURIComponent("Hi Brent,\n\nI'd like to review the AlignRISE proposal and request a formal engagement agreement.\n\n");
-  const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
-  const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",calculator:"Potential value",proposal:"Proposal"};
+  const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
+  const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
     ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
     ...sectionOrder.map(id=>({id,title:sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id}))
@@ -54,6 +54,26 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         </div>
       </div>
     </section>),
+    toolkit: (page.toolkit && <section className="client-proposal-section client-proposal-toolkit-section" id="toolkit">
+      <div className="client-proposal-container">
+        <div className="client-proposal-toolkit-banner">
+          <span className="client-proposal-toolkit-badge">INCLUDED WITH YOUR KICKSTART</span>
+          <h2>{page.toolkit.heading}</h2>
+          <p>{page.toolkit.summary}</p>
+          <div className="client-proposal-toolkit-facts">
+            <strong>{page.toolkit.durationMonths} months included</strong>
+            {page.toolkit.monthlyPriceCad != null && <span>Normally {money(page.toolkit.monthlyPriceCad)}/month + HST — included at no additional charge</span>}
+          </div>
+        </div>
+        <div className="client-proposal-card-grid client-proposal-toolkit-grid">
+          {page.toolkit.features.map((feature,i) => <article className="client-proposal-card" key={i}>
+            <h3>{feature.heading}</h3>
+            <p>{feature.description}</p>
+          </article>)}
+        </div>
+        <p className="client-proposal-toolkit-continuation">{page.toolkit.continuationNote}</p>
+      </div>
+    </section>),
     calculator: (page.calculator && <section className="client-proposal-section client-proposal-section-light" id="calculator">
       <div className="client-proposal-container">
         <h2>{page.calculator.heading}</h2>
@@ -79,6 +99,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <strong>{money(page.price)}</strong>
             <span>CAD + applicable HST</span>
           </div>
+          {page.toolkit && <p className="client-proposal-offer-includes"><strong>Also included:</strong> {page.toolkit.durationMonths} months of the AlignRISE monthly package (3P Toolkit, AI-guided tools and monthly accountability reviews).</p>}
           {page.guarantee && <div className="client-proposal-guarantee">
             <h3>Opportunity guarantee</h3><p>{page.guarantee}</p>
           </div>}
