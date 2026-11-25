@@ -1,4 +1,7 @@
+export type ProspectVideoData = { src: string; poster: string; heading?: string; caption?: string }; 
 export type ProspectPageData = {
+  video?: ProspectVideoData;
+  extraSections?: { id: string; title: string; paragraphs: string[] }[];
   slug: string; status: "draft" | "active" | "archived";
   eyebrow: string; title: string; greeting: string; intro: string;
   context: { heading: string; body: string }[];
