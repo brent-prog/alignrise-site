@@ -34,3 +34,70 @@
  .proposal-calc-result{padding:18px}
  .proposal-video-section{padding:22px 16px}
 }
+
+/* Reusable client proposal shell. Shared brand mechanics; independent prospect content. */
+.client-proposal{color:#201b30;background:#fff;font-family:Inter,Arial,sans-serif;overflow-x:clip}
+.client-proposal *{box-sizing:border-box}
+.client-proposal-container{max-width:1060px;margin:0 auto;padding-left:20px;padding-right:20px}
+.client-proposal-header{background:#201060}
+.client-proposal-marks{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:94px}
+.client-proposal-alignrise-logo{width:92px;height:auto;display:block}
+.client-proposal-for{margin-left:auto;font-size:12px;color:#e5ddff;font-weight:700;white-space:nowrap}
+.client-proposal-client-mark{width:210px;min-height:74px;padding:8px 16px;background:#fff;border-radius:11px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.client-proposal-client-mark img{max-width:100%;max-height:63px;display:block;object-fit:contain}
+.client-proposal-hero{padding:35px 0 32px;background:linear-gradient(135deg,#faf9ff,#fff);border-bottom:1px solid #e5e7eb}
+.client-proposal h1{color:#201060;font-size:clamp(31px,4.5vw,53px);line-height:1.07;letter-spacing:-.04em;max-width:900px;margin:10px 0 14px}
+.client-proposal h2{color:#201060;font-size:clamp(23px,3vw,33px);letter-spacing:-.025em;line-height:1.2;margin:0 0 14px}
+.client-proposal h3{color:#201060;font-size:17px;line-height:1.3;margin:0 0 7px}
+.client-proposal p{line-height:1.58}
+.client-proposal-overline{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:#4840e0;font-weight:800;margin:0 0 9px}
+.client-proposal-lead{max-width:825px;font-size:16px;color:#475569;margin:0 0 21px}
+.client-proposal-lead strong{color:#201060}
+.client-proposal-button{display:inline-block;text-decoration:none;border-radius:10px;padding:12px 17px;background:#4840e0;color:#fff!important;font-size:14px;font-weight:800;min-height:44px}
+.client-proposal-button:hover,.client-proposal-button:focus-visible{background:#352dba}
+.client-proposal-section{padding:29px 0;scroll-margin-top:88px}
+.client-proposal-section-light{background:#f7f7fe}
+.client-proposal-context{color:#475569;max-width:850px;font-size:15px;margin:0 0 17px}
+.client-proposal-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
+.client-proposal-card{padding:18px;background:#fff;border:1px solid #e1e4f0;border-radius:11px}
+.client-proposal-card p,.client-proposal-step p{color:#475569;font-size:14px;margin:0}
+.client-proposal-step{padding:8px 10px 10px 0}
+.client-proposal-step-number{display:block;font-size:12px;color:#4840e0;font-weight:800;margin-bottom:7px}
+.client-proposal-small{font-size:12px!important;color:#64748b;line-height:1.6}
+.client-proposal-small a{color:#4840e0}
+.client-proposal-offer{background:#201060;padding:clamp(20px,4vw,36px);border-radius:17px;color:#fff}
+.client-proposal-offer h2{color:#fff;margin-bottom:12px}
+.client-proposal-offer-label{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#d1caff;margin:0 0 10px}
+.client-proposal-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:14px 0}
+.client-proposal-price del{color:#c6bcf5;font-size:16px}
+.client-proposal-price strong{font-size:clamp(33px,5vw,46px);line-height:1;color:#fff}
+.client-proposal-price span{color:#e1dbff;font-size:12px}
+.client-proposal-guarantee{border-radius:11px;background:#fff;color:#201060;padding:16px 18px;margin:16px 0}
+.client-proposal-guarantee p{margin:0;font-size:14px;color:#334155}
+.client-proposal-offer-note{color:#e1dbff;font-size:13px}
+.client-proposal-terms{margin:18px 0;border:1px solid #8c83dc;border-radius:10px;color:#f8f7ff}
+.client-proposal-terms summary{cursor:pointer;min-height:44px;padding:13px 16px;font-size:14px;font-weight:800}
+.client-proposal-terms dl{margin:0;padding:2px 16px 14px}
+.client-proposal-terms dl>div{border-top:1px solid #5951a0;padding:10px 0}
+.client-proposal-terms dt{font-size:12px;font-weight:800;margin-bottom:3px}
+.client-proposal-terms dd{font-size:12px;line-height:1.6;margin:0;color:#e5e0fc}
+.client-proposal-nonbinding{font-size:12px;line-height:1.5;color:#eee9ff}
+.client-proposal-button-inverse{color:#201060!important;background:#fff}
+.client-proposal-button-inverse:hover,.client-proposal-button-inverse:focus-visible{background:#f0efff}
+.client-proposal-cta-explain{color:#e1dbff;margin:8px 0 0}
+.client-proposal-footer{border-top:1px solid #e2e8f0;padding:20px 0 27px;background:#fff}
+.client-proposal-footer .client-proposal-container{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:#64748b;font-size:12px}
+.client-proposal-footer a{color:#4840e0}
+@media(max-width:680px){
+.client-proposal-container{padding-left:16px;padding-right:16px}
+.client-proposal-marks{min-height:76px;gap:8px}
+.client-proposal-alignrise-logo{width:68px}
+.client-proposal-for{display:none}
+.client-proposal-client-mark{width:160px;min-height:60px;padding:6px 10px}
+.client-proposal-client-mark img{max-height:52px}
+.client-proposal-hero{padding:25px 0}
+.client-proposal-section{padding:23px 0}
+.client-proposal-card-grid{gap:10px}
+.client-proposal-card{padding:15px}
+.client-proposal-offer{padding:20px 16px}
+}
