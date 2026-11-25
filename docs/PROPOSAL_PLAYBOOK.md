@@ -129,3 +129,17 @@
 - **Important agreement limitation:** there is no automatic e-signature, durable audit trail, or final agreement generation. The terms displayed are not legal advice and are **not** substituted for a signed client agreement.
 - **Publication steps:** feature branch → build and review → explicit approval → merge to main → Vercel READY for correct commit → test `https://clients.alignrise.ca/p/<slug>` → only then share.
 - For every new client, first add **actual client logo + source**, check naming permissions and brand usage, then create sections, supporting evidence, commercial terms and optional media. A client without a verified usable logo should not be presented as fully branded.
+
+
+## 12. Repeatable technical QA (2026-11-24 upgrade)
+
+- `src/lib/proposal-calculations.ts` is the isolated tested appointment scenario formula. Do not use the Hand & Stone calculation for a different client without replacing the model and tests.
+- `tests/proposal-calculations.test.mjs` checks revenue maths and invalid input handling.
+- `tests/proposal-data.test.mjs` checks that every published proposal has client identity, an actual HTTPS logo asset URL, offer, deliverables, commercial fields, non-duplicated section identifiers and a contact.
+- `page.sectionOrder` determines **both** the visible order of content blocks and navigation entries. Omit or reorder sections as required; custom `extraSections` can be positioned between any built-in sections.
+- `e2e/proposal.spec.ts` and `playwright.config.ts` run Chromium tests at desktop and iPhone-sized widths against a local production build, checking identity, agreement language, calculator precision changes, keyboard slider changes, section links and overflow.
+- `.github/workflows/proposal-checks.yml` installs dependencies, tests maths and client schema, builds Next.js, then runs browser tests on pull requests targeting main. **Use the reported GitHub Actions conclusion**, not just the existence of a workflow, as evidence of passing QA.
+- The repository does not yet contain an npm package lockfile; CI currently uses `npm install`. Generating a reviewed lockfile and switching to `npm ci` is a recommended follow-up for dependency determinism.
+- Runtime is pinned to Node 24. The current upgrade also moves Next.js and `eslint-config-next` together to `16.4.6` in response to 2026 security advisories; ensure subsequent build and smoke tests pass.
+- The official Hand & Stone Canada logo URL was checked against the publisher's actual image. A remotely hosted image can still change or disappear; keep the source URL in the client brand record, and plan a controlled first-party media copy when an authorized binary transfer method is available.
+- Browser tests operate on a local run in GitHub Actions. They do not substitute for verifying DNS, TLS, and production alias after merging.
