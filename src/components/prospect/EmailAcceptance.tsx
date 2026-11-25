@@ -10,20 +10,6 @@ export default function EmailAcceptance({page}:{page: ProspectPageData}) {
   const [authorized, setAuthorized] = useState(false);
   const proposalVersion = page.acceptance?.proposalVersion;
   if (!page.acceptance) return null;
-  const summary = [
-    ["Engagement", page.offerName],
-    ["Scope and deliverables", page.terms.scope],
-    ["Fee and payment", page.terms.payment],
-    ["Opportunity guarantee", page.guarantee || "No opportunity guarantee is offered."],
-    ["Client cooperation", page.terms.clientResponsibilities],
-    ["Timing", page.terms.schedule],
-    ["Exclusions", page.terms.exclusions],
-    ["Cancellation and rescheduling", page.terms.cancellation],
-    ["Confidentiality", page.terms.confidentiality],
-    ["Responsibility and liability", page.terms.liability],
-    ["Proposal validity", page.terms.validity],
-    ["Contracting parties", page.terms.contractingEntity]
-  ];
   function submit(e:FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !business.trim() || !authorized) return;
@@ -52,16 +38,11 @@ export default function EmailAcceptance({page}:{page: ProspectPageData}) {
     ].join("\n");
     window.location.href = `mailto:${page.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
-  return <section id="accept" className="client-proposal-acceptance" aria-label="Email authorization">
-    <div className="client-proposal-container">
-      <div className="client-proposal-accept-card">
-        <p className="client-proposal-overline">READY TO MOVE FORWARD?</p>
-        <h2>Review and accept by email</h2>
-        <p>Review the engagement terms and enter the details of the person authorized to proceed. The button prepares an email for you to review and send yourself.</p>
-        <p className="client-proposal-accept-version">Proposal reference: <strong>{proposalVersion}</strong></p>
-        <div className="client-proposal-accept-terms">
-          {summary.map(([label, value])=><p key={label}><strong>{label}:</strong> {value}</p>)}
-        </div>
+  return <div id="accept" className="client-proposal-accept-inline" aria-label="Email authorization">
+    <p className="client-proposal-accept-eyebrow">READY TO MOVE FORWARD?</p>
+    <h3>Accept by email</h3>
+    <p className="client-proposal-accept-intro">Review the scope and commercial conditions above, then complete the details below. We’ll prepare an email for you to review and send.</p>
+    <p className="client-proposal-accept-version">Proposal reference: <strong>{proposalVersion}</strong></p>
         <form onSubmit={submit} className="client-proposal-accept-form">
           <div className="client-proposal-accept-grid">
             <label htmlFor="accept-name">Authorized representative
@@ -81,7 +62,5 @@ export default function EmailAcceptance({page}:{page: ProspectPageData}) {
           <button className="client-proposal-button client-proposal-accept-submit" type="submit">Prepare acceptance email</button>
           <p className="client-proposal-accept-fine">This opens an email draft. You must review and send it yourself. No form details are submitted to the website, and no agreement is automatically recorded by clicking this button. 3P Solutions will reply to confirm the engagement, outstanding scheduling/payment details and next steps.</p>
         </form>
-      </div>
-    </div>
-  </section>;
+  </div>;
 }
