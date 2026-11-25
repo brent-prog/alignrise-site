@@ -136,10 +136,10 @@ export const prospectPages: Record<string, ProspectPageData> = {
       disclaimer: "The $130 starting appointment value is illustrative. Realized revenue depends on service mix, actual completed bookings, discounts and capacity. Costs, taxes and implementation expenses are excluded."
     },
     video: {
-      src: "/proposal-media/hand-stone-test-video",
-      poster: "/proposal-media/hand-stone-test-poster",
-      heading: "A quick hello — test video",
-      caption: "A short demonstration of the personalized video introduction that can accompany your proposal."
+      src: "/proposal-media/hand-stone-introduction.mp4",
+      poster: "/proposal-media/hand-stone-introduction-poster.jpg",
+      heading: "A personal introduction",
+      caption: "A personal message for Erin and Layton."
     },
     acceptance: { proposalVersion: "AR-HS-GW-2026-11-24-v1" },
     contactEmail: "brent@3psolutions.ca",
