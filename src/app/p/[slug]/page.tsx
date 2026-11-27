@@ -4,7 +4,7 @@ import ProspectExperience from "@/components/prospect/ProspectExperience";
 import type { Metadata } from "next";
 
 export const dynamicParams = false;
-const isPublic = (status: string) => status === "published" || (process.env.VERCEL_ENV !== "production" && status === "draft");
+const isPublic = (status: string) => status === "published" || status === "review" || (process.env.VERCEL_ENV !== "production" && status === "draft");
 export function generateStaticParams() {
   return Object.values(prospectPages).filter(p => isPublic(p.status)).map(p => ({ slug: p.slug }));
 }
