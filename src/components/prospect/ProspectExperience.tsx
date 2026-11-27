@@ -6,7 +6,7 @@ import ProspectNavigation from "./ProspectNavigation";
 import ProspectVideo from "./ProspectVideo";
 import ScenarioCalculator from "./ScenarioCalculator";
 import EmailAcceptance from "./EmailAcceptance";
-import type { ProspectPageData } from "@/content/prospect-pages";
+import type { ProspectPageData, LegacyProspectPageData } from "@/content/prospect-pages";
 import "./prospect.css";
 
 const money = (value: number) => new Intl.NumberFormat("en-CA", {
@@ -20,7 +20,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
   const nav = [
     ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
     ...sectionOrder.map(id=>({id,title:page.sectionLabels?.[id] || sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
-    ...(page.acceptance ? [{id:"accept",title:"Accept"}] : [])
+    ...(page.acceptance && sectionOrder.includes("proposal") ? [{id:"accept",title:"Accept"}] : [])
   ];
   const sectionContent: Record<string, ReactNode> = {
     opportunity: (<section className="client-proposal-section" id="opportunity">
@@ -58,12 +58,12 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
     toolkit: (page.toolkit && <section className="client-proposal-section client-proposal-toolkit-section" id="toolkit">
       <div className="client-proposal-container">
         <div className="client-proposal-toolkit-banner">
-          <span className="client-proposal-toolkit-badge">INCLUDED WITH YOUR KICKSTART</span>
+          <span className="client-proposal-toolkit-badge">{page.toolkit.badge || "INCLUDED WITH YOUR KICKSTART"}</span>
           <h2>{page.toolkit.heading}</h2>
           <p>{page.toolkit.summary}</p>
           <div className="client-proposal-toolkit-facts">
-            <strong>{page.toolkit.durationMonths} months included</strong>
-            {page.toolkit.monthlyPriceCad != null && <span>Normally {money(page.toolkit.monthlyPriceCad)}/month + HST — included at no additional charge</span>}
+            <strong>{page.toolkit.durationLabel || `${page.toolkit.durationMonths} months included`}</strong>
+            {page.toolkit.factLabel ? <span>{page.toolkit.factLabel}</span> : page.toolkit.monthlyPriceCad != null && <span>Normally {money(page.toolkit.monthlyPriceCad)}/month + HST — included at no additional charge</span>}
           </div>
         </div>
         <div className="client-proposal-card-grid client-proposal-toolkit-grid">
@@ -109,7 +109,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <strong>{money(page.price)}</strong>
             <span>CAD + applicable HST</span>
           </div>}
-          {page.toolkit && <p className="client-proposal-offer-includes"><strong>Also included:</strong> {page.toolkit.durationMonths} months of the AlignRISE monthly package (3P Toolkit, AI-guided tools and monthly accountability reviews).</p>}
+          {page.toolkit && !page.subscription && <p className="client-proposal-offer-includes"><strong>Also included:</strong> {page.toolkit.durationMonths} months of the AlignRISE monthly package (3P Toolkit, AI-guided tools and monthly accountability reviews).</p>}
           {page.guarantee && <div className="client-proposal-guarantee">
             <h3>Opportunity guarantee</h3><p>{page.guarantee}</p>
           </div>}
@@ -127,7 +127,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             </dl>
           </details>}
           {page.acceptance
-            ? <EmailAcceptance page={page}/>
+            ? <EmailAcceptance page={page as LegacyProspectPageData}/>
             : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">{page.nextStepLabel || "Email Brent to discuss"}</a>}
         </div>
       </div>
