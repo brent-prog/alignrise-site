@@ -56,7 +56,7 @@ export type ProspectPageData = {
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
   acceptance?: { proposalVersion: string };
-  presentation?: { priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; showTerms?:boolean; method?: {heading:string;intro:string;steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
+  presentation?: { priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; showTerms?:boolean; method?: {heading:string;intro:string;steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -214,7 +214,8 @@ export const prospectPages: Record<string, ProspectPageData> = {
       "label": "Discover how AlignRISE works",
       "target": "how-alignrise-works"
     },
-    "nextStepLabel": "Arrange your free introductory call",
+    "bookingUrl": "https://calendly.com/brent3p/30min",
+    "nextStepLabel": "Email Brent to arrange a time",
     "nextStepBody": "Hi Brent,\nI'd like to arrange the complimentary 30-minute introductory call for KW Chair Massage.\nThanks, Frances",
     "sectionLabels": {
       "assessment": "Getting started",
