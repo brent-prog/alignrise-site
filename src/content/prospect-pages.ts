@@ -366,7 +366,12 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "validity": "Offer subject to availability and written confirmation. Booking the complimentary introductory call does not constitute acceptance of the paid engagement.",
     "contractingEntity": "3P Solutions, a sole proprietorship, is the service provider. The Client's legal entity and authorized representative are to be confirmed."
   },
-  "video": {"src":"/proposal-media/takoda-introduction.mp4","poster":"/proposal-media/takoda-introduction-poster.jpg","heading":"A personal introduction","caption":"A personal message for Diane."},
+  "video": {
+    "src": "/proposal-media/takoda-introduction.mp4",
+    "poster": "/proposal-media/takoda-introduction-poster.jpg",
+    "heading": "A personal introduction",
+    "caption": "A personal message for Diane."
+  },
   "contactEmail": "brent@3psolutions.ca",
   "contactSubject": "Takoda Equine — AlignRISE pilot",
   "presentation": {
@@ -405,21 +410,21 @@ export const prospectPages: Record<string, ProspectPageData> = {
       ],
       "exampleTitle": "What this could look like for Takoda Equine",
       "example": "Identify the leadership teams most likely to benefit from your services, clarify your value proposition, develop referral relationships and create a repeatable inquiry-to-booking process.",
-      "description": "The system helps you improve your People, Product and Profit by identifying what matters most, setting clear priorities and building the plans, processes and performance measurements that support sustainable growth.",
       "components": [
         {
-          "title": "The complete 3P Toolkit",
-          "detail": "Practical business frameworks, templates and tools to help you improve your People, Product and Profit."
+          "heading": "The complete 3P Toolkit",
+          "description": "Practical business frameworks, templates and tools to help you improve your People, Product and Profit."
         },
         {
-          "title": "Your AI assistant",
-          "detail": "Personalized prompts and guided workflows that help you apply the toolkit to your business and turn your knowledge into practical action."
+          "heading": "Your AI assistant",
+          "description": "Personalized prompts and guided workflows that help you apply the toolkit to your business and turn your knowledge into practical action."
         },
         {
-          "title": "Personal accountability",
-          "detail": "Regular, one-to-one conversations with Brent to review progress, work through obstacles and help you stay focused on what matters most."
+          "heading": "Personal accountability",
+          "description": "Regular, one-to-one conversations with Brent to review progress, work through obstacles and help you stay focused on what matters most."
         }
-      ]
+      ],
+      "introSecond": "The system helps you improve your People, Product and Profit by identifying what matters most, setting clear priorities and building the plans, processes and performance measurements that support sustainable growth."
     },
     "freeItems": [
       "Complete AlignRISE toolkit",
