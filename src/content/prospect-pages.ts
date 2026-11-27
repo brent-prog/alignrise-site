@@ -14,7 +14,7 @@ export type ProspectCalculatorData = {
 };
 export type ProspectPageData = {
   slug: string;
-  status: "draft" | "published" | "archived";
+  status: "draft" | "review" | "published" | "archived";
   clientName: string;
   clientLogo: { src: string; alt: string; sourceUrl: string };
   eyebrow: string;
@@ -255,6 +255,124 @@ export const prospectPages: Record<string, ProspectPageData> = {
     ],
     "paidTitle": "Pay only for my time",
     "paidDetail": "One personal accountability session with Brent each month for three months. Review progress, solve problems and plan next steps."
+  }
+},
+  "takoda-equine": {
+  "slug": "takoda-equine",
+  "status": "review",
+  "clientName": "Takoda Equine",
+  "clientLogo": {
+    "src": "https://www.takodaequine.com/wp-content/uploads/2026/01/Logo-takda-300x200.png",
+    "alt": "Takoda Equine",
+    "sourceUrl": "https://www.takodaequine.com/"
+  },
+  "eyebrow": "PREPARED ESPECIALLY FOR DIANE MURRAY",
+  "title": "You know how to deliver a great experience. Let's get more people experiencing it.",
+  "greeting": "Diane,",
+  "intro": "You've developed a unique service. Let's build the business around it so you can spend more of your time doing what you do best.",
+  "context": [
+    {
+      "heading": "The opportunity",
+      "body": "Your experiential leadership development work gives business owners, executives and teams a distinctive way to explore communication, trust and decision-making. The immediate priority is connecting that value to the right buyers and converting interest into bookings."
+    }
+  ],
+  "opportunities": [
+    {
+      "title": "Find",
+      "detail": "Prioritize business owners, leadership teams and other ideal customers; clarify the value of your experiences and which offerings to promote first."
+    },
+    {
+      "title": "Book",
+      "detail": "Build a focused outreach and referral plan, including potential HR and leadership-development partners, and develop a repeatable path from inquiry to booking."
+    },
+    {
+      "title": "Grow",
+      "detail": "Set clear priorities, understand your financial goals and develop the skills to run your business with confidence."
+    }
+  ],
+  "process": [
+    {
+      "heading": "Talk for 30 minutes",
+      "detail": "A complimentary conversation to identify your priorities and get started."
+    },
+    {
+      "heading": "Use your personalized toolkit",
+      "detail": "Work through your business priorities with practical tools and guided AI workflows."
+    },
+    {
+      "heading": "Review your progress",
+      "detail": "Personal accountability support to help you stay focused and turn decisions into action."
+    }
+  ],
+  "price": 150,
+  "normalPrice": 300,
+  "offerName": "AlignRISE subscription",
+  "offerHeadline": "The complete AlignRISE toolkit is yours. FREE.",
+  "sectionOrder": [
+    "opportunity",
+    "how-alignrise-works",
+    "assessment",
+    "proposal"
+  ],
+  "note": "Introductory total: $450 CAD over three months. Accountability session frequency, tax treatment and cancellation terms are subject to confirmation before enrollment.",
+  "terms": {
+    "scope": "Complimentary toolkit and 30-minute onboarding; paid personal accountability support. Guided AI workflows are included in the toolkit.",
+    "clientResponsibilities": "Participate in agreed sessions and retain responsibility for business decisions and implementation.",
+    "schedule": "Accountability session frequency and duration to be confirmed.",
+    "exclusions": "No done-for-you implementation, advertising spend or guaranteed business outcomes.",
+    "payment": "CAD $150/month for the first three months ($450 total). Optional continuation at CAD $300/month. HST treatment to be confirmed.",
+    "cancellation": "Commitment, renewal and cancellation terms to be confirmed before enrollment.",
+    "confidentiality": "3P Solutions will use non-public business information only to perform this engagement, keep it confidential and protect it with reasonable safeguards. Disclosure is limited to professional advisers or service providers bound to confidentiality, or as required by law. These obligations exclude information already public without breach, independently developed, or lawfully received without restriction, and continue after the engagement. Client identification or case studies require advance written permission. Do not provide personal health information or identifiable guest records without a separately approved data-handling arrangement.",
+    "liability": "Limitation of liability to be agreed before enrollment.",
+    "validity": "Review copy only; not a final offer.",
+    "contractingEntity": "3P Solutions, a sole proprietorship, is the service provider. Client legal entity and authorized representative to be confirmed."
+  },
+  "contactEmail": "brent@3psolutions.ca",
+  "contactSubject": "Takoda Equine — AlignRISE subscription",
+  "presentation": {
+    "priceCadence": "/month",
+    "priceCaption": "CAD · first three months",
+    "heroAction": {
+      "label": "Discover how AlignRISE works",
+      "target": "how-alignrise-works"
+    },
+    "nextStepLabel": "Email Brent to discuss",
+    "sectionLabels": {
+      "assessment": "Getting started",
+      "how-alignrise-works": "How it works",
+      "proposal": "Your offer"
+    },
+    "approachHeading": "Here's how we'll get started",
+    "method": {
+      "heading": "What is AlignRISE?",
+      "intro": "The 3P business toolkit, guided AI workflows and personal accountability. A self-guided system for working ON your business, at your own pace.",
+      "steps": [
+        {
+          "label": "ASSESS",
+          "title": "Understand your business",
+          "detail": "Understand your customers, services, current business and immediate priorities."
+        },
+        {
+          "label": "ALIGN",
+          "title": "Define what success looks like",
+          "detail": "Use the 3P business framework and guided AI workflows to decide where to focus."
+        },
+        {
+          "label": "ACT",
+          "title": "Put improvements into practice",
+          "detail": "Put practical actions into motion and review progress through personal accountability support."
+        }
+      ],
+      "exampleTitle": "What this could look like for Takoda Equine",
+      "example": "Identify the leadership teams most likely to benefit from your services, clarify your value proposition, develop referral relationships and create a repeatable inquiry-to-booking process."
+    },
+    "freeItems": [
+      "Complete AlignRISE toolkit",
+      "Guided AI workflows",
+      "30-minute personal onboarding"
+    ],
+    "paidTitle": "Pay for personal accountability support",
+    "paidDetail": "Personal guidance to review progress, solve problems and decide what to do next. Session frequency and duration to be agreed."
   }
 }
 };
