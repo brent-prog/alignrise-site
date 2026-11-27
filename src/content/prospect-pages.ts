@@ -56,7 +56,7 @@ export type ProspectPageData = {
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
   acceptance?: { proposalVersion: string };
-  presentation?: { priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; showTerms?:boolean; method?: {heading:string;intro:string;steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
+  presentation?: { priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; aiRequirement?:string; showTerms?:boolean; method?: {heading:string;intro:string;steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -204,7 +204,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "assessment",
     "proposal"
   ],
-  "note": "Total: CAD $450 + HST over three months. Optional continuation: $300/month + HST. No automatic renewal. Additional AI software costs not included.",
+  "note": "Total: CAD $450 + HST over three months. Optional continuation: $300/month + HST. No automatic renewal. Your own paid AI subscription is required and is not included.",
   "contactEmail": "brent@3psolutions.ca",
   "contactSubject": "KW Chair Massage — AlignRISE pilot",
   "presentation": {
@@ -215,6 +215,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
       "target": "how-alignrise-works"
     },
     "bookingUrl": "https://calendly.com/brent3p/30min",
+    "aiRequirement": "You’ll need your own paid AI subscription, preferably Claude or ChatGPT. Your AI account and subscription are separate from AlignRISE.",
     "nextStepLabel": "Email Brent to arrange a time",
     "nextStepBody": "Hi Brent,\nI'd like to arrange the complimentary 30-minute introductory call for KW Chair Massage.\nThanks, Frances",
     "sectionLabels": {

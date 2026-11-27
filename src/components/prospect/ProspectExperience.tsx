@@ -41,6 +41,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <p className="client-proposal-overline">THE ALIGNRISE METHOD</p>
         <h2>{method.heading}</h2>
         <p className="client-proposal-context">{method.intro}</p>
+        {presentation?.aiRequirement && <aside style={{background:"#eeebff",borderLeft:"3px solid #4840e0",borderRadius:"0 8px 8px 0",padding:"12px 15px",margin:"0 0 18px",fontSize:"14px",lineHeight:1.5,color:"#201060"}}><strong>What you’ll need</strong><p style={{margin:"4px 0 0"}}>{presentation.aiRequirement}</p></aside>}
         <div className="client-proposal-card-grid">
           {method.steps.map((step,i)=><article className="client-proposal-step" key={step.label}><span className="client-proposal-step-number">0{i+1}</span><p className="client-proposal-overline">{step.label}</p><h3>{step.title}</h3><p>{step.detail}</p></article>)}
         </div>
