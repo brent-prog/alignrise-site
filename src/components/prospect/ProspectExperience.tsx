@@ -14,17 +14,18 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 }).format(value);
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
-  const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
+  const available = new Set([...(page.context.length || page.opportunities.length ? ["opportunity"] : []), ...(page.process?.length ? ["assessment"] : []), ...(page.deliverables?.length ? ["deliverables"] : []), ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"]);
+  const sectionOrder = (page.sectionOrder || Array.from(available)).filter(id=>available.has(id));
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
     ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
-    ...sectionOrder.map(id=>({id,title:sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
+    ...sectionOrder.map(id=>({id,title:page.sectionLabels?.[id] || sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
     ...(page.acceptance ? [{id:"accept",title:"Accept"}] : [])
   ];
   const sectionContent: Record<string, ReactNode> = {
     opportunity: (<section className="client-proposal-section" id="opportunity">
       <div className="client-proposal-container">
-        <h2>The opportunity</h2>
+        <h2>{page.sectionHeadings?.opportunity || "The opportunity"}</h2>
         {page.context.map((p,i) => <p className="client-proposal-context" key={i}>{p.body}</p>)}
         <div className="client-proposal-card-grid">
           {page.opportunities.map((o,i) => <article className="client-proposal-card" key={i}>
@@ -36,9 +37,9 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
     assessment: (<section className="client-proposal-section client-proposal-section-light" id="assessment">
       <div className="client-proposal-container">
         <p className="client-proposal-overline">{page.offerName}</p>
-        <h2>How we'll approach it</h2>
+        <h2>{page.sectionHeadings?.assessment || "How we'll approach it"}</h2>
         <div className="client-proposal-card-grid">
-          {page.process.map((step,i) => <article className="client-proposal-step" key={i}>
+          {page.process?.map((step,i) => <article className="client-proposal-step" key={i}>
             <span className="client-proposal-step-number">0{i+1}</span><h3>{step.heading}</h3><p>{step.detail}</p>
           </article>)}
         </div>
@@ -46,9 +47,9 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
     </section>),
     deliverables: (<section className="client-proposal-section" id="deliverables">
       <div className="client-proposal-container">
-        <h2>What you'll receive</h2>
+        <h2>{page.sectionHeadings?.deliverables || "What you'll receive"}</h2>
         <div className="client-proposal-card-grid">
-          {page.deliverables.map((d,i) => <article className="client-proposal-card" key={i}>
+          {page.deliverables?.map((d,i) => <article className="client-proposal-card" key={i}>
             <h3>{d.title}</h3><p>{d.detail}</p>
           </article>)}
         </div>
@@ -94,17 +95,26 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <div className="client-proposal-offer">
           <p className="client-proposal-offer-label">PERSONALIZED PROPOSAL · {page.offerName}</p>
           <h2>{page.offerHeadline}</h2>
-          <div className="client-proposal-price">
+          {page.subscription ? <>
+            {page.subscription.introductoryPeriod && <p className="client-proposal-offer-note">{page.subscription.introductoryPeriod}</p>}
+            <div className="client-proposal-price">
+              {page.subscription.regularPrice != null && <del>{money(page.subscription.regularPrice)}/{page.subscription.cadence}</del>}
+              <strong>{money(page.subscription.price)}/{page.subscription.cadence}</strong>
+              <span>CAD{page.subscription.taxNote ? " · " + page.subscription.taxNote : ""}</span>
+            </div>
+            <ul>{page.subscription.includes.map((item,i)=><li key={i}>{item}</li>)}</ul>
+            <p className="client-proposal-offer-note">{page.subscription.continuation}</p>
+          </> : page.price != null && <div className="client-proposal-price">
             {page.normalPrice && <del>{money(page.normalPrice)}</del>}
             <strong>{money(page.price)}</strong>
             <span>CAD + applicable HST</span>
-          </div>
+          </div>}
           {page.toolkit && <p className="client-proposal-offer-includes"><strong>Also included:</strong> {page.toolkit.durationMonths} months of the AlignRISE monthly package (3P Toolkit, AI-guided tools and monthly accountability reviews).</p>}
           {page.guarantee && <div className="client-proposal-guarantee">
             <h3>Opportunity guarantee</h3><p>{page.guarantee}</p>
           </div>}
           <p className="client-proposal-offer-note">{page.note}</p>
-          <details className="client-proposal-terms">
+          {page.terms && <details className="client-proposal-terms">
             <summary>Review scope and commercial conditions</summary>
             <dl>
               {([
@@ -115,10 +125,10 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
                 ["Parties and authorized signature",page.terms.contractingEntity]
               ] as const).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
             </dl>
-          </details>
+          </details>}
           {page.acceptance
             ? <EmailAcceptance page={page}/>
-            : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">Email Brent to discuss</a>}
+            : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">{page.nextStepLabel || "Email Brent to discuss"}</a>}
         </div>
       </div>
     </section>),
@@ -139,7 +149,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           <div className="client-proposal-client-mark">
             {/* Use the client's official mark, never synthetic artwork. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/>
+            {page.clientLogo ? <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/> : <strong>{page.clientName}</strong>}
           </div>
           <span className="client-proposal-overline">{page.eyebrow}</span>
         </div>
@@ -148,8 +158,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <h1 id="client-proposal-headline">{page.title}</h1>
             <p className="client-proposal-lead"><strong>{page.greeting}</strong> {page.intro}</p>
             <div className="client-proposal-hero-actions">
-              <a className="client-proposal-button client-proposal-button-hero" href="#assessment">See how KickStart works</a>
-              <a className="client-proposal-button client-proposal-button-outline" href="#opportunity">See the opportunity</a>
+              {(page.heroActions || [{label:"See how KickStart works",target:"assessment"},{label:"See the opportunity",target:"opportunity"}]).filter(action=>sectionOrder.includes(action.target)).map((action,i)=><a key={action.target} className={"client-proposal-button "+(i===0?"client-proposal-button-hero":"client-proposal-button-outline")} href={"#"+action.target}>{action.label}</a>)}
             </div>
           </div>
           {page.video && <ProspectVideo video={page.video} inHero />}
