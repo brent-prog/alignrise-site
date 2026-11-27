@@ -5,6 +5,7 @@ export const takoda: MasterProspectPageData = {
   "slug": "takoda-equine",
   "status": "draft",
   "clientName": "Takoda Equine",
+  "clientLogo": { "src": "https://www.takodaequine.com/wp-content/uploads/2026/01/Logo-takda-300x200.png", "alt": "Takoda Equine", "sourceUrl": "https://www.takodaequine.com/" },
   "eyebrow": "PREPARED ESPECIALLY FOR DIANE MURRAY",
   "title": "You know how to deliver a great experience. Let's get more people experiencing it.",
   "greeting": "Diane,",
@@ -12,17 +13,17 @@ export const takoda: MasterProspectPageData = {
   "context": [
     {
       "heading": "The opportunity",
-      "body": "The immediate priority is finding the right customers and turning interest in your equine-assisted experiences into bookings."
+      "body": "Your experiential leadership development work gives business owners, executives and teams a distinctive way to explore communication, trust and decision-making. The immediate priority is connecting that value to the right buyers and converting interest into bookings."
     }
   ],
   "opportunities": [
     {
       "title": "Find",
-      "detail": "Identify your ideal customers, clarify your value and determine which services offer the strongest immediate opportunity."
+      "detail": "Prioritize business owners, leadership teams and other ideal customers; clarify the value of your experiences and which offerings to promote first."
     },
     {
       "title": "Book",
-      "detail": "Build a practical marketing and sales plan, develop referral relationships and turn interest into paying clients."
+      "detail": "Build a focused outreach and referral plan, including potential HR and leadership-development partners, and develop a repeatable path from inquiry to booking."
     },
     {
       "title": "Grow",
