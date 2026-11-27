@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { commercialReady } from "@/content/commercial-terms";
 import { prospectPages } from "@/content/prospect-pages";
 import ProspectExperience from "@/components/prospect/ProspectExperience";
 import type { Metadata } from "next";
@@ -6,6 +7,7 @@ import type { Metadata } from "next";
 export const dynamicParams = false;
 const isPublic = (status: string) => status === "published" || (process.env.VERCEL_ENV !== "production" && status === "draft");
 export function generateStaticParams() {
+  for (const page of Object.values(prospectPages)) if (page.status === "published" && !commercialReady(page)) throw new Error("Incomplete commercial terms: " + page.slug);
   return Object.values(prospectPages).filter(p => isPublic(p.status)).map(p => ({ slug: p.slug }));
 }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
