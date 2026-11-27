@@ -148,6 +148,12 @@ export const prospectPages: Record<string, ProspectPageData> = {
   }
 ,
  "kw-chair-massage": {
+  "video": {
+    "src": "/proposal-media/kw-chair-massage-introduction.mp4",
+    "poster": "/proposal-media/kw-chair-massage-poster.jpg",
+    "heading": "A personal introduction",
+    "caption": "A personal message for Frances."
+  },
   "slug": "kw-chair-massage",
   "status": "published",
   "clientName": "KW Chair Massage",

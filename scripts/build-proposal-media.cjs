@@ -25,3 +25,6 @@ assemble(["hand-stone-intro-poster.b64"],
 
 assemble(["hand-stone-poster-improved.b64"],
  "hand-stone-introduction-poster-v2.jpg", 89179, "799cf9b3f009a2c7d6d02068b24ce35618ea45fbdcdb32937d390c4663dafbf9");
+
+assemble(Array.from({length: 19}, (_,i) => "kw-chair-intro-" + String(i).padStart(2,"0") + ".b64"),
+ "kw-chair-massage-introduction.mp4", 4885828, "5fe7e65434d4fd2230e873d11f26b45497f1a69afe78516a870bf25c2b1f2e12");
