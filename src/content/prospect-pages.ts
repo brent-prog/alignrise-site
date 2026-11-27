@@ -1,3 +1,4 @@
+import { takoda } from "./clients/takoda-equine";
 export type ProspectVideoData = { src: string; poster: string; heading?: string; caption?: string };
 export type ProspectCalculatorData = {
   kind: "appointments";
@@ -83,6 +84,7 @@ export type MasterProspectPageData = Omit<LegacyProspectPageData, "clientLogo" |
 export type ProspectPageData = LegacyProspectPageData | MasterProspectPageData;
 
 export const prospectPages: Record<string, ProspectPageData> = {
+  [takoda.slug]: takoda,
   "hand-stone-guelph-waterloo": {
     templateVersion: "v1",
     slug: "hand-stone-guelph-waterloo",
