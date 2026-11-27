@@ -16,7 +16,7 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
   const terms = subscriptionTerms(page);
-  const canAccept = Boolean(page.acceptance && terms && commercialReady(page));
+  const canAccept = Boolean(page.status !== "review" && page.acceptance && terms && commercialReady(page));
   const available = new Set([...(page.context.length || page.opportunities.length ? ["opportunity"] : []), ...(page.process?.length ? ["assessment"] : []), ...(page.deliverables?.length ? ["deliverables"] : []), ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"]);
   const sectionOrder = (page.sectionOrder || Array.from(available)).filter(id=>available.has(id));
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
@@ -146,6 +146,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <span className="client-proposal-header-label">A PERSONALIZED ALIGNRISE PROPOSAL</span>
       </div>
     </header>
+    {page.status === "review" && <div className="client-proposal-container" role="note"><p className="client-proposal-small">Review copy — not a final offer. Commercial terms are subject to confirmation; acceptance is disabled.</p></div>}
     <ProspectNavigation links={nav}/>
     <section className="client-proposal-hero" aria-labelledby="client-proposal-headline">
       <div className="client-proposal-container">
