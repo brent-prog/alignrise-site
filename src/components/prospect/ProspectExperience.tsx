@@ -34,6 +34,21 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         </div>
       </div>
     </section>),
+    "how-alignrise-works": (isPilot && <section className="client-proposal-section client-proposal-section-light" id="how-alignrise-works">
+      <div className="client-proposal-container">
+        <p className="client-proposal-overline">THE ALIGNRISE METHOD</p>
+        <h2>Work on your business, one priority at a time.</h2>
+        <p className="client-proposal-context">AlignRISE combines practical business tools, personalized AI guidance and direct accountability with Brent. You work at your own pace, using the tools to build a stronger business without a traditional consulting engagement.</p>
+        <div className="client-proposal-card-grid">
+          {[
+            ["01 · ASSESS","Understand your business","Identify what makes your service valuable and what is holding back growth."],
+            ["02 · ALIGN","Get everyone and everything working together","Clarify your ideal customers, unique value and the people, processes and measures that support consistent delivery."],
+            ["03 · ACT","Turn priorities into progress","Use your customized AI prompts and templates to build the tools you need and implement improvements."]
+          ].map(([step,title,detail])=><article className="client-proposal-step" key={step}><p className="client-proposal-overline">{step}</p><h3>{title}</h3><p>{detail}</p></article>)}
+        </div>
+        <div className="client-proposal-card" style={{marginTop:"1.5rem"}}><h3>Your tools. Your pace. My support.</h3><p>Start with a 30-minute call to personalize your toolkit. Work through your priorities using AI-guided prompts and templates, then meet with me once a month to review progress, resolve obstacles and decide what comes next.</p><p>No comprehensive assessment required before you begin.</p></div>
+      </div>
+    </section>),
     assessment: (<section className="client-proposal-section client-proposal-section-light" id="assessment">
       <div className="client-proposal-container">
         <p className="client-proposal-overline">{page.offerName}</p>
