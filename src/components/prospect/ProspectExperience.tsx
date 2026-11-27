@@ -45,6 +45,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           {method.steps.map((step,i)=><article className="client-proposal-step" key={step.label}><span className="client-proposal-step-number">0{i+1}</span><p className="client-proposal-overline">{step.label}</p><h3>{step.title}</h3><p>{step.detail}</p></article>)}
         </div>
         <div className="client-proposal-card" style={{marginTop:"1.5rem"}}><h3>{method.exampleTitle}</h3><p>{method.example}</p></div>
+        <div style={{marginTop:"1.25rem"}}><a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-button-hero">Learn more about AlignRISE ↗</a></div>
       </div>
     </section>),
     assessment: (<section className="client-proposal-section client-proposal-section-light" id="assessment">
