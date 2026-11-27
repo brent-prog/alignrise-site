@@ -21,7 +21,7 @@ export type LegacyProspectPageData = {
   sectionHeadings?: Record<string,string>;
   nextStepLabel?: string;
   slug: string;
-  status: "draft" | "published" | "archived";
+  status: "draft" | "review" | "published" | "archived";
   clientName: string;
   clientLogo: { src: string; alt: string; sourceUrl: string };
   eyebrow: string;
