@@ -8,6 +8,8 @@ import ScenarioCalculator from "./ScenarioCalculator";
 import EmailAcceptance from "./EmailAcceptance";
 import type { ProspectPageData } from "@/content/prospect-pages";
 import "./prospect.css";
+import "./visual-story.css";
+import { OpportunityStory, MethodStory, OnboardingStory } from "./VisualStory";
 
 const money = (value: number) => new Intl.NumberFormat("en-CA", {
   style: "currency", currency: "CAD", maximumFractionDigits: 0
@@ -16,6 +18,7 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
   const presentation = page.presentation;
   const method = presentation?.method;
+  const story = presentation?.visualStory;
   const terms = page.terms;
   const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
@@ -25,7 +28,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
     ...(page.status !== "review" && page.acceptance ? [{id:"accept",title:"Accept"}] : [])
   ];
   const sectionContent: Record<string, ReactNode> = {
-    opportunity: (<section className="client-proposal-section" id="opportunity">
+    opportunity: story ? <OpportunityStory story={story}/> : (<section className="client-proposal-section" id="opportunity">
       <div className="client-proposal-container">
         <h2>The opportunity</h2>
         {page.context.map((p,i) => <p className="client-proposal-context" key={i}>{p.body}</p>)}
@@ -36,7 +39,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         </div>
       </div>
     </section>),
-    "how-alignrise-works": (method && <section className="client-proposal-section client-proposal-section-light" id="how-alignrise-works">
+    "how-alignrise-works": story && method ? <MethodStory method={method} story={story} aiRequirement={presentation?.aiRequirement}/> : (method && <section className="client-proposal-section client-proposal-section-light" id="how-alignrise-works">
       <div className="client-proposal-container">
         <p className="client-proposal-overline">THE ALIGNRISE METHOD</p>
         <h2>{method.heading}</h2>
@@ -51,7 +54,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <div style={{marginTop:"1.25rem"}}><a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-learn-more">Learn more about AlignRISE ↗</a></div>
       </div>
     </section>),
-    assessment: (<section className="client-proposal-section client-proposal-section-light" id="assessment">
+    assessment: story ? <OnboardingStory page={page}/> : (<section className="client-proposal-section client-proposal-section-light" id="assessment">
       <div className="client-proposal-container">
         <p className="client-proposal-overline">{page.offerName}</p>
         <h2>{presentation?.approachHeading || "How we'll approach it"}</h2>
@@ -143,7 +146,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
       </div>
     </section>),
   };
-  return <main id="top" className={"client-proposal"+(presentation?.method ? " client-proposal-guided" : "")}>
+  return <main id="top" className={"client-proposal"+(presentation?.method ? " client-proposal-guided" : "")+(story ? " ar-visual-story" : "")}>
     <header className="client-proposal-header">
       <div className="client-proposal-container client-proposal-marks">
         <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit AlignRISE">
