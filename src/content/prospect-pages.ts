@@ -314,13 +314,13 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "assessment",
     "proposal"
   ],
-  "note": "Introductory total: $450 CAD over three months. Accountability session frequency, tax treatment and cancellation terms are subject to confirmation before enrollment.",
+  "note": "Introductory total: $450 CAD + HST over three months. Optional continuation: $300 CAD/month + HST. Accountability session frequency and cancellation terms are subject to confirmation before enrollment.",
   "terms": {
     "scope": "Complimentary toolkit and 30-minute onboarding; paid personal accountability support. Guided AI workflows are included in the toolkit.",
     "clientResponsibilities": "Participate in agreed sessions and retain responsibility for business decisions and implementation.",
     "schedule": "Accountability session frequency and duration to be confirmed.",
     "exclusions": "No done-for-you implementation, advertising spend or guaranteed business outcomes.",
-    "payment": "CAD $150/month for the first three months ($450 total). Optional continuation at CAD $300/month. HST treatment to be confirmed.",
+    "payment": "CAD $150/month plus applicable HST for the first three months ($450 plus HST total). Optional continuation at CAD $300/month plus applicable HST.",
     "cancellation": "Commitment, renewal and cancellation terms to be confirmed before enrollment.",
     "confidentiality": "3P Solutions will use non-public business information only to perform this engagement, keep it confidential and protect it with reasonable safeguards. Disclosure is limited to professional advisers or service providers bound to confidentiality, or as required by law. These obligations exclude information already public without breach, independently developed, or lawfully received without restriction, and continue after the engagement. Client identification or case studies require advance written permission. Do not provide personal health information or identifiable guest records without a separately approved data-handling arrangement.",
     "liability": "Limitation of liability to be agreed before enrollment.",
@@ -331,7 +331,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "contactSubject": "Takoda Equine — AlignRISE subscription",
   "presentation": {
     "priceCadence": "/month",
-    "priceCaption": "CAD · first three months",
+    "priceCaption": "CAD + HST · first three months",
     "heroAction": {
       "label": "Discover how AlignRISE works",
       "target": "how-alignrise-works"
