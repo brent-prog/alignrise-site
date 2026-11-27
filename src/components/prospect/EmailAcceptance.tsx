@@ -9,12 +9,14 @@ export default function EmailAcceptance({page}:{page: ProspectPageData}) {
   const [business, setBusiness] = useState("");
   const [authorized, setAuthorized] = useState(false);
   const proposalVersion = page.acceptance?.proposalVersion;
+  const engagement = page.subscription ? page.offerName : "AlignRISE KickStart proposal";
+  const fee = [page.price != null ? `CAD ${page.price.toLocaleString("en-CA")} plus applicable HST` : "", page.subscription ? `CAD ${page.subscription.price}/${page.subscription.cadence}${page.subscription.introductoryPeriod ? " ("+page.subscription.introductoryPeriod+")" : ""}; ${page.subscription.continuation}` : ""].filter(Boolean).join("; ");
   if (!page.acceptance) return null;
-  const questionSubject = `${page.clientName} — question about AlignRISE KickStart proposal`;
+  const questionSubject = `${page.clientName} — question about ${engagement}`;
   const questionBody = [
     "Hi Brent,",
     "",
-    `I have a question about the AlignRISE KickStart proposal for ${page.clientName}.`,
+    `I have a question about the ${engagement} for ${page.clientName}.`,
     "",
     "My question:",
     "",
@@ -28,18 +30,19 @@ export default function EmailAcceptance({page}:{page: ProspectPageData}) {
   function submit(e:FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !business.trim() || !authorized) return;
-    const subject = `${page.clientName} — AlignRISE KickStart acceptance request [${proposalVersion}]`;
+    const subject = `${page.clientName} — ${engagement} acceptance request [${proposalVersion}]`;
     const body = [
       "Hi Brent,",
       "",
-      "I have reviewed the AlignRISE KickStart proposal and its scope and commercial conditions, including confidentiality and liability, and would like to proceed by email authorization.",
+      `I have reviewed the ${engagement} and its scope and commercial conditions, including confidentiality and liability, and would like to proceed by email authorization.`,
       "",
       "I confirm I am authorized to act for the business identified below.",
       `Proposal reference: ${proposalVersion}`,
       `Proposal URL: https://clients.alignrise.ca/p/${page.slug}`,
       `Engagement: ${page.offerName}`,
-      `Fee: CAD $${page.price.toLocaleString("en-CA")} plus applicable HST`,
-      ...(page.toolkit ? [`Included: ${page.toolkit.durationMonths} months of AlignRISE Toolkit access and three 45-minute monthly accountability sessions, without automatic renewal.`] : []),
+      `Fee: ${fee}`,
+      ...(page.toolkit ? [`Included: ${page.toolkit.summary} ${page.toolkit.continuationNote}`] : []),
+      ...(page.subscription ? [`Included: ${page.subscription.includes.join("; ")}`, page.subscription.support, page.subscription.commitment, page.subscription.cancellation].filter(Boolean) : []),
       ...(page.guarantee ? [`Opportunity guarantee: ${page.guarantee}`] : []),
       "",
       `Authorized representative: ${name.trim()}`,
