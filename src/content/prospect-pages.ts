@@ -32,6 +32,9 @@ export type LegacyProspectPageData = {
   process: { heading: string; detail: string }[];
   deliverables: { title: string; detail: string }[];
   toolkit?: {
+    badge?: string;
+    durationLabel?: string;
+    factLabel?: string;
     heading: string;
     summary: string;
     durationMonths: number;
