@@ -64,6 +64,68 @@ Deliver a CORPORATE CLIENT DEVELOPMENT record and three next actions. Validate a
 
 const verificationPrompt = "Please verify that my AlignRISE project is ready to use. This is a short INSTALLATION CHECK, not a business assessment or methodology report.\n\nUse only this project's instructions and knowledge files. Ignore unrelated account memory, personal preferences, past chats and connected tools. This is the Rob Cooper Photography project; do not introduce other businesses. If the account itself is not isolated, say so briefly without importing details from other contexts.\n\nCheck that you can actually access all three items:\n- Project Instructions for Rob Cooper Photography\n- 3P-Focused-Working-Guide.txt\n- rob-cooper-business-context.txt\n\nVerify by referring to the actual content, not just filenames. Do NOT request the original source workbook, an existing Work Register, a prospect list or a scheduled Brent review: none are required to begin. Don't ask who I am based on account-level memory.\n\nUse exactly this short response structure:\nSTATUS: READY or NOT READY\nMATERIALS: Say which of the three are readable; identify any genuinely missing item.\nFOCUS: One sentence naming Rob's two problems and noting that the 3P guide includes the ten business functions and progressive alignment principles.\nNEXT: If READY, ask \"Which would you like to work on first: getting control of your workload or finding more corporate photo/video clients?\" If NOT READY, give only the specific correction needed.\n\nLimit your reply to 120 words. Do not list all ten functions, demand the full Alignment Engine or start an assessment. No tables, long lists, methodology recital, implementation plan or unrelated setup decisions. Do not begin the business interview yet.";
 
+const followupPrompts = [
+ {
+  key:"recovery",
+  number:"01",
+  title:"Recover and protect my commitments",
+  where:"Continue your existing Workflow chat in your AlignRISE Claude Project",
+  result:"An updated calendar and work register, with a practical plan for handling interruptions.",
+  prompt:`We met with Brent on Friday, November 27, and I want to follow through on the work we already started in THIS Workflow conversation. Do not restart my intake interview, ask me to upload the setup files again, or create a third workstream. Read the history of this conversation and any existing work register, schedule and project knowledge you can actually access. If something is unavailable, say so briefly rather than pretending you remember it.
+
+What we learned in the review:
+- I like the questions you've asked and I connected Google Calendar. But scheduled business-development tasks slipped when paid work and urgent requests arrived.
+- Examples of interruptions included work for Chris May and urgent WordPress/server work for Phil Ryan in Montreal. Keep these existing paying relationships; do not tell me to abandon them.
+- The core issue is not just putting things on a calendar. I need to honour commitments, evaluate incoming requests realistically and intentionally recover displaced work.
+- On Monday, November 30, I plan to see Melissa at Hospice of Waterloo Region about a video and ask for introductions to other organizations. Confirm the actual appointment and status with me rather than assuming it occurred.
+
+MY GOAL FOR THIS SESSION: turn the outstanding work and missed prospecting into a realistic schedule I will actually follow.
+
+Work with me one short, conversational question at a time. Begin by asking exactly: "What scheduled task slipped this week that you most want to recover first?" STOP and wait for my answer. Use our prior chat and my current calendar, if access is actually available and permitted, to avoid making me re-enter everything. Never claim to have read or changed my calendar unless you actually have.
+
+As we work, help me:
+1. Reconcile missed commitments with my current paid deliverables and deadlines; distinguish hard client deadlines from my own preferred times.
+2. Evaluate unexpected requests by urgency, customer consequences, income/value, time required and alignment with my current business goals. Help me decide whether to accept immediately, book another slot, negotiate timing, delegate if actually feasible, or decline.
+3. Make sure a displaced activity is deliberately completed, rescheduled, renegotiated or cancelled — NEVER silently dropped.
+4. Reserve feasible, protected time for corporate photo/video business development while honouring real paying commitments. Get my agreement before putting anything on my calendar.
+5. Help me choose one brief daily AlignRISE check-in routine (morning or evening), with the three most important commitments and recovery of anything displaced.
+6. Update my Work Register and Weekly Plan, assigning the primary 3P business function to significant actions and recording any useful alignment insight without requiring a formal Alignment Engine exercise.
+
+Create a usable UPDATED WORK REGISTER + NEXT-SEVEN-DAY PLAN with a short commitment-recovery rule, and at most three specific next actions with agreed dates. Separate confirmed facts from assumptions. Keep this focused on execution, not another generic productivity lecture. No multipart questions or large questionnaire.`
+ },
+ {
+  key:"outreach",
+  number:"02",
+  title:"Turn target organizations into real conversations",
+  where:"Continue your existing Biz Dev chat in your AlignRISE Claude Project",
+  result:"Confirmed outreach actions, referral follow-ups, and an up-to-date prospect log.",
+  prompt:`We met with Brent on Friday, November 27, and I want to turn the business-development work already done in THIS Biz Dev conversation into actual outreach. Do not create a new project or third workstream and do not repeat the original customer-discovery interview. Use the existing conversation, provisional ICP/UVP and prospect list if you can actually access them. Tell me briefly if anything essential is unavailable.
+
+What we learned in the review:
+- I enjoy working with Hospice of Waterloo Region because of its mission, people and the opportunity to contribute meaningfully. That is relevant to my provisional ideal-customer profile, not a fully established Alignment Engine.
+- A possible value proposition we discussed was high-quality nonprofit photo/video work without production-house pricing. It is a hypothesis to substantiate, not a claim proven in every market.
+- Our research identified promising organizations, including KidsAbility, a food bank, Big Brothers Big Sisters and Waterloo Region Hospital Foundation. These are POSSIBLE prospects, not verified decision-maker contacts or completed outreach.
+- No actual prospecting, outreach or follow-up was completed by the November 27 review because other paid work displaced my scheduled development time.
+- I explicitly committed to ask Melissa at Hospice of Waterloo Region for introductions when seeing her on Monday, November 30. Verify whether that conversation actually happened and what came of it; do not invent introductions.
+- Amy Rose mentioned a possible hockey billet-family portrait opportunity. It can be captured as an opportunity for later evaluation, but should NOT derail this corporate/organizational client-development work.
+
+MY GOAL: move from a good list and a good plan to verified contact opportunities, outreach and a simple record of responses.
+
+Ask exactly ONE small, conversational question per message. Begin with exactly: "Have you spoken with Melissa at Hospice about introductions yet?" Stop and wait. If the answer is no, help me make a realistic commitment to do so. If yes, record what she actually said and the next action.
+
+Then, using the prospect list we already discussed:
+1. Confirm which organizations and contact paths are real, researched and suitable; never invent a contact name, email, permission or client need.
+2. Choose the smallest realistic first outreach batch based on my calendar and paid work, not an arbitrary volume target.
+3. Help me prepare concise, personal outreach using genuine experience, substantiated examples and appropriate permissions to reference client work.
+4. Reserve and protect outreach and follow-up time, or give me a concrete action to schedule it; never claim a calendar update occurred unless you actually completed it with my authorization.
+5. Update the Corporate Client Development / Prospect Log: organization, why it fits, confirmed contact route, next step, owner, agreed date, status and outcome. Tag important actions with the relevant 3P business function.
+6. Keep a minimal scorecard of actual researched contacts, outreach sent, replies, conversations and qualified opportunities. Distinguish activity planned from activity completed.
+7. Capture useful, provisional ICP/UVP insights for eventual Alignment Engine development, without launching a separate strategy or business assessment.
+
+End with a short UPDATED PROSPECT LOG and no more than three concrete agreed actions before my Friday, December 11, 2:00 PM review with Brent. Ask for confirmation before assigning dates. No multipart questions, invented results, generic 25-lead list or website-rebuild recommendations.`
+ }
+];
+
 const cards = [
  {key:"work",number:"01",title:"Get control of my workload",desc:"Keep the work that pays. Organize commitments, reduce disruptive task switching and build a workable next seven days.",tag:"Planning · Processes · Performance",result:"Today's output: a real task list, weekly schedule and 3 immediate actions.",prompt:workPrompt},
  {key:"growth",number:"02",title:"Get more corporate photo/video clients",desc:"Build on what is working with Hospice and other customers to find and approach more organizations that need those services.",tag:"ICP · UVP · Product · Profit",result:"Today's output: an initial customer profile, offer, five prospects and outreach actions.",prompt:growthPrompt}
@@ -76,6 +138,7 @@ export default function RobCooperOnboarding(){
  const [showInstructions,setShowInstructions]=useState(false);
  const [showVerification,setShowVerification]=useState(false);
  const [showSessionPrompt,setShowSessionPrompt]=useState(false);
+ const [showFollowup,setShowFollowup]=useState<string[]>([]);
 
  async function copy(text:string,key:string){
   try {await navigator.clipboard.writeText(text);setCopied(key);window.setTimeout(()=>setCopied(""),2100);} catch {setCopied("error");}
@@ -99,11 +162,34 @@ export default function RobCooperOnboarding(){
   <header style={{background:"#201060",color:"#fff",padding:"10px max(20px, calc((100vw - 1040px) / 2))",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:10}}>
    <a href="https://alignrise.ca" target="_blank" rel="noopener noreferrer" aria-label="AlignRISE website" style={{display:"inline-flex",alignItems:"center",flexShrink:0}}><Image src="/alignrise-logo.svg" alt="AlignRISE™" width={88} height={88} priority style={{display:"block",width:"clamp(72px,9vw,88px)",height:"auto"}} /></a><div style={{fontSize:12,opacity:.85}}>3P Solutions · Client workspace</div>
   </header>
-  <nav aria-label="Onboarding navigation" style={{position:"sticky",top:0,zIndex:20,display:"flex",gap:20,flexWrap:"wrap",background:"white",borderBottom:"1px solid #e5e7eb",padding:"12px max(20px, calc((100vw - 1040px)/2))",fontSize:13,fontWeight:700}}><a href="#setup">1. Set up Claude</a><a href="#choices">2. Choose problem</a><a href="#start-prompt">3. Start session</a><a href="#review">4. Review</a></nav>
+  <nav aria-label="Onboarding navigation" style={{position:"sticky",top:0,zIndex:20,display:"flex",gap:20,flexWrap:"wrap",background:"white",borderBottom:"1px solid #e5e7eb",padding:"12px max(20px, calc((100vw - 1040px)/2))",fontSize:13,fontWeight:700}}><a href="#next-steps">Next actions · Nov 27 review</a><a href="#previous-steps">Previous onboarding &amp; starter prompts</a></nav>
   <div style={{maxWidth:1040,margin:"0 auto",padding:"20px 20px 52px"}}>
-   <p style={{fontSize:12,fontWeight:800,letterSpacing:".11em",color:"#4338ca",textTransform:"uppercase"}}>Your first day with AlignRISE</p>
-   <h1 style={{fontSize:"clamp(29px,4vw,42px)",color:"#171329",maxWidth:830,lineHeight:1.15,letterSpacing:"-.035em",margin:"5px 0 12px"}}>Rob, let's work on the two things you asked for.</h1>
-   <p style={{maxWidth:790,fontSize:16,lineHeight:1.55,color:"#475569",marginBottom:18}}>You told Brent you need a better way to juggle different kinds of work, and you want more of the corporate photo/video work you're enjoying with Hospice. That's what we're solving. You already have Claude Pro, so you don't need another subscription or a new app.</p>
+   <section id="next-steps" style={{scrollMarginTop:85}}>
+    <p style={{fontSize:12,fontWeight:800,letterSpacing:".11em",color:"#4338ca",textTransform:"uppercase",marginBottom:8}}>Your next steps · Following our November 27 review</p>
+    <h1 style={{fontSize:"clamp(29px,4vw,42px)",color:"#171329",maxWidth:830,lineHeight:1.15,letterSpacing:"-.035em",margin:"5px 0 12px"}}>Rob, let's turn the plan into progress.</h1>
+    <p style={{maxWidth:810,fontSize:16,lineHeight:1.55,color:"#475569",marginBottom:18}}>Your Claude project is already set up and you've done the initial work. The next step is to <strong>follow through on what we discussed</strong>: protect the work on your calendar and turn your prospect list into real conversations. Continue in the same two Claude chats — there's nothing new to install.</p>
+    <div style={{background:"#eef2ff",border:"1px solid #c7d2fe",borderRadius:12,padding:"13px 16px",marginBottom:19,fontSize:14,lineHeight:1.6,color:"#312e81"}}>
+      <strong>Before our next review:</strong> Reschedule displaced activities, ask Melissa at Hospice for introductions on Monday, November 30, and begin a daily AlignRISE check-in habit. Our next review is <strong>Friday, December 11 at 2:00 p.m.</strong> Each prompt below builds on what you've already done.
+    </div>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:14}}>
+    {followupPrompts.map(c=><section key={c.key} style={{background:"#fff",border:"1px solid #e0e5ef",borderRadius:16,padding:20,display:"flex",flexDirection:"column",gap:11}}>
+      <div><p style={{fontSize:12,fontWeight:800,color:"#4338ca",margin:"0 0 7px"}}>NEXT ACTION {c.number}</p>
+       <h2 style={{fontSize:21,color:"#201060",margin:"0 0 9px",lineHeight:1.25}}>{c.title}</h2>
+       <p style={{fontSize:14,color:"#475569",lineHeight:1.55,margin:"0 0 9px"}}>{c.where}</p>
+       <p style={{fontSize:13,color:"#334155",lineHeight:1.5,margin:0}}><strong>Outcome:</strong> {c.result}</p>
+      </div>
+      <div style={{display:"flex",gap:9,flexWrap:"wrap",marginTop:"auto"}}>
+       <button onClick={()=>copy(c.prompt,"followup-"+c.key)} style={button}>{copied==="followup-"+c.key?"Copied ✓":"Copy prompt"}</button>
+       <button onClick={()=>setShowFollowup(v=>v.includes(c.key)?v.filter(n=>n!==c.key):[...v,c.key])} aria-expanded={showFollowup.includes(c.key)} aria-controls={"followup-details-"+c.key} style={{...button,background:"#fff",border:"1px solid #c7d2fe",color:"#201060"}}>{showFollowup.includes(c.key)?"Hide prompt details":"Show prompt details"}</button>
+      </div>
+      {showFollowup.includes(c.key)&&<pre id={"followup-details-"+c.key} style={{fontFamily:"ui-monospace,Consolas,monospace",background:"#f8fafc",padding:14,borderRadius:9,whiteSpace:"pre-wrap",overflowWrap:"anywhere",fontSize:12,lineHeight:1.6,maxHeight:350,overflowY:"auto",border:"1px solid #e5e7eb",margin:0}}>{c.prompt}</pre>}
+    </section>)}
+    </div>
+    <p style={{fontSize:13,lineHeight:1.55,color:"#475569",margin:"15px 0 0"}}>Copy each prompt into its <strong>existing</strong> Workflow or Biz Dev Claude chat within your AlignRISE project. Nothing here restarts your project, erases previous work or creates another workstream. Confirm any new calendar changes with Claude before authorizing them.</p>
+   </section>
+   <details id="previous-steps" style={{background:"#fff",border:"1px solid #d9dfeb",borderRadius:16,marginTop:25,padding:"0 20px",scrollMarginTop:85}}>
+    <summary style={{padding:"19px 0",fontWeight:800,color:"#201060",cursor:"pointer",fontSize:17}}>Previously completed onboarding and original starter prompts <span style={{fontSize:13,color:"#64748b",fontWeight:500}}>(expand if needed)</span></summary>
+    <div style={{paddingBottom:20}}>
    <section id="setup" style={{background:"#fff",border:"1px solid #e3e8f1",padding:23,borderRadius:16,marginTop:14,scrollMarginTop:90}}>
     <h2 style={{fontSize:23,margin:"0 0 10px"}}>First, set up your Claude project (once)</h2>
     <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>Complete the first three setup steps, then run the verification prompt. Confirm Claude reports READY before starting a working session. The checklist is for your reference and does not lock the prompts.</p>
@@ -145,6 +231,8 @@ export default function RobCooperOnboarding(){
     <p style={{color:"#ebe9ff",lineHeight:1.65,margin:"0 0 10px"}}>From the workload session: your real task list, a workable next-seven-days schedule and agreed rules for managing interruptions. From corporate development: an initial customer profile based on real examples, a credible offer, your first five target organizations and the outreach actions you'll take.</p>
     <p style={{color:"#ebe9ff",lineHeight:1.65,margin:0}}>Do the work, record what happens and share the outputs before your scheduled 30-minute review. We are not starting a whole-company assessment or asking you to abandon the other work that pays the bills.</p>
    </section>
+    </div>
+   </details>
    <footer style={{fontSize:12,color:"#64748b",lineHeight:1.6,marginTop:22}}>AlignRISE™ by 3P Solutions. Private client onboarding. Your work and conversations stay in your own Claude account; this page does not read or store them.</footer>
   </div>
  </main>;
