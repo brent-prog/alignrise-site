@@ -8,19 +8,22 @@ import ScenarioCalculator from "./ScenarioCalculator";
 import EmailAcceptance from "./EmailAcceptance";
 import type { ProspectPageData } from "@/content/prospect-pages";
 import "./prospect.css";
+import { subscriptionTerms, commercialReady } from "@/content/commercial-terms";
 
 const money = (value: number) => new Intl.NumberFormat("en-CA", {
   style: "currency", currency: "CAD", maximumFractionDigits: 0
 }).format(value);
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
+  const terms = subscriptionTerms(page);
+  const canAccept = Boolean(page.acceptance && terms && commercialReady(page));
   const available = new Set([...(page.context.length || page.opportunities.length ? ["opportunity"] : []), ...(page.process?.length ? ["assessment"] : []), ...(page.deliverables?.length ? ["deliverables"] : []), ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"]);
   const sectionOrder = (page.sectionOrder || Array.from(available)).filter(id=>available.has(id));
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
     ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
     ...sectionOrder.map(id=>({id,title:page.sectionLabels?.[id] || sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
-    ...(page.acceptance && page.terms && sectionOrder.includes("proposal") ? [{id:"accept",title:"Accept"}] : [])
+    ...(canAccept && sectionOrder.includes("proposal") ? [{id:"accept",title:"Accept"}] : [])
   ];
   const sectionContent: Record<string, ReactNode> = {
     opportunity: (<section className="client-proposal-section" id="opportunity">
@@ -115,19 +118,19 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <h3>Opportunity guarantee</h3><p>{page.guarantee}</p>
           </div>}
           <p className="client-proposal-offer-note">{page.note}</p>
-          {page.terms && <details className="client-proposal-terms">
+          {terms && <details className="client-proposal-terms">
             <summary>Review scope and commercial conditions</summary>
             <dl>
               {([
-                [page.subscription ? "Engagement scope" : "Assessment scope",page.terms.scope],["Client responsibilities",page.terms.clientResponsibilities],
-                ["Timing",page.terms.schedule],["Exclusions",page.terms.exclusions],["Fee and payment",page.terms.payment],
-                ["Cancellation and refunds",page.terms.cancellation],["Confidentiality",page.terms.confidentiality],
-                ["Liability",page.terms.liability],["Proposal validity",page.terms.validity],
-                ["Parties and authorized signature",page.terms.contractingEntity]
+                [page.subscription ? "Engagement scope" : "Assessment scope",terms.scope],["Client responsibilities",terms.clientResponsibilities],
+                ["Timing",terms.schedule],["Exclusions",terms.exclusions],["Fee and payment",terms.payment],
+                ["Cancellation and refunds",terms.cancellation],["Confidentiality",terms.confidentiality],
+                ["Liability",terms.liability],["Proposal validity",terms.validity],
+                ["Parties and authorized signature",terms.contractingEntity]
               ] as const).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
             </dl>
           </details>}
-          {page.acceptance && page.terms
+          {canAccept
             ? <EmailAcceptance page={page}/>
             : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">{page.nextStepLabel || "Email Brent to discuss"}</a>}
         </div>
