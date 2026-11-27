@@ -301,7 +301,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "status": "published",
   "clientName": "Takoda Equine",
   "clientLogo": {
-    "src": "https://www.takodaequine.com/wp-content/uploads/2026/01/Logo-takda-300x200.png",
+    "src": "/proposal-media/takoda-equine-logo.png",
     "alt": "Takoda Equine",
     "sourceUrl": "https://www.takodaequine.com/"
   },

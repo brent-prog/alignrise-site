@@ -31,3 +31,5 @@ assemble(Array.from({length: 19}, (_,i) => "kw-chair-intro-" + String(i).padStar
 
 assemble(Array.from({length: 20}, (_,i) => "takoda-intro-" + String(i).padStart(2,"0") + ".b64"), "takoda-introduction.mp4", 5151673, "14d4125a3b8e3bc758e466c8fa0877e605bb0f38603a224deafd3b7aae0843d9");
 assemble(["takoda-poster-00.b64"], "takoda-introduction-poster.jpg", 54499, "23cf83545f46dc4dc4cd2346d24331a6633e963944482723b41b986dc07f7060");
+
+assemble(["takoda-logo.b64"], "takoda-equine-logo.png", 19293, "efbb0e22fc0e2d36049e6878956be6a82d4484f6cbcdf38faed8f4c4a25a065f");
