@@ -145,4 +145,92 @@ export const prospectPages: Record<string, ProspectPageData> = {
     contactEmail: "brent@3psolutions.ca",
     contactSubject: "Hand & Stone — AlignRISE KickStart proposal"
   }
+,
+ "kw-chair-massage": {
+  "slug": "kw-chair-massage",
+  "status": "draft",
+  "clientName": "KW Chair Massage",
+  "clientLogo": {
+    "src": "",
+    "alt": "KW Chair Massage",
+    "sourceUrl": "https://kwchairmassage.com/"
+  },
+  "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",
+  "title": "Grow your business without compromising what makes it special.",
+  "greeting": "Frances,",
+  "intro": "It was great chatting with you. You've built a business you're proud of. Let's put the systems in place to confidently serve more customers without compromising their experience.",
+  "context": [
+    {
+      "heading": "The opportunity",
+      "body": "Identify what makes your business different and what needs to be in place to consistently deliver that value as you grow."
+    }
+  ],
+  "opportunities": [
+    {
+      "title": "Define your value",
+      "detail": "Identify what makes KW Chair Massage different and which customers you want more of."
+    },
+    {
+      "title": "Deliver consistently",
+      "detail": "Clarify the processes and resources needed to protect your service quality."
+    },
+    {
+      "title": "Grow with confidence",
+      "detail": "Understand capacity and build a practical plan to pursue new customers."
+    }
+  ],
+  "process": [
+    {
+      "heading": "Personalize your starting point",
+      "detail": "A complimentary 30-minute session to customize your starting package."
+    },
+    {
+      "heading": "Work on your business",
+      "detail": "Use the AlignRISE tools and AI-assisted prompts to tackle one meaningful improvement at a time."
+    },
+    {
+      "heading": "Review and improve",
+      "detail": "Ongoing guidance and accountability to review progress."
+    }
+  ],
+  "deliverables": [
+    {
+      "title": "Complimentary starter package",
+      "detail": "Practical tools and personalized starting path."
+    },
+    {
+      "title": "Guided business improvement",
+      "detail": "Self-guided planning, process and performance tools."
+    },
+    {
+      "title": "Ongoing accountability",
+      "detail": "Support arrangements confirmed at onboarding."
+    }
+  ],
+  "price": 150,
+  "normalPrice": 300,
+  "offerName": "AlignRISE early pilot",
+  "offerHeadline": "Start building the confidence to grow.",
+  "sectionOrder": [
+    "opportunity",
+    "assessment",
+    "deliverables",
+    "proposal"
+  ],
+  "note": "Complimentary starter package and 30-minute introductory session. CAD $150/month plus HST for the first three months ($450 plus HST total). Optional continuation at $300/month plus HST.",
+  "terms": {
+    "scope": "Personalized starter package, introductory session and three months of self-guided AlignRISE access.",
+    "clientResponsibilities": "Participate in onboarding and work through agreed priorities.",
+    "schedule": "Start date and support arrangements agreed during onboarding.",
+    "exclusions": "No KickStart assessment, done-for-you consulting or guaranteed results.",
+    "payment": "CAD $150/month plus HST for three months; optional continuation at $300/month plus HST.",
+    "cancellation": "No automatic renewal after the pilot; cancellation terms to be agreed before paid services begin.",
+    "confidentiality": "Do not provide identifiable client health information.",
+    "liability": "Business decisions remain with the owner; final conditions to be agreed before paid services begin.",
+    "validity": "Proposed pilot offer, November 26, 2026; subject to mutual confirmation.",
+    "contractingEntity": "3P Solutions is the provider; client legal entity to be confirmed."
+  },
+  "contactEmail": "brent@3psolutions.ca",
+  "contactSubject": "KW Chair Massage — AlignRISE pilot"
+}
 };
