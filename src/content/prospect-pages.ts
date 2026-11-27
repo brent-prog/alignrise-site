@@ -333,6 +333,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "validity": "Offer subject to availability and written confirmation of engagement details.",
     "contractingEntity": "3P Solutions, a sole proprietorship, is the service provider. Client legal entity and authorized representative to be confirmed."
   },
+  "video": {"src":"/proposal-media/takoda-introduction.mp4","poster":"/proposal-media/takoda-introduction-poster.jpg","heading":"A personal introduction","caption":"A personal message for Diane."},
   "contactEmail": "brent@3psolutions.ca",
   "contactSubject": "Takoda Equine — AlignRISE subscription",
   "presentation": {
