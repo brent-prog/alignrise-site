@@ -14,11 +14,14 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 }).format(value);
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
+  const presentation = page.presentation;
+  const method = presentation?.method;
+  const terms = page.terms;
   const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
     ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
-    ...sectionOrder.map(id=>({id,title:sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
+    ...sectionOrder.map(id=>({id,title:presentation?.sectionLabels?.[id] || sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
     ...(page.acceptance ? [{id:"accept",title:"Accept"}] : [])
   ];
   const sectionContent: Record<string, ReactNode> = {
@@ -33,10 +36,21 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         </div>
       </div>
     </section>),
+    "how-alignrise-works": (method && <section className="client-proposal-section client-proposal-section-light" id="how-alignrise-works">
+      <div className="client-proposal-container">
+        <p className="client-proposal-overline">THE ALIGNRISE METHOD</p>
+        <h2>{method.heading}</h2>
+        <p className="client-proposal-context">{method.intro}</p>
+        <div className="client-proposal-card-grid">
+          {method.steps.map((step,i)=><article className="client-proposal-step" key={step.label}><span className="client-proposal-step-number">0{i+1}</span><p className="client-proposal-overline">{step.label}</p><h3>{step.title}</h3><p>{step.detail}</p></article>)}
+        </div>
+        <div className="client-proposal-card" style={{marginTop:"1.5rem"}}><h3>{method.exampleTitle}</h3><p>{method.example}</p></div>
+      </div>
+    </section>),
     assessment: (<section className="client-proposal-section client-proposal-section-light" id="assessment">
       <div className="client-proposal-container">
         <p className="client-proposal-overline">{page.offerName}</p>
-        <h2>How we'll approach it</h2>
+        <h2>{presentation?.approachHeading || "How we'll approach it"}</h2>
         <div className="client-proposal-card-grid">
           {page.process.map((step,i) => <article className="client-proposal-step" key={i}>
             <span className="client-proposal-step-number">0{i+1}</span><h3>{step.heading}</h3><p>{step.detail}</p>
@@ -48,7 +62,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
       <div className="client-proposal-container">
         <h2>What you'll receive</h2>
         <div className="client-proposal-card-grid">
-          {page.deliverables.map((d,i) => <article className="client-proposal-card" key={i}>
+          {(page.deliverables || []).map((d,i) => <article className="client-proposal-card" key={i}>
             <h3>{d.title}</h3><p>{d.detail}</p>
           </article>)}
         </div>
@@ -94,31 +108,32 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <div className="client-proposal-offer">
           <p className="client-proposal-offer-label">PERSONALIZED PROPOSAL · {page.offerName}</p>
           <h2>{page.offerHeadline}</h2>
+          {presentation?.freeItems && <div className="client-proposal-offer-includes"><ul>{presentation.freeItems.map(item=><li key={item}>{item} — FREE</li>)}</ul><h3>{presentation.paidTitle}</h3><p>{presentation.paidDetail}</p></div>}
           <div className="client-proposal-price">
-            {page.normalPrice && <del>{money(page.normalPrice)}</del>}
-            <strong>{money(page.price)}</strong>
-            <span>CAD + applicable HST</span>
+            {page.normalPrice && <del>{money(page.normalPrice)}{presentation?.priceCadence || ""}</del>}
+            <strong>{money(page.price)}{presentation?.priceCadence || ""}</strong>
+            <span>{presentation?.priceCaption || "CAD + applicable HST"}</span>
           </div>
           {page.toolkit && <p className="client-proposal-offer-includes"><strong>Also included:</strong> {page.toolkit.durationMonths} months of the AlignRISE monthly package (3P Toolkit, AI-guided tools and monthly accountability reviews).</p>}
           {page.guarantee && <div className="client-proposal-guarantee">
             <h3>Opportunity guarantee</h3><p>{page.guarantee}</p>
           </div>}
           <p className="client-proposal-offer-note">{page.note}</p>
-          <details className="client-proposal-terms">
+          {terms && presentation?.showTerms !== false && <details className="client-proposal-terms">
             <summary>Review scope and commercial conditions</summary>
             <dl>
               {([
-                ["Assessment scope",page.terms.scope],["Client responsibilities",page.terms.clientResponsibilities],
-                ["Timing",page.terms.schedule],["Exclusions",page.terms.exclusions],["Fee and payment",page.terms.payment],
-                ["Cancellation and refunds",page.terms.cancellation],["Confidentiality",page.terms.confidentiality],
-                ["Liability",page.terms.liability],["Proposal validity",page.terms.validity],
-                ["Parties and authorized signature",page.terms.contractingEntity]
+                ["Assessment scope",terms.scope],["Client responsibilities",terms.clientResponsibilities],
+                ["Timing",terms.schedule],["Exclusions",terms.exclusions],["Fee and payment",terms.payment],
+                ["Cancellation and refunds",terms.cancellation],["Confidentiality",terms.confidentiality],
+                ["Liability",terms.liability],["Proposal validity",terms.validity],
+                ["Parties and authorized signature",terms.contractingEntity]
               ] as const).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
             </dl>
-          </details>
+          </details>}
           {page.acceptance
             ? <EmailAcceptance page={page}/>
-            : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)} className="client-proposal-button client-proposal-button-inverse">Email Brent to discuss</a>}
+            : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)+(presentation?.nextStepBody ? "&body="+encodeURIComponent(presentation.nextStepBody) : "")} className="client-proposal-button client-proposal-button-inverse">{presentation?.nextStepLabel || "Email Brent to discuss"}</a>}
         </div>
       </div>
     </section>),
@@ -139,7 +154,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           <div className="client-proposal-client-mark">
             {/* Use the client's official mark, never synthetic artwork. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/>
+            {page.clientLogo.src ? <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/> : <strong>{page.clientName}</strong>}
           </div>
           <span className="client-proposal-overline">{page.eyebrow}</span>
         </div>
@@ -148,7 +163,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <h1 id="client-proposal-headline">{page.title}</h1>
             <p className="client-proposal-lead"><strong>{page.greeting}</strong> {page.intro}</p>
             <div className="client-proposal-hero-actions">
-              <a className="client-proposal-button client-proposal-button-hero" href="#assessment">See how KickStart works</a>
+              <a className="client-proposal-button client-proposal-button-hero" href={"#"+(presentation?.heroAction?.target || "assessment")}>{presentation?.heroAction?.label || "See how KickStart works"}</a>
               <a className="client-proposal-button client-proposal-button-outline" href="#opportunity">See the opportunity</a>
             </div>
           </div>

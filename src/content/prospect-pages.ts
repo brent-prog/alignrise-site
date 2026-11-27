@@ -24,7 +24,7 @@ export type ProspectPageData = {
   context: { heading: string; body: string }[];
   opportunities: { title: string; detail: string }[];
   process: { heading: string; detail: string }[];
-  deliverables: { title: string; detail: string }[];
+  deliverables?: { title: string; detail: string }[];
   toolkit?: {
     heading: string;
     summary: string;
@@ -40,7 +40,7 @@ export type ProspectPageData = {
   sectionOrder?: string[];
   guarantee?: string;
   note: string;
-  terms: {
+  terms?: {
     scope: string;
     clientResponsibilities: string;
     schedule: string;
@@ -56,6 +56,7 @@ export type ProspectPageData = {
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
   acceptance?: { proposalVersion: string };
+  presentation?: { priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; showTerms?:boolean; method?: {heading:string;intro:string;steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -145,4 +146,113 @@ export const prospectPages: Record<string, ProspectPageData> = {
     contactEmail: "brent@3psolutions.ca",
     contactSubject: "Hand & Stone — AlignRISE KickStart proposal"
   }
+,
+ "kw-chair-massage": {
+  "slug": "kw-chair-massage",
+  "status": "published",
+  "clientName": "KW Chair Massage",
+  "clientLogo": {
+    "src": "",
+    "alt": "KW Chair Massage",
+    "sourceUrl": "https://kwchairmassage.com/"
+  },
+  "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",
+  "title": "Grow your business without compromising what makes it special.",
+  "greeting": "Frances,",
+  "intro": "It was great chatting with you. You've built a business you're proud of, and I want to help you grow it without sacrificing the quality your customers value. I'd like to give you the complete AlignRISE package for free as part of our early pilot, and personally help you put it to work.",
+  "context": [
+    {
+      "heading": "The opportunity",
+      "body": "Identify what makes your business different and what needs to be in place to consistently deliver that value as you grow."
+    }
+  ],
+  "opportunities": [
+    {
+      "title": "Define your value",
+      "detail": "Identify what makes KW Chair Massage different and which customers you want more of."
+    },
+    {
+      "title": "Deliver consistently",
+      "detail": "Clarify the processes and resources needed to protect your service quality."
+    },
+    {
+      "title": "Grow with confidence",
+      "detail": "Understand capacity and build a practical plan to pursue new customers."
+    }
+  ],
+  "process": [
+    {
+      "heading": "Talk for 30 minutes",
+      "detail": "A complimentary conversation to identify your priorities."
+    },
+    {
+      "heading": "Get your personalized package",
+      "detail": "Receive your customized tools and AI prompts, then work through them at your own pace."
+    },
+    {
+      "heading": "Meet once a month",
+      "detail": "Three personal accountability sessions to support progress."
+    }
+  ],
+  "price": 150,
+  "normalPrice": 300,
+  "offerName": "AlignRISE early pilot",
+  "offerHeadline": "The entire AlignRISE package is yours. FREE.",
+  "sectionOrder": [
+    "opportunity",
+    "how-alignrise-works",
+    "assessment",
+    "proposal"
+  ],
+  "note": "Your total pilot investment is CAD $450 + HST over three months. Continue only if you see the value, at $300/month + HST. No automatic renewal. Any additional AI software costs are not included.",
+  "contactEmail": "brent@3psolutions.ca",
+  "contactSubject": "KW Chair Massage — AlignRISE pilot",
+  "presentation": {
+    "priceCadence": "/month",
+    "priceCaption": "CAD + HST · first three months",
+    "heroAction": {
+      "label": "Discover how AlignRISE works",
+      "target": "how-alignrise-works"
+    },
+    "nextStepLabel": "Arrange your free introductory call",
+    "nextStepBody": "Hi Brent,\nI'd like to arrange the complimentary 30-minute introductory call for KW Chair Massage.\nThanks, Frances",
+    "sectionLabels": {
+      "assessment": "Getting started",
+      "how-alignrise-works": "How it works",
+      "proposal": "Pilot offer"
+    },
+    "approachHeading": "Here's how we'll get started",
+    "showTerms": false,
+    "method": {
+      "heading": "What is AlignRISE?",
+      "intro": "A self-guided business improvement system combining the proven 3P business toolkit, your AI assistant and personal accountability. Build the systems you need to work ON your business, at your own pace.",
+      "steps": [
+        {
+          "label": "ASSESS",
+          "title": "Understand your business",
+          "detail": "Identify your strengths and the constraints holding you back."
+        },
+        {
+          "label": "ALIGN",
+          "title": "Define what success looks like",
+          "detail": "Clarify your ideal customers, unique value and the people, processes and measures needed to deliver it."
+        },
+        {
+          "label": "ACT",
+          "title": "Put improvements into practice",
+          "detail": "Use customized AI prompts and practical templates to turn priorities into repeatable improvements."
+        }
+      ],
+      "exampleTitle": "What this could look like for KW Chair Massage",
+      "example": "Use guided prompts to articulate what makes your service distinctive, create a consistent booking-to-event checklist, and map practitioner capacity before increasing advertising. These are examples, not a prescribed work plan."
+    },
+    "freeItems": [
+      "Complete AlignRISE starter toolkit",
+      "Personalized AI-guided starting package",
+      "30-minute introductory call"
+    ],
+    "paidTitle": "Pay only for my time",
+    "paidDetail": "Three personal accountability sessions with Brent — one each month for three months. Review progress, resolve obstacles and decide what to tackle next."
+  }
+}
 };

@@ -177,3 +177,30 @@ test("pre-acceptance question email is independent of consent and correctly addr
   await expect(page.locator("#accept-authorized")).not.toBeChecked();
   await expect(page.locator("#proposal #accept .client-proposal-accept-actions")).toHaveCount(1);
 });
+
+test("subscription pilot has its own offer, method, valid navigation and inquiry CTA", async ({page}) => {
+  await page.goto("/p/kw-chair-massage");
+  await expect(page.getByRole("heading",{level:1})).toContainText("Grow your business");
+  await expect(page.locator("#how-alignrise-works")).toBeVisible();
+  await expect(page.locator("#how-alignrise-works")).toContainText("ASSESS");
+  await expect(page.locator("#how-alignrise-works")).toContainText("ALIGN");
+  await expect(page.locator("#how-alignrise-works")).toContainText("ACT");
+  await expect(page.locator("#proposal")).toContainText("$150/month");
+  await expect(page.locator("#proposal")).toContainText("$300/month");
+  await expect(page.locator("#proposal")).toContainText("Three personal accountability sessions");
+  await expect(page.locator("#proposal")).toContainText("FREE");
+  await expect(page.locator("#proposal .client-proposal-terms")).toHaveCount(0);
+  await expect(page.locator("#accept, #calculator, video")).toHaveCount(0);
+  await expect(page.locator("main")).not.toContainText("KickStart");
+  await page.getByRole("link",{name:"Discover how AlignRISE works"}).click();
+  await expect(page).toHaveURL(/#how-alignrise-works$/);
+  const cta=page.getByRole("link",{name:"Arrange your free introductory call"});
+  await expect(cta).toBeVisible();
+  expect(await cta.getAttribute("href")).toMatch(/^mailto:brent@3psolutions.ca\?/);
+  const missing=await page.locator('a[href^="#"]').evaluateAll(links=>links.map(a=>a.getAttribute("href")!).filter(h=>h.length>1&&!document.getElementById(h.slice(1))));
+  expect(missing).toEqual([]);
+  for(const width of [320,375,390,768,1280]){
+    await page.setViewportSize({width,height:850});
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2)).toBe(false);
+  }
+});
