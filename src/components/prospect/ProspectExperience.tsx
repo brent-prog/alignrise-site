@@ -45,7 +45,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           {method.steps.map((step,i)=><article className="client-proposal-step" key={step.label}><span className="client-proposal-step-number">0{i+1}</span><p className="client-proposal-overline">{step.label}</p><h3>{step.title}</h3><p>{step.detail}</p></article>)}
         </div>
         <div className="client-proposal-card" style={{marginTop:"1.5rem"}}><h3>{method.exampleTitle}</h3><p>{method.example}</p></div>
-        <div style={{marginTop:"1.25rem"}}><a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-button-hero">Learn more about AlignRISE ↗</a></div>
+        <div style={{marginTop:"1.25rem"}}><a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-learn-more">Learn more about AlignRISE ↗</a></div>
       </div>
     </section>),
     assessment: (<section className="client-proposal-section client-proposal-section-light" id="assessment">
@@ -109,7 +109,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <div className="client-proposal-offer">
           <p className="client-proposal-offer-label">PERSONALIZED PROPOSAL · {page.offerName}</p>
           <h2>{page.offerHeadline}</h2>
-          {presentation?.freeItems && <div className="client-proposal-offer-includes"><ul>{presentation.freeItems.map(item=><li key={item}>{item} — FREE</li>)}</ul><h3>{presentation.paidTitle}</h3><p>{presentation.paidDetail}</p></div>}
+          {presentation?.freeItems && <div className="client-proposal-offer-includes"><ul>{presentation.freeItems.map(item=><li key={item}><span>{item}</span><strong className="client-proposal-free-tag">FREE</strong></li>)}</ul><h3>{presentation.paidTitle}</h3><p>{presentation.paidDetail}</p></div>}
           <div className="client-proposal-price">
             {page.normalPrice && <del>{money(page.normalPrice)}{presentation?.priceCadence || ""}</del>}
             <strong>{money(page.price)}{presentation?.priceCadence || ""}</strong>
@@ -134,12 +134,12 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           </details>}
           {page.acceptance
             ? <EmailAcceptance page={page}/>
-            : <div style={{display:"flex",flexWrap:"wrap",gap:"12px",alignItems:"center"}}>{presentation?.bookingUrl && <a href={presentation.bookingUrl} target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-button-inverse">Book your free 30-minute call</a>}<a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)+(presentation?.nextStepBody ? "&body="+encodeURIComponent(presentation.nextStepBody) : "")} className={presentation?.bookingUrl ? "client-proposal-button client-proposal-button-outline" : "client-proposal-button client-proposal-button-inverse"}>{presentation?.nextStepLabel || "Email Brent to discuss"}</a></div>}
+            : <div className="client-proposal-booking-actions">{presentation?.bookingUrl && <a href={presentation.bookingUrl} target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-button-inverse">Book your free 30-minute call</a>}<a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)+(presentation?.nextStepBody ? "&body="+encodeURIComponent(presentation.nextStepBody) : "")} className={presentation?.bookingUrl ? "client-proposal-button client-proposal-button-outline" : "client-proposal-button client-proposal-button-inverse"}>{presentation?.nextStepLabel || "Email Brent to discuss"}</a></div>}
         </div>
       </div>
     </section>),
   };
-  return <main id="top" className="client-proposal">
+  return <main id="top" className={"client-proposal"+(presentation?.method ? " client-proposal-guided" : "")}>
     <header className="client-proposal-header">
       <div className="client-proposal-container client-proposal-marks">
         <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit AlignRISE">

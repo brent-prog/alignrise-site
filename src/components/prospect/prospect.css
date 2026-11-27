@@ -211,3 +211,48 @@
 .client-proposal .client-proposal-offer .client-proposal-offer-includes p{color:#eeeaff;margin:0 0 8px;font-size:15px}
 .client-proposal .client-proposal-offer .client-proposal-offer-includes ul{color:#fff;margin:4px 0 12px;padding-left:22px}
 .client-proposal .client-proposal-offer .client-proposal-offer-includes li{margin:5px 0}
+
+/* Guided pilot: readable, compact visual rhythm on phones, without changing other proposals. */
+.client-proposal-learn-more{background:#4840e0;color:#fff!important}
+.client-proposal-booking-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.client-proposal-guided .client-proposal-offer-includes ul{list-style:none;padding:0;margin:0}
+.client-proposal-guided .client-proposal-offer-includes li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;margin:0;border-bottom:1px solid #ffffff24;line-height:1.4}
+.client-proposal-free-tag{font-size:11px;letter-spacing:.08em;color:#fff;background:#ffffff24;padding:4px 8px;border-radius:5px;white-space:nowrap}
+@media(max-width:720px){
+ .client-proposal-guided .client-proposal-container{padding-inline:19px}
+ .client-proposal-guided .client-proposal-hero{padding:22px 0 26px}
+ .client-proposal-guided .client-proposal-hero-identity{gap:13px;margin-bottom:20px}
+ .client-proposal-guided .client-proposal-hero-identity .client-proposal-client-mark{width:85px;min-width:85px;height:85px;padding:8px}
+ .client-proposal-guided .client-proposal-hero-identity .client-proposal-client-mark img{max-height:69px}
+ .client-proposal-guided .client-proposal-hero h1{font-size:clamp(29px,8vw,37px);line-height:1.1;max-width:560px;margin-bottom:14px}
+ .client-proposal-guided .client-proposal-hero .client-proposal-lead{font-size:15px;line-height:1.5;margin-bottom:18px}
+ .client-proposal-guided .client-proposal-hero-actions{display:grid;grid-template-columns:minmax(0,1fr)}
+ .client-proposal-guided .client-proposal-hero-actions .client-proposal-button{font-size:14px;text-align:center;display:flex;justify-content:center;align-items:center}
+ .client-proposal-guided .client-proposal-section{padding:27px 0;scroll-margin-top:56px}
+ .client-proposal-guided h2{font-size:25px;line-height:1.15;margin-bottom:10px}
+ .client-proposal-guided .client-proposal-context{font-size:15px;line-height:1.45;margin-bottom:17px}
+ .client-proposal-guided .client-proposal-card-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+ .client-proposal-guided #opportunity .client-proposal-card{border:0;border-radius:0;padding:12px 0 12px 15px;border-left:3px solid #4840e0;background:transparent;margin-bottom:12px}
+ .client-proposal-guided #opportunity .client-proposal-card:last-child{margin-bottom:0}
+ .client-proposal-guided h3{font-size:16px;margin:0 0 4px}
+ .client-proposal-guided .client-proposal-card p,.client-proposal-guided .client-proposal-step p{font-size:14px;line-height:1.45}
+ .client-proposal-guided .client-proposal-step{display:grid;grid-template-columns:36px minmax(0,1fr);column-gap:12px;align-items:start;padding:13px 0;border-bottom:1px solid #dcd9ee}
+ .client-proposal-guided .client-proposal-step:last-child{border-bottom:0}
+ .client-proposal-guided .client-proposal-step-number{grid-row:1/span 3;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#e7e3ff;color:#3429a8;font-size:13px;margin:0}
+ .client-proposal-guided .client-proposal-step h3,.client-proposal-guided .client-proposal-step p{grid-column:2}
+ .client-proposal-guided .client-proposal-step .client-proposal-overline{color:#4840e0;font-size:11px;font-weight:800;margin:0 0 4px}
+ .client-proposal-guided #how-alignrise-works .client-proposal-card{border:0;background:#eae7fa;border-radius:12px;padding:16px;margin-top:14px!important}
+ .client-proposal-guided #assessment{background:#fff}
+ .client-proposal-guided .client-proposal-learn-more{width:100%;text-align:center}
+ .client-proposal-guided #proposal{padding-top:0}
+ .client-proposal-guided .client-proposal-offer{padding:22px 17px;border-radius:16px}
+ .client-proposal-guided .client-proposal-offer-includes{padding:10px 13px}
+ .client-proposal-guided .client-proposal-offer-includes h3{font-size:18px}
+ .client-proposal-guided .client-proposal-offer-includes p{font-size:14px;line-height:1.5}
+ .client-proposal-guided .client-proposal-price{display:grid;grid-template-columns:1fr;gap:7px;margin:20px 0 12px}
+ .client-proposal-guided .client-proposal-price strong{font-size:40px;letter-spacing:-.04em}
+ .client-proposal-guided .client-proposal-price span{font-size:13px}
+ .client-proposal-guided .client-proposal-offer-note{font-size:13px;line-height:1.5}
+ .client-proposal-guided .client-proposal-booking-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;margin-top:20px}
+ .client-proposal-guided .client-proposal-booking-actions a{text-align:center;display:flex;align-items:center;justify-content:center}
+}

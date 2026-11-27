@@ -159,25 +159,25 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",
   "title": "Grow your business without compromising what makes it special.",
   "greeting": "Frances,",
-  "intro": "It was great chatting with you. You've built a business you're proud of, and I want to help you grow it without sacrificing the quality your customers value. I'd like to give you the complete AlignRISE package for free as part of our early pilot, and personally help you put it to work.",
+  "intro": "You’ve built a business you’re proud of. Let’s grow it without sacrificing service quality. I’d like to give you the complete AlignRISE toolkit for free and help you put it to work.",
   "context": [
     {
       "heading": "The opportunity",
-      "body": "Identify what makes your business different and what needs to be in place to consistently deliver that value as you grow."
+      "body": "Build the foundations for growth without losing what makes your service special."
     }
   ],
   "opportunities": [
     {
       "title": "Define your value",
-      "detail": "Identify what makes KW Chair Massage different and which customers you want more of."
+      "detail": "Clarify what sets KW Chair Massage apart and who you want to serve."
     },
     {
       "title": "Deliver consistently",
-      "detail": "Clarify the processes and resources needed to protect your service quality."
+      "detail": "Build repeatable processes that protect service quality."
     },
     {
       "title": "Grow with confidence",
-      "detail": "Understand capacity and build a practical plan to pursue new customers."
+      "detail": "Know your capacity before attracting new customers."
     }
   ],
   "process": [
@@ -187,7 +187,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
     },
     {
       "heading": "Get your personalized package",
-      "detail": "Receive your customized tools and AI prompts, then work through them at your own pace."
+      "detail": "Use your customized tools and AI prompts at your own pace."
     },
     {
       "heading": "Meet once a month",
@@ -204,7 +204,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "assessment",
     "proposal"
   ],
-  "note": "Your total pilot investment is CAD $450 + HST over three months. Continue only if you see the value, at $300/month + HST. No automatic renewal. Any additional AI software costs are not included.",
+  "note": "Total: CAD $450 + HST over three months. Optional continuation: $300/month + HST. No automatic renewal. Additional AI software costs not included.",
   "contactEmail": "brent@3psolutions.ca",
   "contactSubject": "KW Chair Massage — AlignRISE pilot",
   "presentation": {
@@ -226,7 +226,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "showTerms": false,
     "method": {
       "heading": "What is AlignRISE?",
-      "intro": "A self-guided business improvement system combining the proven 3P business toolkit, your AI assistant and personal accountability. Build the systems you need to work ON your business, at your own pace.",
+      "intro": "The 3P business toolkit, your AI assistant and personal accountability. A self-guided system for working ON your business, at your own pace.",
       "steps": [
         {
           "label": "ASSESS",
@@ -236,16 +236,16 @@ export const prospectPages: Record<string, ProspectPageData> = {
         {
           "label": "ALIGN",
           "title": "Define what success looks like",
-          "detail": "Clarify your ideal customers, unique value and the people, processes and measures needed to deliver it."
+          "detail": "Define your ideal customers, unique value and the systems to deliver it."
         },
         {
           "label": "ACT",
           "title": "Put improvements into practice",
-          "detail": "Use customized AI prompts and practical templates to turn priorities into repeatable improvements."
+          "detail": "Turn priorities into action with AI prompts and practical templates."
         }
       ],
       "exampleTitle": "What this could look like for KW Chair Massage",
-      "example": "Use guided prompts to articulate what makes your service distinctive, create a consistent booking-to-event checklist, and map practitioner capacity before increasing advertising. These are examples, not a prescribed work plan."
+      "example": "For example: define your unique value, create a booking-to-event checklist and map practitioner capacity before increasing advertising."
     },
     "freeItems": [
       "Complete AlignRISE starter toolkit",
@@ -253,7 +253,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
       "30-minute introductory call"
     ],
     "paidTitle": "Pay only for my time",
-    "paidDetail": "Three personal accountability sessions with Brent — one each month for three months. Review progress, resolve obstacles and decide what to tackle next."
+    "paidDetail": "One personal accountability session with Brent each month for three months. Review progress, solve problems and plan next steps."
   }
 }
 };
