@@ -28,3 +28,6 @@ assemble(["hand-stone-poster-improved.b64"],
 
 assemble(Array.from({length: 19}, (_,i) => "kw-chair-intro-" + String(i).padStart(2,"0") + ".b64"),
  "kw-chair-massage-introduction.mp4", 4885828, "5fe7e65434d4fd2230e873d11f26b45497f1a69afe78516a870bf25c2b1f2e12");
+
+assemble(Array.from({length: 20}, (_,i) => "takoda-intro-" + String(i).padStart(2,"0") + ".b64"), "takoda-introduction.mp4", 5151673, "14d4125a3b8e3bc758e466c8fa0877e605bb0f38603a224deafd3b7aae0843d9");
+assemble(["takoda-poster-00.b64"], "takoda-introduction-poster.jpg", 54499, "23cf83545f46dc4dc4cd2346d24331a6633e963944482723b41b986dc07f7060");
