@@ -158,7 +158,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",
   "title": "Grow your business without compromising what makes it special.",
   "greeting": "Frances,",
-  "intro": "It was great chatting with you. You've built a business you're proud of. Let's put the systems in place to confidently serve more customers without compromising their experience.",
+  "intro": "It was great chatting with you. You've built a business you're proud of, and I want to help you grow it without sacrificing the quality your customers value. I'd like to give you the complete AlignRISE package for free as part of our early pilot, and personally help you put it to work.",
   "context": [
     {
       "heading": "The opportunity",
@@ -189,41 +189,41 @@ export const prospectPages: Record<string, ProspectPageData> = {
       "detail": "Use the AlignRISE tools and AI-assisted prompts to tackle one meaningful improvement at a time."
     },
     {
-      "heading": "Review and improve",
-      "detail": "Ongoing guidance and accountability to review progress."
+      "heading": "Three personal accountability sessions",
+      "detail": "Meet with Brent once a month for three months to review your progress, work through obstacles and agree on your next priorities."
     }
   ],
   "deliverables": [
     {
-      "title": "Complimentary starter package",
-      "detail": "Practical tools and personalized starting path."
+      "title": "FREE — Complete AlignRISE toolkit",
+      "detail": "The practical business planning, process and performance tools to help you build a business that can grow with confidence."
     },
     {
-      "title": "Guided business improvement",
-      "detail": "Self-guided planning, process and performance tools."
+      "title": "FREE — Personalized starting package",
+      "detail": "A complimentary 30-minute introductory call with Brent, followed by customized tools and AI-guided prompts focused on your business and your priorities."
     },
     {
-      "title": "Ongoing accountability",
-      "detail": "Support arrangements confirmed at onboarding."
+      "title": "50% OFF — Three monthly accountability sessions",
+      "detail": "One personal session with Brent each month for three months. Review progress, get help overcoming obstacles and decide what to do next. You pay only for Brent’s time, at half the regular monthly rate."
     }
   ],
   "price": 150,
   "normalPrice": 300,
   "offerName": "AlignRISE early pilot",
-  "offerHeadline": "Start building the confidence to grow.",
+  "offerHeadline": "The entire AlignRISE package is yours. FREE.",
   "sectionOrder": [
     "opportunity",
     "assessment",
     "deliverables",
     "proposal"
   ],
-  "note": "Complimentary starter package and 30-minute introductory session. CAD $150/month plus HST for the first three months ($450 plus HST total). Optional continuation at $300/month plus HST.",
+  "note": "As an early pilot participant, you receive the complete AlignRISE toolkit, personalized AI-guided starting package and 30-minute introductory session at no cost. Your only investment is my time: three personal monthly accountability sessions, one each month, at half my regular rate. Just CAD $150 per month + HST for three months ($450 + HST total). After that, continue only if you see the value, at the regular $300/month + HST. No automatic renewal.",
   "terms": {
-    "scope": "Personalized starter package, introductory session and three months of self-guided AlignRISE access.",
+    "scope": "Complimentary complete AlignRISE toolkit, personalized starting package and 30-minute introductory session, plus three paid monthly personal accountability sessions with Brent (one each month).",
     "clientResponsibilities": "Participate in onboarding and work through agreed priorities.",
-    "schedule": "Start date and support arrangements agreed during onboarding.",
-    "exclusions": "No KickStart assessment, done-for-you consulting or guaranteed results.",
-    "payment": "CAD $150/month plus HST for three months; optional continuation at $300/month plus HST.",
+    "schedule": "Introductory call and three monthly accountability sessions scheduled by mutual agreement; session duration confirmed at onboarding.",
+    "exclusions": "No KickStart assessment, done-for-you consulting, additional paid software or guaranteed business results.",
+    "payment": "All toolkit and introductory onboarding materials are complimentary. Only the three monthly accountability sessions are charged, at CAD $150/month plus HST (50% off the regular $300/month rate). Total pilot investment CAD $450 plus HST. Optional continuation at $300/month plus HST.",
     "cancellation": "No automatic renewal after the pilot; cancellation terms to be agreed before paid services begin.",
     "confidentiality": "Do not provide identifiable client health information.",
     "liability": "Business decisions remain with the owner; final conditions to be agreed before paid services begin.",
