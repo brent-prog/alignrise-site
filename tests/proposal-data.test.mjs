@@ -27,3 +27,17 @@ test("published proposals have independently defined client branding and terms",
     for (const id of sectionIds) assert.ok(allowed.has(id) || page.extraSections?.some(s=>s.id===id), "unknown section ID "+id);
   }
 });
+
+test("subscription pilot uses configurable presentation without assessment terms",()=>{
+ const p=prospectPages["kw-chair-massage"];
+ assert.equal(p.price,150);
+ assert.equal(p.normalPrice,300);
+ assert.equal(p.presentation.priceCadence,"/month");
+ assert.equal(p.presentation.method.steps.length,3);
+ assert.ok(p.presentation.freeItems.length>=3);
+ assert.ok(p.sectionOrder.includes(p.presentation.heroAction.target));
+ assert.equal(p.acceptance,undefined);
+ assert.equal(p.terms,undefined);
+ assert.equal(p.calculator,undefined);
+ assert.equal(p.presentation.showTerms,false);
+});
