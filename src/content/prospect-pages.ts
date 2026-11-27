@@ -152,8 +152,8 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "status": "published",
   "clientName": "KW Chair Massage",
   "clientLogo": {
-    "src": "",
-    "alt": "KW Chair Massage",
+    "src": "/proposal-media/kw-chair-massage-logo.webp",
+    "alt": "KW Chair Massage official logo",
     "sourceUrl": "https://kwchairmassage.com/"
   },
   "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",

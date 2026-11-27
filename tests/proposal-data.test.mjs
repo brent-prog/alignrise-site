@@ -9,7 +9,7 @@ test("published proposals have independently defined client branding and terms",
     if (page.status !== "published") continue;
     assert.ok(page.clientName?.trim(), "missing client name");
     assert.ok(page.clientLogo?.alt?.trim(), "missing client logo description");
-    if (page.clientLogo.src) assert.equal(new URL(page.clientLogo.src).protocol,"https:", "client logo must be HTTPS");
+    if (page.clientLogo.src) assert.ok(page.clientLogo.src.startsWith("/proposal-media/") || new URL(page.clientLogo.src).protocol==="https:", "client logo must be local or HTTPS");
     else assert.ok(page.clientName?.trim(), "client-name fallback required");
     assert.ok(page.offerName?.trim() && page.offerHeadline?.trim(), "missing offer");
     if ((page.sectionOrder || []).includes("deliverables")) assert.ok(page.deliverables?.length > 0, "missing deliverables");
