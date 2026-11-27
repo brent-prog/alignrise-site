@@ -22,7 +22,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
   const nav = [
     ...(page.video ? [{id:"introduction",title:"Welcome"}] : []),
     ...sectionOrder.map(id=>({id,title:presentation?.sectionLabels?.[id] || sectionLabels[id] || page.extraSections?.find(s=>s.id===id)?.title || id})),
-    ...(page.acceptance ? [{id:"accept",title:"Accept"}] : [])
+    ...(page.status !== "review" && page.acceptance ? [{id:"accept",title:"Accept"}] : [])
   ];
   const sectionContent: Record<string, ReactNode> = {
     opportunity: (<section className="client-proposal-section" id="opportunity">
@@ -125,7 +125,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <summary>Review scope and commercial conditions</summary>
             <dl>
               {([
-                ["Assessment scope",terms.scope],["Client responsibilities",terms.clientResponsibilities],
+                [page.status === "review" ? "Engagement scope" : "Assessment scope",terms.scope],["Client responsibilities",terms.clientResponsibilities],
                 ["Timing",terms.schedule],["Exclusions",terms.exclusions],["Fee and payment",terms.payment],
                 ["Cancellation and refunds",terms.cancellation],["Confidentiality",terms.confidentiality],
                 ["Liability",terms.liability],["Proposal validity",terms.validity],
@@ -133,7 +133,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
               ] as const).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
             </dl>
           </details>}
-          {page.acceptance
+          {page.status !== "review" && page.acceptance
             ? <EmailAcceptance page={page}/>
             : <div className="client-proposal-booking-actions">{presentation?.bookingUrl && <a href={presentation.bookingUrl} target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-button-inverse">Book your free 30-minute call</a>}<a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)+(presentation?.nextStepBody ? "&body="+encodeURIComponent(presentation.nextStepBody) : "")} className={presentation?.bookingUrl ? "client-proposal-button client-proposal-button-outline" : "client-proposal-button client-proposal-button-inverse"}>{presentation?.nextStepLabel || "Email Brent to discuss"}</a></div>}
         </div>
@@ -149,6 +149,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <span className="client-proposal-header-label">A PERSONALIZED ALIGNRISE PROPOSAL</span>
       </div>
     </header>
+    {page.status === "review" && <div className="client-proposal-container" role="note"><p className="client-proposal-small">Review copy — not a final offer. Commercial terms subject to confirmation.</p></div>}
     <ProspectNavigation links={nav}/>
     <section className="client-proposal-hero" aria-labelledby="client-proposal-headline">
       <div className="client-proposal-container">
