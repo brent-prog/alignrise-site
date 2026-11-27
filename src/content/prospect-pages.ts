@@ -213,6 +213,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "offerHeadline": "The entire AlignRISE package is yours. FREE.",
   "sectionOrder": [
     "opportunity",
+    "how-alignrise-works",
     "assessment",
     "deliverables",
     "proposal"
@@ -231,6 +232,19 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "contractingEntity": "3P Solutions is the provider; client legal entity to be confirmed."
   },
   "contactEmail": "brent@3psolutions.ca",
-  "contactSubject": "KW Chair Massage — AlignRISE pilot"
+  "contactSubject": "KW Chair Massage — AlignRISE pilot",
+  "extraSections": [
+    {
+      "id": "how-alignrise-works",
+      "title": "What is AlignRISE — and how does it work?",
+      "paragraphs": [
+        "AlignRISE is a practical, self-guided business improvement system for small business owners. It brings together the same business frameworks and tools I use in my consulting work, with personalized AI-guided assistance and human accountability, so you can work ON your business without hiring a full-time consultant.",
+        "ASSESS — Understand where your business is today, what is working, and what is preventing you from achieving your goals. For KW Chair Massage, we will start with what makes your service valuable and what currently limits your confidence to grow.",
+        "ALIGN — Clarify what you want to achieve, who your ideal customers are, what makes you different, and what people, processes and performance measures need to be in place to deliver that value consistently.",
+        "ACT — Turn those priorities into manageable actions. Use your personalized AI prompts and practical templates to develop the tools your business actually needs, at your own pace. Each month, we meet personally to review progress, work through obstacles and identify what to tackle next.",
+        "You do the work in your own business, with guidance from AlignRISE and accountability from me. You don't need to complete a comprehensive business assessment or build every system before getting started. We start with your biggest priority and build from there."
+      ]
+    }
+  ]
 }
 };
