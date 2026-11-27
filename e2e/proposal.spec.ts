@@ -177,3 +177,19 @@ test("pre-acceptance question email is independent of consent and correctly addr
   await expect(page.locator("#accept-authorized")).not.toBeChecked();
   await expect(page.locator("#proposal #accept .client-proposal-accept-actions")).toHaveCount(1);
 });
+
+test("Takoda subscription draft uses master template without KickStart or orphaned links", async ({page}) => {
+  await page.goto("/p/takoda-equine");
+  await expect(page.getByRole("heading",{level:1})).toContainText("great experience");
+  await expect(page.locator(".client-proposal-client-mark")).toContainText("Takoda Equine");
+  await expect(page.locator("#proposal")).toContainText("$150/month");
+  await expect(page.locator("#proposal")).toContainText("$300/month");
+  await expect(page.locator("#proposal")).toContainText("First three months");
+  await expect(page.locator("#proposal .client-proposal-terms")).toHaveCount(0);
+  await expect(page.locator("#accept, #calculator, video")).toHaveCount(0);
+  await expect(page.locator("main")).not.toContainText("KickStart");
+  await expect(page.getByRole("link",{name:"Let's get started"})).toHaveAttribute("href",/^mailto:brent@3psolutions\.ca/);
+  const missing = await page.locator("main a[href^='#']").evaluateAll(links=>links.map(a=>a.getAttribute("href")!).filter(href=>!document.getElementById(href.slice(1))));
+  expect(missing).toEqual([]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2)).toBe(false);
+});
