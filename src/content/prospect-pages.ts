@@ -149,7 +149,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
 ,
  "kw-chair-massage": {
   "slug": "kw-chair-massage",
-  "status": "draft",
+  "status": "published",
   "clientName": "KW Chair Massage",
   "clientLogo": {
     "src": "",
