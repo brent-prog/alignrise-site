@@ -133,7 +133,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           </details>}
           {page.acceptance
             ? <EmailAcceptance page={page}/>
-            : <a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)+(presentation?.nextStepBody ? "&body="+encodeURIComponent(presentation.nextStepBody) : "")} className="client-proposal-button client-proposal-button-inverse">{presentation?.nextStepLabel || "Email Brent to discuss"}</a>}
+            : <div style={{display:"flex",flexWrap:"wrap",gap:"12px",alignItems:"center"}}>{presentation?.bookingUrl && <a href={presentation.bookingUrl} target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-button-inverse">Book your free 30-minute call</a>}<a href={"mailto:"+page.contactEmail+"?subject="+encodeURIComponent(page.contactSubject)+(presentation?.nextStepBody ? "&body="+encodeURIComponent(presentation.nextStepBody) : "")} className={presentation?.bookingUrl ? "client-proposal-button client-proposal-button-outline" : "client-proposal-button client-proposal-button-inverse"}>{presentation?.nextStepLabel || "Email Brent to discuss"}</a></div>}
         </div>
       </div>
     </section>),
