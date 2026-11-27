@@ -1,5 +1,7 @@
 # AlignRISE Client Proposal Publishing Playbook
 
+> **Creating a subscription-only, custom, or introductory client page?** Start with [CLIENT_PAGE_PLAYBOOK.md](./CLIENT_PAGE_PLAYBOOK.md), the offer-neutral design, video and publishing standard. This proposal playbook includes engagement-specific terms and historical KickStart examples and must **not** be copied as default offer content.
+
 **Status:** Production publishing system, updated November 24, 2026. **Release:** dual-brand proposal, client-independent sections, commercial safeguards, automated tests and Next.js security update deployed to production from merge commit `e8d2e84`.
 **Owner:** 3P Solutions. **Brand:** AlignRISE™ by 3P Solutions.
 **Reference:** 3P Solutions playbook in `brent-prog/3p-client-proposals/docs/PROPOSAL_PLAYBOOK.md`. Adopt its operational lessons, not its brand, terms, or build implementation.
