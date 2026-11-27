@@ -3,7 +3,7 @@ import type { MasterProspectPageData } from "../prospect-pages";
 export const takoda: MasterProspectPageData = {
   "templateVersion": "v1",
   "slug": "takoda-equine",
-  "status": "draft",
+  "status": "review",
   "clientName": "Takoda Equine",
   "clientLogo": { "src": "https://www.takodaequine.com/wp-content/uploads/2026/01/Logo-takda-300x200.png", "alt": "Takoda Equine", "sourceUrl": "https://www.takodaequine.com/" },
   "eyebrow": "PREPARED ESPECIALLY FOR DIANE MURRAY",
