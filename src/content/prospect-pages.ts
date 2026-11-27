@@ -24,7 +24,7 @@ export type ProspectPageData = {
   context: { heading: string; body: string }[];
   opportunities: { title: string; detail: string }[];
   process: { heading: string; detail: string }[];
-  deliverables: { title: string; detail: string }[];
+  deliverables?: { title: string; detail: string }[];
   toolkit?: {
     heading: string;
     summary: string;
@@ -40,7 +40,7 @@ export type ProspectPageData = {
   sectionOrder?: string[];
   guarantee?: string;
   note: string;
-  terms: {
+  terms?: {
     scope: string;
     clientResponsibilities: string;
     schedule: string;
@@ -56,6 +56,7 @@ export type ProspectPageData = {
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
   acceptance?: { proposalVersion: string };
+  presentation?: { priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; showTerms?:boolean; method?: {heading:string;intro:string;steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -181,30 +182,16 @@ export const prospectPages: Record<string, ProspectPageData> = {
   ],
   "process": [
     {
-      "heading": "Personalize your starting point",
-      "detail": "A complimentary 30-minute session to customize your starting package."
+      "heading": "Talk for 30 minutes",
+      "detail": "A complimentary conversation to identify your priorities."
     },
     {
-      "heading": "Work on your business",
-      "detail": "Use the AlignRISE tools and AI-assisted prompts to tackle one meaningful improvement at a time."
+      "heading": "Get your personalized package",
+      "detail": "Receive your customized tools and AI prompts, then work through them at your own pace."
     },
     {
-      "heading": "Three personal accountability sessions",
-      "detail": "Meet with Brent once a month for three months to review your progress, work through obstacles and agree on your next priorities."
-    }
-  ],
-  "deliverables": [
-    {
-      "title": "FREE — Complete AlignRISE toolkit",
-      "detail": "The practical business planning, process and performance tools to help you build a business that can grow with confidence."
-    },
-    {
-      "title": "FREE — Personalized starting package",
-      "detail": "A complimentary 30-minute introductory call with Brent, followed by customized tools and AI-guided prompts focused on your business and your priorities."
-    },
-    {
-      "title": "50% OFF — Three monthly accountability sessions",
-      "detail": "One personal session with Brent each month for three months. Review progress, get help overcoming obstacles and decide what to do next. You pay only for Brent’s time, at half the regular monthly rate."
+      "heading": "Meet once a month",
+      "detail": "Three personal accountability sessions to support progress."
     }
   ],
   "price": 150,
@@ -215,36 +202,57 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "opportunity",
     "how-alignrise-works",
     "assessment",
-    "deliverables",
     "proposal"
   ],
-  "note": "As an early pilot participant, you receive the complete AlignRISE toolkit, personalized AI-guided starting package and 30-minute introductory session at no cost. Your only investment is my time: three personal monthly accountability sessions, one each month, at half my regular rate. Just CAD $150 per month + HST for three months ($450 + HST total). After that, continue only if you see the value, at the regular $300/month + HST. No automatic renewal.",
-  "terms": {
-    "scope": "Complimentary complete AlignRISE toolkit, personalized starting package and 30-minute introductory session, plus three paid monthly personal accountability sessions with Brent (one each month).",
-    "clientResponsibilities": "Participate in onboarding and work through agreed priorities.",
-    "schedule": "Introductory call and three monthly accountability sessions scheduled by mutual agreement; session duration confirmed at onboarding.",
-    "exclusions": "No KickStart assessment, done-for-you consulting, additional paid software or guaranteed business results.",
-    "payment": "All toolkit and introductory onboarding materials are complimentary. Only the three monthly accountability sessions are charged, at CAD $150/month plus HST (50% off the regular $300/month rate). Total pilot investment CAD $450 plus HST. Optional continuation at $300/month plus HST.",
-    "cancellation": "No automatic renewal after the pilot; cancellation terms to be agreed before paid services begin.",
-    "confidentiality": "Do not provide identifiable client health information.",
-    "liability": "Business decisions remain with the owner; final conditions to be agreed before paid services begin.",
-    "validity": "Proposed pilot offer, November 26, 2026; subject to mutual confirmation.",
-    "contractingEntity": "3P Solutions is the provider; client legal entity to be confirmed."
-  },
+  "note": "Your total pilot investment is CAD $450 + HST over three months. Continue only if you see the value, at $300/month + HST. No automatic renewal. Any additional AI software costs are not included.",
   "contactEmail": "brent@3psolutions.ca",
   "contactSubject": "KW Chair Massage — AlignRISE pilot",
-  "extraSections": [
-    {
-      "id": "how-alignrise-works",
-      "title": "What is AlignRISE — and how does it work?",
-      "paragraphs": [
-        "AlignRISE is a practical, self-guided business improvement system for small business owners. It brings together the same business frameworks and tools I use in my consulting work, with personalized AI-guided assistance and human accountability, so you can work ON your business without hiring a full-time consultant.",
-        "ASSESS — Understand where your business is today, what is working, and what is preventing you from achieving your goals. For KW Chair Massage, we will start with what makes your service valuable and what currently limits your confidence to grow.",
-        "ALIGN — Clarify what you want to achieve, who your ideal customers are, what makes you different, and what people, processes and performance measures need to be in place to deliver that value consistently.",
-        "ACT — Turn those priorities into manageable actions. Use your personalized AI prompts and practical templates to develop the tools your business actually needs, at your own pace. Each month, we meet personally to review progress, work through obstacles and identify what to tackle next.",
-        "You do the work in your own business, with guidance from AlignRISE and accountability from me. You don't need to complete a comprehensive business assessment or build every system before getting started. We start with your biggest priority and build from there."
-      ]
-    }
-  ]
+  "presentation": {
+    "priceCadence": "/month",
+    "priceCaption": "CAD + HST · first three months",
+    "heroAction": {
+      "label": "Discover how AlignRISE works",
+      "target": "how-alignrise-works"
+    },
+    "nextStepLabel": "Arrange your free introductory call",
+    "nextStepBody": "Hi Brent,\nI'd like to arrange the complimentary 30-minute introductory call for KW Chair Massage.\nThanks, Frances",
+    "sectionLabels": {
+      "assessment": "Getting started",
+      "how-alignrise-works": "How it works",
+      "proposal": "Pilot offer"
+    },
+    "approachHeading": "Here's how we'll get started",
+    "showTerms": false,
+    "method": {
+      "heading": "What is AlignRISE?",
+      "intro": "A self-guided business improvement system combining the proven 3P business toolkit, your AI assistant and personal accountability. Build the systems you need to work ON your business, at your own pace.",
+      "steps": [
+        {
+          "label": "ASSESS",
+          "title": "Understand your business",
+          "detail": "Identify your strengths and the constraints holding you back."
+        },
+        {
+          "label": "ALIGN",
+          "title": "Define what success looks like",
+          "detail": "Clarify your ideal customers, unique value and the people, processes and measures needed to deliver it."
+        },
+        {
+          "label": "ACT",
+          "title": "Put improvements into practice",
+          "detail": "Use customized AI prompts and practical templates to turn priorities into repeatable improvements."
+        }
+      ],
+      "exampleTitle": "What this could look like for KW Chair Massage",
+      "example": "Use guided prompts to articulate what makes your service distinctive, create a consistent booking-to-event checklist, and map practitioner capacity before increasing advertising. These are examples, not a prescribed work plan."
+    },
+    "freeItems": [
+      "Complete AlignRISE starter toolkit",
+      "Personalized AI-guided starting package",
+      "30-minute introductory call"
+    ],
+    "paidTitle": "Pay only for my time",
+    "paidDetail": "Three personal accountability sessions with Brent — one each month for three months. Review progress, resolve obstacles and decide what to tackle next."
+  }
 }
 };
