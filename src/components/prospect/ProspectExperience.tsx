@@ -41,6 +41,8 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <p className="client-proposal-overline">THE ALIGNRISE METHOD</p>
         <h2>{method.heading}</h2>
         <p className="client-proposal-context">{method.intro}</p>
+        {method.introSecond && <p className="client-proposal-context">{method.introSecond}</p>}
+        {method.components && <div className="client-proposal-card-grid" style={{marginBottom:"1.5rem"}}>{method.components.map(component=><article className="client-proposal-card" key={component.heading}><h3>{component.heading}</h3><p>{component.description}</p></article>)}</div>}
         {presentation?.aiRequirement && <aside style={{background:"#eeebff",borderLeft:"3px solid #4840e0",borderRadius:"0 8px 8px 0",padding:"12px 15px",margin:"0 0 18px",fontSize:"14px",lineHeight:1.5,color:"#201060"}}><strong>What you’ll need</strong><p style={{margin:"4px 0 0"}}>{presentation.aiRequirement}</p></aside>}
         <div className="client-proposal-card-grid">
           {method.steps.map((step,i)=><article className="client-proposal-step" key={step.label}><span className="client-proposal-step-number">0{i+1}</span><p className="client-proposal-overline">{step.label}</p><h3>{step.title}</h3><p>{step.detail}</p></article>)}
@@ -112,7 +114,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           <h2>{page.offerHeadline}</h2>
           {presentation?.freeItems && <div className="client-proposal-offer-includes"><ul>{presentation.freeItems.map(item=><li key={item}><span>{item}</span><strong className="client-proposal-free-tag">FREE</strong></li>)}</ul><h3>{presentation.paidTitle}</h3><p>{presentation.paidDetail}</p></div>}
           <div className="client-proposal-price">
-            {page.normalPrice && <del>{money(page.normalPrice)}{presentation?.priceCadence || ""}</del>}
+            {page.normalPrice && <del>{money(page.normalPrice)}{presentation?.regularPriceSuffix || presentation?.priceCadence || ""}</del>}
             <strong>{money(page.price)}{presentation?.priceCadence || ""}</strong>
             <span>{presentation?.priceCaption || "CAD + applicable HST"}</span>
           </div>
@@ -125,12 +127,13 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <summary>Review scope and commercial conditions</summary>
             <dl>
               {([
-                [page.status === "review" ? "Engagement scope" : "Assessment scope",terms.scope],["Client responsibilities",terms.clientResponsibilities],
+                [presentation?.scopeLabel || (page.status === "review" ? "Engagement scope" : "Assessment scope"),terms.scope],["Client responsibilities",terms.clientResponsibilities],
                 ["Timing",terms.schedule],["Exclusions",terms.exclusions],["Fee and payment",terms.payment],
-                ["Cancellation and refunds",terms.cancellation],["Confidentiality",terms.confidentiality],
+                [presentation?.cancellationLabel || "Cancellation and refunds",terms.cancellation],["Confidentiality",terms.confidentiality],
                 ["Liability",terms.liability],["Proposal validity",terms.validity],
-                ["Parties and authorized signature",terms.contractingEntity]
-              ] as const).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
+                ["Materials and intellectual property",terms.materials],
+                [presentation?.termsPartiesLabel || "Parties and authorized signature",terms.contractingEntity]
+              ] as const).filter(([,value])=>value != null).map(([key,value]) => <div key={key}><dt>{key}</dt><dd>{value}</dd></div>)}
             </dl>
           </details>}
           {page.status !== "review" && page.acceptance

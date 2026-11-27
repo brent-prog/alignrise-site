@@ -51,12 +51,13 @@ export type ProspectPageData = {
     liability: string;
     validity: string;
     contractingEntity: string;
+    materials?: string;
   };
   calculator?: ProspectCalculatorData;
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
   acceptance?: { proposalVersion: string };
-  presentation?: { priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; aiRequirement?:string; showTerms?:boolean; method?: {heading:string;intro:string;steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
+  presentation?: { regularPriceSuffix?: string; scopeLabel?: string; cancellationLabel?: string; termsPartiesLabel?: string; priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; aiRequirement?:string; showTerms?:boolean; method?: {heading:string;intro:string;introSecond?:string;components?:{heading:string;description:string}[];steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -165,52 +166,52 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",
   "title": "Grow your business without compromising what makes it special.",
   "greeting": "Frances,",
-  "intro": "You’ve built a business you’re proud of. Let’s grow it without sacrificing service quality. I’d like to give you the complete AlignRISE toolkit for free and help you put it to work.",
+  "intro": "When we spoke, you told me you want to grow KW Chair Massage but are hesitant to advertise because you don't want to compromise the quality of service you've built. I'd like to help you put the foundations in place so you can grow with confidence, at your own pace.",
   "context": [
     {
       "heading": "The opportunity",
-      "body": "Build the foundations for growth without losing what makes your service special."
+      "body": "Your concern about increasing advertising before you know your business can handle the demand makes sense. The opportunity is to articulate the value of KW Chair Massage, develop a consistent way to manage bookings and deliver events, and understand practitioner capacity before actively pursuing more business. These are starting priorities to explore together, not findings from a formal assessment."
     }
   ],
   "opportunities": [
     {
       "title": "Define your value",
-      "detail": "Clarify what sets KW Chair Massage apart and who you want to serve."
+      "detail": "Clarify what makes KW Chair Massage distinctive, who benefits most from your services and how to communicate that value to prospective customers."
     },
     {
       "title": "Deliver consistently",
-      "detail": "Build repeatable processes that protect service quality."
+      "detail": "Develop a repeatable booking-to-event process that helps practitioners deliver the quality of experience you want customers to receive."
     },
     {
       "title": "Grow with confidence",
-      "detail": "Know your capacity before attracting new customers."
+      "detail": "Understand practitioner availability and service capacity before increasing advertising, so new demand can be supported without sacrificing quality."
     }
   ],
   "process": [
     {
       "heading": "Talk for 30 minutes",
-      "detail": "A complimentary conversation to identify your priorities."
+      "detail": "We'll spend 30 minutes discussing your business, identifying your immediate priorities and determining where to start."
     },
     {
-      "heading": "Get your personalized package",
-      "detail": "Use your customized tools and AI prompts at your own pace."
+      "heading": "Get your personalized starting package",
+      "detail": "I'll provide your complete AlignRISE toolkit and personalized AI-guided starting package so you can begin working on your priorities at your own pace."
     },
     {
       "heading": "Meet once a month",
-      "detail": "Three personal accountability sessions to support progress."
+      "detail": "We'll meet for 45 minutes each month to review your progress, work through obstacles and determine what to focus on next."
     }
   ],
   "price": 150,
   "normalPrice": 300,
-  "offerName": "AlignRISE early pilot",
-  "offerHeadline": "The entire AlignRISE package is yours. FREE.",
+  "offerName": "AlignRISE Pilot",
+  "offerHeadline": "The complete AlignRISE toolkit is yours. FREE.",
   "sectionOrder": [
     "opportunity",
     "how-alignrise-works",
     "assessment",
     "proposal"
   ],
-  "note": "Total: CAD $450 + HST over three months. Optional continuation: $300/month + HST. No automatic renewal. Your own paid AI subscription is required and is not included.",
+  "note": "Initial commitment: three months. Total investment: $450 CAD + HST, paid in three monthly instalments of $150 CAD + HST. Includes three 45-minute accountability sessions. Optional continuation: $300 CAD/month + HST. No automatic renewal. The toolkit and personalized starting materials remain yours for continued use within your own business, whether or not you continue paid accountability. A separate paid AI subscription, preferably Claude or ChatGPT, is required at your expense.",
   "contactEmail": "brent@3psolutions.ca",
   "contactSubject": "KW Chair Massage — AlignRISE pilot",
   "presentation": {
@@ -221,46 +222,78 @@ export const prospectPages: Record<string, ProspectPageData> = {
       "target": "how-alignrise-works"
     },
     "bookingUrl": "https://calendly.com/brent3p/30min",
-    "aiRequirement": "You’ll need your own paid AI subscription, preferably Claude or ChatGPT. Your AI account and subscription are separate from AlignRISE.",
+    "aiRequirement": "A separate paid AI subscription is required, preferably Claude or ChatGPT, at your expense.",
     "nextStepLabel": "Email Brent to arrange a time",
-    "nextStepBody": "Hi Brent,\nI'd like to arrange the complimentary 30-minute introductory call for KW Chair Massage.\nThanks, Frances",
+    "nextStepBody": "Hi Brent,\n\nI'd like to arrange the complimentary 30-minute introductory call for KW Chair Massage.\n\nThanks,\nFrances",
     "sectionLabels": {
       "assessment": "Getting started",
-      "how-alignrise-works": "How it works",
-      "proposal": "Pilot offer"
+      "how-alignrise-works": "What is AlignRISE?",
+      "proposal": "Your pilot offer"
     },
-    "approachHeading": "Here's how we'll get started",
-    "showTerms": false,
+    "approachHeading": "Getting started",
+    "showTerms": true,
     "method": {
       "heading": "What is AlignRISE?",
-      "intro": "The 3P business toolkit, your AI assistant and personal accountability. A self-guided system for working ON your business, at your own pace.",
+      "intro": "AlignRISE is a practical, self-guided business improvement system that combines the complete 3P business toolkit, your AI assistant and personal accountability to help you work ON your business, at your own pace.",
       "steps": [
         {
           "label": "ASSESS",
           "title": "Understand your business",
-          "detail": "Identify your strengths and the constraints holding you back."
+          "detail": "Identify what's working, what's holding you back and where improvement would create the most value."
         },
         {
           "label": "ALIGN",
           "title": "Define what success looks like",
-          "detail": "Define your ideal customers, unique value and the systems to deliver it."
+          "detail": "Clarify your direction, ideal customers, unique value, priorities and the systems your business needs to succeed."
         },
         {
           "label": "ACT",
           "title": "Put improvements into practice",
-          "detail": "Turn priorities into action with AI prompts and practical templates."
+          "detail": "Use practical templates, AI-guided workflows and accountability sessions to turn priorities into actions and measure progress."
         }
       ],
       "exampleTitle": "What this could look like for KW Chair Massage",
-      "example": "For example: define your unique value, create a booking-to-event checklist and map practitioner capacity before increasing advertising."
+      "example": "For KW Chair Massage, we could start by defining your unique value, creating a repeatable booking-to-event process and mapping practitioner capacity before increasing advertising.",
+      "introSecond": "The system helps you improve your People, Product and Profit by identifying what matters most, setting clear priorities and building the plans, processes and performance measurements that support sustainable growth.",
+      "components": [
+        {
+          "heading": "The complete 3P Toolkit",
+          "description": "Practical business frameworks, templates and tools to help you improve your People, Product and Profit."
+        },
+        {
+          "heading": "Your AI assistant",
+          "description": "Personalized prompts and guided workflows that help you apply the toolkit to your business and turn your knowledge into practical action."
+        },
+        {
+          "heading": "Personal accountability",
+          "description": "Regular, one-to-one conversations with Brent to review progress, work through obstacles and help you stay focused on what matters most."
+        }
+      ]
     },
     "freeItems": [
-      "Complete AlignRISE starter toolkit",
+      "Complete AlignRISE toolkit",
       "Personalized AI-guided starting package",
-      "30-minute introductory call"
+      "30-minute introductory and onboarding call"
     ],
-    "paidTitle": "Pay only for my time",
-    "paidDetail": "One personal accountability session with Brent each month for three months. Review progress, solve problems and plan next steps."
+    "paidTitle": "Pay only for my time.",
+    "paidDetail": "One personal, 45-minute accountability session each month to review your progress, work through challenges and determine what to focus on next.",
+    "regularPriceSuffix": " CAD/month + HST",
+    "scopeLabel": "Engagement scope",
+    "cancellationLabel": "Commitment and renewal",
+    "termsPartiesLabel": "Parties and written confirmation"
+  },
+  "terms": {
+    "scope": "Complimentary complete AlignRISE toolkit, personalized AI-guided starting package and 30-minute introductory and onboarding call, plus three paid 45-minute accountability sessions.",
+    "clientResponsibilities": "Participate in agreed sessions and retain responsibility for business decisions and implementation. The client is responsible for obtaining and paying for a separate AI subscription and evaluating AI-generated recommendations.",
+    "schedule": "One 45-minute accountability session per month for three months, scheduled by mutual agreement.",
+    "exclusions": "No formal KickStart assessment, done-for-you implementation, regulated professional advice or guaranteed business outcomes.",
+    "payment": "CAD $150/month plus applicable HST for the first three months ($450 CAD plus HST total), paid in three monthly instalments. Optional continuation at CAD $300/month plus applicable HST.",
+    "cancellation": "The initial commitment is three months. Exceptions require mutual written agreement. No automatic renewal.",
+    "confidentiality": "3P Solutions will use non-public business information only to perform this engagement, keep it confidential and protect it with reasonable safeguards. Disclosure is limited to professional advisers or service providers bound to confidentiality, or as required by law. These obligations exclude information already public without breach, independently developed, or lawfully received without restriction, and continue after the engagement. Client identification or case studies require advance written permission. Do not provide personal health information or identifiable guest records without a separately approved data-handling arrangement.",
+    "liability": "AlignRISE, provided by 3P Solutions, offers business education, tools, guidance and accountability support, not regulated professional advice or guaranteed business outcomes. The Client assumes sole responsibility for evaluating and implementing all recommendations, including AI-generated content, and for all resulting business decisions and outcomes. To the fullest extent permitted by law, 3P Solutions, its proprietor and representatives shall not be liable for any direct, indirect, consequential, financial or other losses, damages or claims arising from the engagement, including claims of negligence. Where liability cannot lawfully be excluded but may be limited, aggregate liability shall not exceed the fees paid by the Client to 3P Solutions during the preceding three months, excluding taxes. These provisions survive termination of the engagement.",
+    "validity": "Offer subject to availability and written confirmation of engagement details.",
+    "contractingEntity": "3P Solutions, a sole proprietorship, is the service provider. Client legal entity and authorized representative to be confirmed. Booking the introductory call does not constitute acceptance of the paid engagement.",
+    "materials": "The client may continue to use supplied toolkit and personalized starting materials within their own business regardless of whether paid accountability continues. Underlying intellectual property remains with its respective owner."
   }
 },
   "takoda-equine": {
