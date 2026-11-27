@@ -39,7 +39,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         </div>
       </div>
     </section>),
-    "how-alignrise-works": story && method ? <MethodStory method={method} story={story} aiRequirement={presentation?.aiRequirement}/> : (method && <section className="client-proposal-section client-proposal-section-light" id="how-alignrise-works">
+    "how-alignrise-works": story && method ? <MethodStory method={method} story={story} aiRequirement={presentation?.aiRequirement} clientName={page.clientName}/> : (method && <section className="client-proposal-section client-proposal-section-light" id="how-alignrise-works">
       <div className="client-proposal-container">
         <p className="client-proposal-overline">THE ALIGNRISE METHOD</p>
         <h2>{method.heading}</h2>

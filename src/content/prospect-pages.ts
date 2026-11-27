@@ -166,7 +166,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",
   "title": "Grow your business without compromising what makes it special.",
   "greeting": "Frances,",
-  "intro": "When we spoke, you told me you want to grow KW Chair Massage but are hesitant to advertise because you don't want to compromise the quality of service you've built. I'd like to help you put the foundations in place so you can grow with confidence, at your own pace.",
+  "intro": "I appreciated our conversation about growing KW Chair Massage without compromising service quality. Let's build the foundations so you can grow with confidence, at your own pace.",
   "context": [
     {
       "heading": "The opportunity",
@@ -280,7 +280,35 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "regularPriceSuffix": " CAD/month + HST",
     "scopeLabel": "Engagement scope",
     "cancellationLabel": "Commitment and renewal",
-    "termsPartiesLabel": "Parties and written confirmation"
+    "termsPartiesLabel": "Parties and written confirmation",
+    "visualStory": {
+      "opportunityHeading": "Build the foundation before you accelerate growth.",
+      "opportunityLead": "You don't just need more customers. You need to be ready for them.",
+      "journey": [
+        {
+          "label": "DEFINE",
+          "title": "Your value",
+          "detail": "Know who you serve and why they should choose you."
+        },
+        {
+          "label": "SYSTEMIZE",
+          "title": "Your delivery",
+          "detail": "Create a consistently great experience, regardless of who delivers it."
+        },
+        {
+          "label": "GROW",
+          "title": "Your business",
+          "detail": "Attract more customers with confidence in your capacity."
+        }
+      ],
+      "outcome": "More customers. Consistent quality. Sustainable growth.",
+      "application": [
+        "Define your ideal customers and what makes KW Chair Massage distinctive.",
+        "Clarify your unique value so prospective customers understand why to choose you.",
+        "Create a repeatable booking-to-event process to protect service quality.",
+        "Map practitioner availability and capacity before increasing advertising."
+      ]
+    }
   },
   "terms": {
     "scope": "Complimentary complete AlignRISE toolkit, personalized AI-guided starting package and 30-minute introductory and onboarding call, plus three paid 45-minute accountability sessions.",

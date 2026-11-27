@@ -117,3 +117,6 @@
 }
 
 .ar-visual-story .ar-system-result>strong span{display:block}@media(max-width:720px){.ar-visual-story .ar-system-result>strong{display:flex;flex-wrap:wrap;gap:6px 14px}.ar-visual-story .ar-system-result>strong span{display:inline-block}}
+
+/* Preserve the light background required by the official KW Chair Massage logo. */
+.ar-visual-story:has(.client-proposal-client-mark img[src="/proposal-media/kw-chair-massage-logo.webp"]) .client-proposal-hero-identity .client-proposal-client-mark{background:#fff}

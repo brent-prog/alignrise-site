@@ -23,14 +23,14 @@ export function OpportunityStory({story}:{story:Story}) {
  </div></section>;
 }
 
-export function MethodStory({method,story,aiRequirement}:{method:Method;story:Story;aiRequirement?:string}) {
+export function MethodStory({method,story,aiRequirement,clientName="Takoda Equine"}:{method:Method;story:Story;aiRequirement?:string;clientName?:string}) {
  return <section className="client-proposal-section ar-story-method" id="how-alignrise-works"><div className="client-proposal-container">
  <p className="client-proposal-overline">THE ALIGNRISE SYSTEM</p><h2>{method.heading}</h2><p className="ar-story-lead">{method.intro}</p>
  <div className="ar-system"><div className="ar-system-inputs">{method.components?.map((c,i)=><div key={c.heading} className="ar-system-input"><span className="ar-system-icon"><StoryIcon kind={i+3}/></span><div><h3>{c.heading}</h3><p>{c.description}</p></div><span className="ar-system-link" aria-hidden="true"/></div>)}</div><div className="ar-system-result"><span>WORK ON YOUR BUSINESS</span><strong><span>People</span><span>Product</span><span>Profit</span></strong><p>Clear priorities. Practical systems. Measurable progress.</p></div></div>
  <p className="ar-story-lead ar-system-summary">{method.introSecond}</p>
  <div className="ar-method-divider"><span>THE CONTINUOUS IMPROVEMENT PROCESS</span></div>
  <h2>Assess. Align. Act.</h2><ol className="ar-cycle">{method.steps.map((step,i)=><li key={step.label}><span className="ar-cycle-index">0{i+1}</span><div><p className="ar-cycle-label">{step.label}</p><h3>{step.title}</h3><p>{step.detail}</p></div><span className="ar-cycle-arrow" aria-hidden="true">→</span></li>)}</ol><div className="ar-cycle-return"><span aria-hidden="true">↶</span> Review progress and repeat</div>
- <div className="ar-application"><p className="ar-mini-label">IN PRACTICE · TAKODA EQUINE</p><h3>{method.exampleTitle}</h3><ol>{story.application.map((item,i)=><li key={item}><span>0{i+1}</span>{item}</li>)}</ol><p className="ar-example-note">Illustrative starting priorities, not assessment findings or guaranteed results.</p></div>
+ <div className="ar-application"><p className="ar-mini-label">IN PRACTICE · {clientName.toUpperCase()}</p><h3>{method.exampleTitle}</h3><ol>{story.application.map((item,i)=><li key={item}><span>0{i+1}</span>{item}</li>)}</ol><p className="ar-example-note">Illustrative starting priorities, not assessment findings or guaranteed results.</p></div>
  {aiRequirement && <p className="ar-ai-note"><strong>What you’ll need:</strong> {aiRequirement}</p>}
  <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-learn-more">Learn more about AlignRISE ↗</a>
  </div></section>;
