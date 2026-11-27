@@ -205,3 +205,9 @@
 .client-proposal-question-link{font-size:13px;font-weight:700;color:#ede9ff;text-decoration:underline;text-underline-offset:3px;line-height:1.5}
 .client-proposal-question-link:hover,.client-proposal-question-link:focus-visible{color:#fff;text-decoration-thickness:2px}
 @media(max-width:680px){.client-proposal-accept-actions{align-items:flex-start;flex-direction:column;gap:12px}}
+
+/* Dark offer panel: preserve contrast for nested subscription content. */
+.client-proposal .client-proposal-offer .client-proposal-offer-includes h3{color:#fff;font-size:19px;margin:16px 0 6px}
+.client-proposal .client-proposal-offer .client-proposal-offer-includes p{color:#eeeaff;margin:0 0 8px;font-size:15px}
+.client-proposal .client-proposal-offer .client-proposal-offer-includes ul{color:#fff;margin:4px 0 12px;padding-left:22px}
+.client-proposal .client-proposal-offer .client-proposal-offer-includes li{margin:5px 0}
