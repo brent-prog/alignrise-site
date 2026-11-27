@@ -14,6 +14,7 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
 }).format(value);
 
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
+  const isPilot = page.offerName === "AlignRISE early pilot";
   const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
@@ -95,9 +96,9 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           <p className="client-proposal-offer-label">PERSONALIZED PROPOSAL · {page.offerName}</p>
           <h2>{page.offerHeadline}</h2>
           <div className="client-proposal-price">
-            {page.normalPrice && <del>{money(page.normalPrice)}</del>}
-            <strong>{money(page.price)}</strong>
-            <span>CAD + applicable HST</span>
+            {page.normalPrice && <del>{money(page.normalPrice)}{isPilot ? "/month" : ""}</del>}
+            <strong>{money(page.price)}{isPilot ? "/month" : ""}</strong>
+            <span>{isPilot ? "CAD + HST · first three months" : "CAD + applicable HST"}</span>
           </div>
           {page.toolkit && <p className="client-proposal-offer-includes"><strong>Also included:</strong> {page.toolkit.durationMonths} months of the AlignRISE monthly package (3P Toolkit, AI-guided tools and monthly accountability reviews).</p>}
           {page.guarantee && <div className="client-proposal-guarantee">
@@ -108,7 +109,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <summary>Review scope and commercial conditions</summary>
             <dl>
               {([
-                ["Assessment scope",page.terms.scope],["Client responsibilities",page.terms.clientResponsibilities],
+                ["Engagement scope",page.terms.scope],["Client responsibilities",page.terms.clientResponsibilities],
                 ["Timing",page.terms.schedule],["Exclusions",page.terms.exclusions],["Fee and payment",page.terms.payment],
                 ["Cancellation and refunds",page.terms.cancellation],["Confidentiality",page.terms.confidentiality],
                 ["Liability",page.terms.liability],["Proposal validity",page.terms.validity],
@@ -139,7 +140,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
           <div className="client-proposal-client-mark">
             {/* Use the client's official mark, never synthetic artwork. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/>
+            {page.clientLogo.src ? <img src={page.clientLogo.src} alt={page.clientLogo.alt} referrerPolicy="no-referrer" loading="eager"/> : <strong>{page.clientName}</strong>}
           </div>
           <span className="client-proposal-overline">{page.eyebrow}</span>
         </div>
@@ -148,7 +149,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
             <h1 id="client-proposal-headline">{page.title}</h1>
             <p className="client-proposal-lead"><strong>{page.greeting}</strong> {page.intro}</p>
             <div className="client-proposal-hero-actions">
-              <a className="client-proposal-button client-proposal-button-hero" href="#assessment">See how KickStart works</a>
+              <a className="client-proposal-button client-proposal-button-hero" href="#assessment">{isPilot ? "See how AlignRISE works" : "See how KickStart works"}</a>
               <a className="client-proposal-button client-proposal-button-outline" href="#opportunity">See the opportunity</a>
             </div>
           </div>
