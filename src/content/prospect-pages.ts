@@ -12,7 +12,13 @@ export type ProspectCalculatorData = {
   sourceUrl?: string;
   disclaimer: string;
 };
-export type ProspectPageData = {
+export type LegacyProspectPageData = {
+  templateVersion?: "v1";
+  subscription?: { price: number; cadence: string; regularPrice?: number; introductoryPeriod?: string; taxNote?: string; continuation: string; includes: string[] };
+  heroActions?: { label: string; target: string }[];
+  sectionLabels?: Record<string,string>;
+  sectionHeadings?: Record<string,string>;
+  nextStepLabel?: string;
   slug: string;
   status: "draft" | "published" | "archived";
   clientName: string;
@@ -60,8 +66,22 @@ export type ProspectPageData = {
   contactSubject: string;
 };
 
+export type MasterProspectPageData = Omit<LegacyProspectPageData, "clientLogo" | "process" | "deliverables" | "price" | "terms" | "acceptance" | "note" | "offerHeadline"> & {
+  templateVersion: "v1";
+  clientLogo?: LegacyProspectPageData["clientLogo"];
+  process?: LegacyProspectPageData["process"];
+  deliverables?: LegacyProspectPageData["deliverables"];
+  price?: number;
+  terms?: LegacyProspectPageData["terms"];
+  acceptance?: never;
+  note?: string;
+  offerHeadline?: string;
+};
+export type ProspectPageData = LegacyProspectPageData | MasterProspectPageData;
+
 export const prospectPages: Record<string, ProspectPageData> = {
   "hand-stone-guelph-waterloo": {
+    templateVersion: "v1",
     slug: "hand-stone-guelph-waterloo",
     status: "published",
     clientName: "Hand & Stone Guelph + Waterloo",
@@ -144,5 +164,107 @@ export const prospectPages: Record<string, ProspectPageData> = {
     acceptance: { proposalVersion: "AR-HS-GW-2026-11-24-v1" },
     contactEmail: "brent@3psolutions.ca",
     contactSubject: "Hand & Stone — AlignRISE KickStart proposal"
-  }
+  },
+  "takoda-equine": {
+  "templateVersion": "v1",
+  "slug": "takoda-equine",
+  "status": "draft",
+  "clientName": "Takoda Equine",
+  "eyebrow": "PREPARED ESPECIALLY FOR DIANE MURRAY",
+  "title": "You know how to deliver a great experience. Let's get more people experiencing it.",
+  "greeting": "Diane,",
+  "intro": "You've developed a unique service. Let's build the business around it so you can spend more of your time doing what you do best.",
+  "context": [
+    {
+      "heading": "The opportunity",
+      "body": "The immediate priority is finding the right customers and turning interest in your equine-assisted experiences into bookings."
+    }
+  ],
+  "opportunities": [
+    {
+      "title": "Find",
+      "detail": "Identify your ideal customers, clarify your value and determine which services offer the strongest immediate opportunity."
+    },
+    {
+      "title": "Book",
+      "detail": "Build a practical marketing and sales plan, develop referral relationships and turn interest into paying clients."
+    },
+    {
+      "title": "Grow",
+      "detail": "Set clear priorities, understand your financial goals and develop the skills to run your business with confidence."
+    }
+  ],
+  "process": [
+    {
+      "heading": "Assess",
+      "detail": "Understand your customers, services, current business and immediate priorities."
+    },
+    {
+      "heading": "Align",
+      "detail": "Use the 3P business framework and guided AI workflows to decide where to focus."
+    },
+    {
+      "heading": "Act",
+      "detail": "Put practical actions into motion and review progress through personal accountability support."
+    }
+  ],
+  "deliverables": [
+    {
+      "title": "Complimentary toolkit",
+      "detail": "Complete AlignRISE business-building tools."
+    },
+    {
+      "title": "Personal onboarding",
+      "detail": "A complimentary 30-minute introduction and onboarding session."
+    },
+    {
+      "title": "Accountability support",
+      "detail": "Regular one-on-one guidance to review progress and stay focused."
+    }
+  ],
+  "offerName": "AlignRISE subscription",
+  "offerHeadline": "Let's get Takoda Equine growing.",
+  "sectionOrder": [
+    "opportunity",
+    "assessment",
+    "deliverables",
+    "proposal"
+  ],
+  "sectionLabels": {
+    "assessment": "How AlignRISE helps",
+    "deliverables": "What's included",
+    "proposal": "Your offer"
+  },
+  "sectionHeadings": {
+    "assessment": "Your business. Your AI. Our framework.",
+    "deliverables": "What you get with AlignRISE"
+  },
+  "heroActions": [
+    {
+      "label": "How AlignRISE can help",
+      "target": "assessment"
+    },
+    {
+      "label": "See your offer",
+      "target": "proposal"
+    }
+  ],
+  "subscription": {
+    "price": 150,
+    "cadence": "month",
+    "regularPrice": 300,
+    "introductoryPeriod": "First three months",
+    "continuation": "After the introductory period, you can choose to continue at $300 CAD per month.",
+    "includes": [
+      "Complete AlignRISE toolkit",
+      "Complimentary 30-minute onboarding",
+      "Guided AI workflows",
+      "Personal accountability support"
+    ]
+  },
+  "note": "Introductory total: $450 CAD over three months. Session frequency, tax treatment and cancellation terms to be confirmed before enrollment.",
+  "nextStepLabel": "Let's get started",
+  "contactEmail": "brent@3psolutions.ca",
+  "contactSubject": "Takoda Equine — AlignRISE subscription"
+}
 };
