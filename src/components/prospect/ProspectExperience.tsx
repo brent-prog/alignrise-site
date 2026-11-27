@@ -13,10 +13,15 @@ const money = (value: number) => new Intl.NumberFormat("en-CA", {
   style: "currency", currency: "CAD", maximumFractionDigits: 0
 }).format(value);
 
+function StoryIcon({kind}:{kind:number}) {
+  return <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{kind===0?<><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="11"/><circle cx="24" cy="24" r="4"/><path d="M24 6v5m18 13h-5M24 42v-5M6 24h5"/></>:kind===1?<><rect x="5" y="6" width="13" height="11" rx="2"/><rect x="30" y="31" width="13" height="11" rx="2"/><path d="M18 12h14a5 5 0 0 1 5 5v6m-5-5 5 5 5-5M30 36H16a5 5 0 0 1-5-5v-6m-5 5 5-5 5 5"/></>:<><path d="M6 40h36M10 34V23m10 11V18m10 16V12m10 22V6M7 20 21 10l8 3L41 3"/></>}</svg>;
+}
+
 export default function ProspectExperience({ page }: { page: ProspectPageData }) {
   const presentation = page.presentation;
   const method = presentation?.method;
   const terms = page.terms;
+  const story = presentation?.visualStory;
   const sectionOrder = page.sectionOrder || ["opportunity", "assessment", "deliverables", ...(page.toolkit ? ["toolkit"] : []), ...(page.calculator ? ["calculator"] : []), ...((page.extraSections||[]).map(s=>s.id)), "proposal"];
   const sectionLabels: Record<string,string> = {opportunity:"Opportunity",assessment:"Approach",deliverables:"What you get",toolkit:"3-month Toolkit",calculator:"Potential value",proposal:"Proposal"};
   const nav = [
@@ -27,13 +32,13 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
   const sectionContent: Record<string, ReactNode> = {
     opportunity: (<section className="client-proposal-section" id="opportunity">
       <div className="client-proposal-container">
-        <h2>The opportunity</h2>
+        {story ? <><p className="client-proposal-overline">THE OPPORTUNITY</p><h2>{page.context[0]?.heading}</h2><p className="story-subtitle">{page.context[0]?.body}</p><ol className="story-progression">{page.opportunities.map((o,i)=><li key={o.title}><div className="story-icon"><StoryIcon kind={i}/></div><div><span className="story-kicker">{story.opportunityLabels[i]}</span><h3>{o.title}</h3><p>{o.detail}</p></div></li>)}</ol><div className="story-outcome">{story.outcome}</div></> : <><h2>The opportunity</h2>
         {page.context.map((p,i) => <p className="client-proposal-context" key={i}>{p.body}</p>)}
         <div className="client-proposal-card-grid">
           {page.opportunities.map((o,i) => <article className="client-proposal-card" key={i}>
             <h3>{o.title}</h3><p>{o.detail}</p>
           </article>)}
-        </div>
+        </div></>}
       </div>
     </section>),
     "how-alignrise-works": (method && <section className="client-proposal-section client-proposal-section-light" id="how-alignrise-works">
@@ -42,12 +47,12 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <h2>{method.heading}</h2>
         <p className="client-proposal-context">{method.intro}</p>
         {method.introSecond && <p className="client-proposal-context">{method.introSecond}</p>}
-        {method.components && <div className="client-proposal-card-grid" style={{marginBottom:"1.5rem"}}>{method.components.map(component=><article className="client-proposal-card" key={component.heading}><h3>{component.heading}</h3><p>{component.description}</p></article>)}</div>}
-        {presentation?.aiRequirement && <aside style={{background:"#eeebff",borderLeft:"3px solid #4840e0",borderRadius:"0 8px 8px 0",padding:"12px 15px",margin:"0 0 18px",fontSize:"14px",lineHeight:1.5,color:"#201060"}}><strong>What you’ll need</strong><p style={{margin:"4px 0 0"}}>{presentation.aiRequirement}</p></aside>}
-        <div className="client-proposal-card-grid">
+        {method.components && (story ? <div className="story-system"><div className="story-system-inputs">{method.components.map((component,i)=><div className="story-system-input" key={component.heading}><span className="story-kicker">{story.componentRoles[i]}</span><h3>{component.heading}</h3><p>{component.description}</p></div>)}</div><div className="story-system-result"><span>WORK ON YOUR BUSINESS</span><strong>People · Product · Profit</strong></div></div> : <div className="client-proposal-card-grid" style={{marginBottom:"1.5rem"}}>{method.components.map(component=><article className="client-proposal-card" key={component.heading}><h3>{component.heading}</h3><p>{component.description}</p></article>)}</div>)}
+        {!story && presentation?.aiRequirement && <aside style={{background:"#eeebff",borderLeft:"3px solid #4840e0",borderRadius:"0 8px 8px 0",padding:"12px 15px",margin:"0 0 18px",fontSize:"14px",lineHeight:1.5,color:"#201060"}}><strong>What you’ll need</strong><p style={{margin:"4px 0 0"}}>{presentation.aiRequirement}</p></aside>}
+        {story ? <div className="story-method"><h3>Assess → Align → Act</h3><ol className="story-cycle">{method.steps.map((step,i)=><li key={step.label}><span className="story-cycle-num">0{i+1}</span><div><span className="story-kicker">{step.label}</span><h3>{step.title}</h3><p>{step.detail}</p></div></li>)}</ol><div className="story-repeat">↻ Measure progress, learn and repeat</div></div> : <div className="client-proposal-card-grid">
           {method.steps.map((step,i)=><article className="client-proposal-step" key={step.label}><span className="client-proposal-step-number">0{i+1}</span><p className="client-proposal-overline">{step.label}</p><h3>{step.title}</h3><p>{step.detail}</p></article>)}
-        </div>
-        <div className="client-proposal-card" style={{marginTop:"1.5rem"}}><h3>{method.exampleTitle}</h3><p>{method.example}</p></div>
+        </div>}
+        <div className={story?"story-example":"client-proposal-card"} style={{marginTop:"1.5rem"}}><h3>{method.exampleTitle}</h3><p>{method.example}</p></div>
         <div style={{marginTop:"1.25rem"}}><a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" className="client-proposal-button client-proposal-learn-more">Learn more about AlignRISE ↗</a></div>
       </div>
     </section>),
@@ -55,9 +60,9 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
       <div className="client-proposal-container">
         <p className="client-proposal-overline">{page.offerName}</p>
         <h2>{presentation?.approachHeading || "How we'll approach it"}</h2>
-        <div className="client-proposal-card-grid">
+        <div className={story?"story-timeline":"client-proposal-card-grid"}>
           {page.process.map((step,i) => <article className="client-proposal-step" key={i}>
-            <span className="client-proposal-step-number">0{i+1}</span><h3>{step.heading}</h3><p>{step.detail}</p>
+            <span className="client-proposal-step-number">0{i+1}</span><div>{story && <span className="story-kicker">{story.onboardingLabels[i]}</span>}<h3>{step.heading}</h3><p>{step.detail}</p></div>
           </article>)}
         </div>
       </div>
@@ -112,17 +117,18 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
         <div className="client-proposal-offer">
           <p className="client-proposal-offer-label">PERSONALIZED PROPOSAL · {page.offerName}</p>
           <h2>{page.offerHeadline}</h2>
-          {presentation?.freeItems && <div className="client-proposal-offer-includes"><ul>{presentation.freeItems.map(item=><li key={item}><span>{item}</span><strong className="client-proposal-free-tag">FREE</strong></li>)}</ul><h3>{presentation.paidTitle}</h3><p>{presentation.paidDetail}</p></div>}
+          {story ? <div className="story-offer-split"><div className="story-free"><span className="story-kicker">YOURS TO KEEP</span><ul>{presentation?.freeItems?.map(item=><li key={item}><span>{item}</span><strong>FREE</strong></li>)}</ul></div><div className="story-paid"><h3>{presentation?.paidTitle}</h3><p>{presentation?.paidDetail}</p><div className="client-proposal-price"><del>{page.normalPrice != null && money(page.normalPrice)}{presentation?.regularPriceSuffix}</del><strong>{money(page.price)}<small>/month</small></strong><span>{presentation?.priceCaption}</span></div></div></div> : <>{presentation?.freeItems && <div className="client-proposal-offer-includes"><ul>{presentation.freeItems.map(item=><li key={item}><span>{item}</span><strong className="client-proposal-free-tag">FREE</strong></li>)}</ul><h3>{presentation.paidTitle}</h3><p>{presentation.paidDetail}</p></div>}
           <div className="client-proposal-price">
             {page.normalPrice && <del>{money(page.normalPrice)}{presentation?.regularPriceSuffix || presentation?.priceCadence || ""}</del>}
             <strong>{money(page.price)}{presentation?.priceCadence || ""}</strong>
             <span>{presentation?.priceCaption || "CAD + applicable HST"}</span>
           </div>
+          </>}
           {page.toolkit && <p className="client-proposal-offer-includes"><strong>Also included:</strong> {page.toolkit.durationMonths} months of the AlignRISE monthly package (3P Toolkit, AI-guided tools and monthly accountability reviews).</p>}
           {page.guarantee && <div className="client-proposal-guarantee">
             <h3>Opportunity guarantee</h3><p>{page.guarantee}</p>
           </div>}
-          <p className="client-proposal-offer-note">{page.note}</p>
+          {story ? <dl className="story-offer-facts">{story.offerFacts.map(f=><div key={f.label}><dt>{f.label}</dt><dd>{f.value}</dd></div>)}</dl> : <p className="client-proposal-offer-note">{page.note}</p>}
           {terms && presentation?.showTerms !== false && <details className="client-proposal-terms">
             <summary>Review scope and commercial conditions</summary>
             <dl>
@@ -143,7 +149,7 @@ export default function ProspectExperience({ page }: { page: ProspectPageData })
       </div>
     </section>),
   };
-  return <main id="top" className={"client-proposal"+(presentation?.method ? " client-proposal-guided" : "")}>
+  return <main id="top" className={"client-proposal"+(presentation?.method ? " client-proposal-guided" : "")+(story ? " client-proposal-story" : "")}>
     <header className="client-proposal-header">
       <div className="client-proposal-container client-proposal-marks">
         <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit AlignRISE">

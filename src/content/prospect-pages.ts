@@ -57,7 +57,7 @@ export type ProspectPageData = {
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
   acceptance?: { proposalVersion: string };
-  presentation?: { regularPriceSuffix?: string; scopeLabel?: string; cancellationLabel?: string; termsPartiesLabel?: string; priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; aiRequirement?:string; showTerms?:boolean; method?: {heading:string;intro:string;introSecond?:string;components?:{heading:string;description:string}[];steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
+  presentation?: { visualStory?: {opportunityLabels:string[];outcome:string;componentRoles:string[];onboardingLabels:string[];offerFacts:{label:string;value:string}[]}; regularPriceSuffix?: string; scopeLabel?: string; cancellationLabel?: string; termsPartiesLabel?: string; priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; aiRequirement?:string; showTerms?:boolean; method?: {heading:string;intro:string;introSecond?:string;components?:{heading:string;description:string}[];steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -166,25 +166,25 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "eyebrow": "A PERSONALIZED ALIGNRISE PILOT FOR FRANCES VAN DIEREN",
   "title": "Grow your business without compromising what makes it special.",
   "greeting": "Frances,",
-  "intro": "When we spoke, you told me you want to grow KW Chair Massage but are hesitant to advertise because you don't want to compromise the quality of service you've built. I'd like to help you put the foundations in place so you can grow with confidence, at your own pace.",
+  "intro": "I appreciated our conversation about growing KW Chair Massage without compromising the quality of your service. I'd like to help you build the foundations to do that, at your own pace.",
   "context": [
     {
-      "heading": "The opportunity",
-      "body": "Your concern about increasing advertising before you know your business can handle the demand makes sense. The opportunity is to articulate the value of KW Chair Massage, develop a consistent way to manage bookings and deliver events, and understand practitioner capacity before actively pursuing more business. These are starting priorities to explore together, not findings from a formal assessment."
+      "heading": "Build the foundation before you accelerate growth.",
+      "body": "You don't just need more customers. You need to be ready for them."
     }
   ],
   "opportunities": [
     {
-      "title": "Define your value",
-      "detail": "Clarify what makes KW Chair Massage distinctive, who benefits most from your services and how to communicate that value to prospective customers."
+      "title": "Your value",
+      "detail": "Know who you serve and why they should choose you."
     },
     {
-      "title": "Deliver consistently",
-      "detail": "Develop a repeatable booking-to-event process that helps practitioners deliver the quality of experience you want customers to receive."
+      "title": "Your delivery",
+      "detail": "Create a consistently great experience, regardless of who delivers it."
     },
     {
-      "title": "Grow with confidence",
-      "detail": "Understand practitioner availability and service capacity before increasing advertising, so new demand can be supported without sacrificing quality."
+      "title": "Your business",
+      "detail": "Attract more customers with confidence in your capacity."
     }
   ],
   "process": [
@@ -280,7 +280,47 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "regularPriceSuffix": " CAD/month + HST",
     "scopeLabel": "Engagement scope",
     "cancellationLabel": "Commitment and renewal",
-    "termsPartiesLabel": "Parties and written confirmation"
+    "termsPartiesLabel": "Parties and written confirmation",
+    "visualStory": {
+      "opportunityLabels": [
+        "DEFINE",
+        "SYSTEMIZE",
+        "GROW"
+      ],
+      "outcome": "More customers. Consistent quality. Sustainable growth.",
+      "componentRoles": [
+        "Provides the framework",
+        "Helps you apply it",
+        "Keeps progress on track"
+      ],
+      "onboardingLabels": [
+        "30 minutes · complimentary",
+        "Your tools · complimentary",
+        "45 minutes · monthly"
+      ],
+      "offerFacts": [
+        {
+          "label": "Initial commitment",
+          "value": "3 months · $450 CAD + HST total, in three monthly instalments"
+        },
+        {
+          "label": "Personal accountability",
+          "value": "Three 45-minute sessions"
+        },
+        {
+          "label": "After the pilot",
+          "value": "Optional $300 CAD/month + HST · no automatic renewal"
+        },
+        {
+          "label": "Your materials",
+          "value": "Keep using the toolkit and personalized starting materials within your own business"
+        },
+        {
+          "label": "AI subscription",
+          "value": "Separate paid subscription, preferably Claude or ChatGPT, at your expense"
+        }
+      ]
+    }
   },
   "terms": {
     "scope": "Complimentary complete AlignRISE toolkit, personalized AI-guided starting package and 30-minute introductory and onboarding call, plus three paid 45-minute accountability sessions.",
