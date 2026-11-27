@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import type { ProspectPageData } from "@/content/prospect-pages";
+import type { LegacyProspectPageData } from "@/content/prospect-pages";
 
-export default function EmailAcceptance({page}:{page: ProspectPageData}) {
+export default function EmailAcceptance({page}:{page: LegacyProspectPageData}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [business, setBusiness] = useState("");
