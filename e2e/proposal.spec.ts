@@ -194,7 +194,9 @@ test("subscription pilot has its own offer, method, valid navigation and inquiry
   await expect(page.locator("main")).not.toContainText("KickStart");
   await page.getByRole("link",{name:"Discover how AlignRISE works"}).click();
   await expect(page).toHaveURL(/#how-alignrise-works$/);
-  const cta=page.getByRole("link",{name:"Arrange your free introductory call"});
+  const booking=page.getByRole("link",{name:"Book your free 30-minute call"});
+  await expect(booking).toHaveAttribute("href","https://calendly.com/brent3p/30min");
+  const cta=page.getByRole("link",{name:"Email Brent to arrange a time"});
   await expect(cta).toBeVisible();
   expect(await cta.getAttribute("href")).toMatch(/^mailto:brent@3psolutions.ca\?/);
   const missing=await page.locator('a[href^="#"]').evaluateAll(links=>links.map(a=>a.getAttribute("href")!).filter(h=>h.length>1&&!document.getElementById(h.slice(1))));
