@@ -57,7 +57,7 @@ export type ProspectPageData = {
   video?: ProspectVideoData;
   extraSections?: { id: string; title: string; paragraphs: string[] }[];
   acceptance?: { proposalVersion: string };
-  presentation?: { regularPriceSuffix?: string; scopeLabel?: string; cancellationLabel?: string; termsPartiesLabel?: string; priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; aiRequirement?:string; showTerms?:boolean; method?: {heading:string;intro:string;introSecond?:string;components?:{heading:string;description:string}[];steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
+  presentation?: { visualStory?: { opportunityHeading:string;opportunityLead:string;journey:{label:string;title:string;detail:string}[];outcome:string;application:string[] }; regularPriceSuffix?: string; scopeLabel?: string; cancellationLabel?: string; termsPartiesLabel?: string; priceCadence?: string; priceCaption?: string; heroAction?: {label:string;target:string}; bookingUrl?:string; nextStepLabel?:string; nextStepBody?:string; sectionLabels?:Record<string,string>; approachHeading?:string; aiRequirement?:string; showTerms?:boolean; method?: {heading:string;intro:string;introSecond?:string;components?:{heading:string;description:string}[];steps:{label:string;title:string;detail:string}[];exampleTitle:string;example:string}; freeItems?:string[]; paidTitle?:string; paidDetail?:string };
   contactEmail: string;
   contactSubject: string;
 };
@@ -437,7 +437,35 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "nextStepBody": "Hi Brent,\n\nI'd like to arrange the complimentary 30-minute introductory call for Takoda Equine.\n\nThanks,\nDiane",
     "aiRequirement": "A separate paid AI subscription is required, preferably Claude or ChatGPT, at your expense.",
     "scopeLabel": "Engagement scope",
-    "cancellationLabel": "Commitment, renewal and materials"
+    "cancellationLabel": "Commitment, renewal and materials",
+    "visualStory": {
+      "opportunityHeading": "Turn meaningful experiences into a thriving business.",
+      "opportunityLead": "You've built something valuable. Let's connect that value to the people who need it.",
+      "journey": [
+        {
+          "label": "FIND",
+          "title": "The right customers",
+          "detail": "Identify the business owners, leadership teams and organizations most likely to benefit from your experiences."
+        },
+        {
+          "label": "BOOK",
+          "title": "More experiences",
+          "detail": "Build a repeatable path from awareness and referral to inquiry and booking."
+        },
+        {
+          "label": "GROW",
+          "title": "A stronger business",
+          "detail": "Create clear financial goals, focused priorities and the systems to support sustainable growth."
+        }
+      ],
+      "outcome": "More bookings. Greater impact. A stronger business.",
+      "application": [
+        "Identify the ideal business and leadership-development customers.",
+        "Clarify the unique value of equine-assisted experiential leadership development.",
+        "Develop relevant referral partnerships and outreach.",
+        "Establish a repeatable inquiry-to-booking process."
+      ]
+    }
   }
 }
 };
