@@ -12,7 +12,13 @@ export type ProspectCalculatorData = {
   sourceUrl?: string;
   disclaimer: string;
 };
-export type ProspectPageData = {
+export type LegacyProspectPageData = {
+  templateVersion?: "v1";
+  subscription?: { commitment?: string; cancellation?: string; support?: string; price: number; cadence: string; regularPrice?: number; introductoryPeriod?: string; taxNote?: string; continuation: string; includes: string[] };
+  heroActions?: { label: string; target: string }[];
+  sectionLabels?: Record<string,string>;
+  sectionHeadings?: Record<string,string>;
+  nextStepLabel?: string;
   slug: string;
   status: "draft" | "published" | "archived";
   clientName: string;
@@ -26,6 +32,9 @@ export type ProspectPageData = {
   process: { heading: string; detail: string }[];
   deliverables: { title: string; detail: string }[];
   toolkit?: {
+    badge?: string;
+    durationLabel?: string;
+    factLabel?: string;
     heading: string;
     summary: string;
     durationMonths: number;
@@ -60,8 +69,22 @@ export type ProspectPageData = {
   contactSubject: string;
 };
 
+export type MasterProspectPageData = Omit<LegacyProspectPageData, "clientLogo" | "process" | "deliverables" | "price" | "terms" | "acceptance" | "note" | "offerHeadline"> & {
+  templateVersion: "v1";
+  clientLogo?: LegacyProspectPageData["clientLogo"];
+  process?: LegacyProspectPageData["process"];
+  deliverables?: LegacyProspectPageData["deliverables"];
+  price?: number;
+  terms?: LegacyProspectPageData["terms"];
+  acceptance?: { proposalVersion: string };
+  note?: string;
+  offerHeadline?: string;
+};
+export type ProspectPageData = LegacyProspectPageData | MasterProspectPageData;
+
 export const prospectPages: Record<string, ProspectPageData> = {
   "hand-stone-guelph-waterloo": {
+    templateVersion: "v1",
     slug: "hand-stone-guelph-waterloo",
     status: "published",
     clientName: "Hand & Stone Guelph + Waterloo",
