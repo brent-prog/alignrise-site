@@ -301,7 +301,7 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "status": "published",
   "clientName": "Takoda Equine",
   "clientLogo": {
-    "src": "https://www.takodaequine.com/wp-content/uploads/2026/01/Logo-takda-300x200.png",
+    "src": "/proposal-media/takoda-equine-logo.png",
     "alt": "Takoda Equine",
     "sourceUrl": "https://www.takodaequine.com/"
   },
@@ -332,20 +332,20 @@ export const prospectPages: Record<string, ProspectPageData> = {
   "process": [
     {
       "heading": "Talk for 30 minutes",
-      "detail": "A complimentary conversation to identify your priorities and get started."
+      "detail": "We'll spend 30 minutes discussing your business, identifying your immediate priorities and determining where to start."
     },
     {
-      "heading": "Use your personalized toolkit",
-      "detail": "Work through your business priorities with practical tools and guided AI workflows."
+      "heading": "Get your personalized starting package",
+      "detail": "I'll provide your complete AlignRISE toolkit and personalized AI-guided starting package so you can begin working on your priorities at your own pace."
     },
     {
-      "heading": "Review your progress",
-      "detail": "Personal accountability support to help you stay focused and turn decisions into action."
+      "heading": "Meet once a month",
+      "detail": "We'll meet for 45 minutes each month to review your progress, work through obstacles and determine what to focus on next."
     }
   ],
   "price": 150,
   "normalPrice": 300,
-  "offerName": "AlignRISE subscription",
+  "offerName": "AlignRISE Pilot",
   "offerHeadline": "The complete AlignRISE toolkit is yours. FREE.",
   "sectionOrder": [
     "opportunity",
@@ -353,21 +353,27 @@ export const prospectPages: Record<string, ProspectPageData> = {
     "assessment",
     "proposal"
   ],
-  "note": "Introductory total: $450 CAD + HST over three months. Optional continuation: $300 CAD/month + HST. Accountability session frequency and cancellation terms are subject to confirmation before enrollment.",
+  "note": "Initial commitment: three months. Total investment: $450 CAD + HST, paid in three monthly instalments of $150 + HST, including three 45-minute accountability sessions. Optional continuation: $300 CAD/month + HST. No automatic renewal. The toolkit and personalized starting materials remain yours for continued use within your own business, whether or not you continue paid accountability.",
   "terms": {
-    "scope": "Complimentary toolkit and 30-minute onboarding; paid personal accountability support. Guided AI workflows are included in the toolkit.",
-    "clientResponsibilities": "Participate in agreed sessions and retain responsibility for business decisions and implementation.",
-    "schedule": "Accountability session frequency and duration to be confirmed.",
-    "exclusions": "No done-for-you implementation, advertising spend or guaranteed business outcomes.",
-    "payment": "CAD $150/month plus applicable HST for the first three months ($450 plus HST total). Optional continuation at CAD $300/month plus applicable HST.",
-    "cancellation": "Commitment, renewal and cancellation terms to be confirmed before enrollment.",
-    "confidentiality": "3P Solutions will use non-public business information only to perform this engagement, keep it confidential and protect it with reasonable safeguards. Disclosure is limited to professional advisers or service providers bound to confidentiality, or as required by law. These obligations exclude information already public without breach, independently developed, or lawfully received without restriction, and continue after the engagement. Client identification or case studies require advance written permission. Do not provide personal health information or identifiable guest records without a separately approved data-handling arrangement.",
+    "scope": "Complimentary complete AlignRISE toolkit, personalized AI-guided starting package and 30-minute introductory and onboarding call, plus three paid personal accountability sessions.",
+    "clientResponsibilities": "The Client participates in agreed sessions and retains sole responsibility for business decisions, implementation and evaluation of AI-generated recommendations. A separate paid AI subscription, preferably Claude or ChatGPT, is required at the Client's expense.",
+    "schedule": "One personal 45-minute accountability session per month for three months.",
+    "exclusions": "No formal KickStart assessment, done-for-you implementation, regulated professional advice or guaranteed business outcomes.",
+    "payment": "Regular rate: $300 CAD/month + HST. Pilot rate: $150 CAD/month + HST for three months, for a total of $450 CAD + HST, paid in three monthly instalments. Optional continuation at $300 CAD/month + HST.",
+    "cancellation": "Initial commitment of three months. Exceptions require mutual written agreement. No automatic renewal. The Client may retain and continue using the supplied toolkit and personalized starting materials within their own business, regardless of paid accountability continuation. Underlying intellectual property remains with its respective owner.",
+    "confidentiality": "3P Solutions will use non-public business information only to perform this engagement, keep it confidential and protect it with reasonable safeguards. Disclosure is limited to professional advisers or service providers bound to confidentiality, or as required by law. These obligations exclude information already public without breach, independently developed, or lawfully received without restriction, and continue after the engagement. Client identification or case studies require advance written permission. Do not provide sensitive personal information without a separately approved data-handling arrangement.",
     "liability": "AlignRISE, provided by 3P Solutions, offers business education, tools, guidance and accountability support, not regulated professional advice or guaranteed business outcomes. The Client assumes sole responsibility for evaluating and implementing all recommendations, including AI-generated content, and for all resulting business decisions and outcomes. To the fullest extent permitted by law, 3P Solutions, its proprietor and representatives shall not be liable for any direct, indirect, consequential, financial or other losses, damages or claims arising from the engagement, including claims of negligence. Where liability cannot lawfully be excluded but may be limited, aggregate liability shall not exceed the fees paid by the Client to 3P Solutions during the preceding three months, excluding taxes. These provisions survive termination of the engagement.",
-    "validity": "Offer subject to availability and written confirmation of engagement details.",
-    "contractingEntity": "3P Solutions, a sole proprietorship, is the service provider. Client legal entity and authorized representative to be confirmed."
+    "validity": "Offer subject to availability and written confirmation. Booking the complimentary introductory call does not constitute acceptance of the paid engagement.",
+    "contractingEntity": "3P Solutions, a sole proprietorship, is the service provider. The Client's legal entity and authorized representative are to be confirmed."
+  },
+  "video": {
+    "src": "/proposal-media/takoda-introduction.mp4",
+    "poster": "/proposal-media/takoda-introduction-poster.jpg",
+    "heading": "A personal introduction",
+    "caption": "A personal message for Diane."
   },
   "contactEmail": "brent@3psolutions.ca",
-  "contactSubject": "Takoda Equine — AlignRISE subscription",
+  "contactSubject": "Takoda Equine — AlignRISE pilot",
   "presentation": {
     "priceCadence": "/month",
     "priceCaption": "CAD + HST · first three months",
@@ -375,43 +381,63 @@ export const prospectPages: Record<string, ProspectPageData> = {
       "label": "Discover how AlignRISE works",
       "target": "how-alignrise-works"
     },
-    "nextStepLabel": "Email Brent to discuss",
+    "nextStepLabel": "Email Brent to arrange a time",
     "sectionLabels": {
       "assessment": "Getting started",
       "how-alignrise-works": "How it works",
-      "proposal": "Your offer"
+      "proposal": "Your pilot offer"
     },
     "approachHeading": "Here's how we'll get started",
     "method": {
       "heading": "What is AlignRISE?",
-      "intro": "The 3P business toolkit, guided AI workflows and personal accountability. A self-guided system for working ON your business, at your own pace.",
+      "intro": "AlignRISE is a practical, self-guided business improvement system that combines the complete 3P business toolkit, your AI assistant and personal accountability to help you work ON your business, at your own pace.",
       "steps": [
         {
           "label": "ASSESS",
           "title": "Understand your business",
-          "detail": "Understand your customers, services, current business and immediate priorities."
+          "detail": "Identify what's working, what's holding you back and where improvement would create the most value."
         },
         {
           "label": "ALIGN",
           "title": "Define what success looks like",
-          "detail": "Use the 3P business framework and guided AI workflows to decide where to focus."
+          "detail": "Clarify your direction, ideal customers, unique value, priorities and the systems your business needs to succeed."
         },
         {
           "label": "ACT",
           "title": "Put improvements into practice",
-          "detail": "Put practical actions into motion and review progress through personal accountability support."
+          "detail": "Use practical templates, AI-guided workflows and accountability sessions to turn priorities into actions and measure progress."
         }
       ],
       "exampleTitle": "What this could look like for Takoda Equine",
-      "example": "Identify the leadership teams most likely to benefit from your services, clarify your value proposition, develop referral relationships and create a repeatable inquiry-to-booking process."
+      "example": "Identify the leadership teams most likely to benefit from your services, clarify your value proposition, develop referral relationships and create a repeatable inquiry-to-booking process.",
+      "components": [
+        {
+          "heading": "The complete 3P Toolkit",
+          "description": "Practical business frameworks, templates and tools to help you improve your People, Product and Profit."
+        },
+        {
+          "heading": "Your AI assistant",
+          "description": "Personalized prompts and guided workflows that help you apply the toolkit to your business and turn your knowledge into practical action."
+        },
+        {
+          "heading": "Personal accountability",
+          "description": "Regular, one-to-one conversations with Brent to review progress, work through obstacles and help you stay focused on what matters most."
+        }
+      ],
+      "introSecond": "The system helps you improve your People, Product and Profit by identifying what matters most, setting clear priorities and building the plans, processes and performance measurements that support sustainable growth."
     },
     "freeItems": [
       "Complete AlignRISE toolkit",
-      "Guided AI workflows",
-      "30-minute personal onboarding"
+      "Personalized AI-guided starting package",
+      "30-minute introductory and onboarding call"
     ],
-    "paidTitle": "Pay for personal accountability support",
-    "paidDetail": "Personal guidance to review progress, solve problems and decide what to do next. Session frequency and duration to be agreed."
+    "paidTitle": "Pay only for my time.",
+    "paidDetail": "One personal, 45-minute accountability session each month to review your progress, work through challenges and determine what to focus on next.",
+    "bookingUrl": "https://calendly.com/brent3p/30min",
+    "nextStepBody": "Hi Brent,\n\nI'd like to arrange the complimentary 30-minute introductory call for Takoda Equine.\n\nThanks,\nDiane",
+    "aiRequirement": "A separate paid AI subscription is required, preferably Claude or ChatGPT, at your expense.",
+    "scopeLabel": "Engagement scope",
+    "cancellationLabel": "Commitment, renewal and materials"
   }
 }
 };
