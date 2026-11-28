@@ -159,8 +159,17 @@ export default function RobCooperOnboarding(){
  ];
  const button:React.CSSProperties={background:"#4338ca",color:"#fff",padding:"12px 17px",border:0,borderRadius:9,fontWeight:750,cursor:"pointer",fontSize:14};
  return <main style={{minHeight:"100vh",background:"#f8fafc",color:"#111827",fontFamily:"Arial,Helvetica,sans-serif"}}>
-  <header style={{background:"#201060",color:"#fff",padding:"10px max(20px, calc((100vw - 1040px) / 2))",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:10}}>
-   <a href="https://alignrise.ca" target="_blank" rel="noopener noreferrer" aria-label="AlignRISE website" style={{display:"inline-flex",alignItems:"center",flexShrink:0}}><Image src="/alignrise-logo.svg" alt="AlignRISE™" width={88} height={88} priority style={{display:"block",width:"clamp(72px,9vw,88px)",height:"auto"}} /></a><div style={{fontSize:12,opacity:.85}}>3P Solutions · Client workspace</div>
+  <header style={{background:"#fff",color:"#172033",borderBottom:"1px solid #e3e8f1",padding:"9px max(20px, calc((100vw - 1040px) / 2))",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:16}}>
+   <a href="https://robcooperphotography.com/" target="_blank" rel="noopener noreferrer" aria-label="Rob Cooper Photography website" style={{display:"inline-flex",alignItems:"center",gap:12,textDecoration:"none"}}>
+    <Image src="/robcooper/rob-cooper-photo-logo.svg" alt="Rob Cooper Photography logo" width={104} height={109} priority unoptimized style={{display:"block",width:"clamp(84px,11vw,104px)",height:"auto"}} />
+    <span style={{fontSize:13,fontWeight:750,color:"#344054",lineHeight:1.4}}>Your business workspace</span>
+   </a>
+   <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="AlignRISE by 3P Solutions" style={{display:"flex",alignItems:"center",gap:9,textDecoration:"none",color:"#475569"}}>
+    <span style={{fontSize:11,fontWeight:600}}>Powered by</span>
+    <span style={{display:"inline-flex",alignItems:"center",justifyContent:"center",background:"#201060",borderRadius:9,padding:"4px 9px"}}>
+     <Image src="/alignrise-logo.svg" alt="AlignRISE" width={58} height={58} style={{display:"block",width:58,height:58}} />
+    </span>
+   </a>
   </header>
   <nav aria-label="Onboarding navigation" style={{position:"sticky",top:0,zIndex:20,display:"flex",gap:20,flexWrap:"wrap",background:"white",borderBottom:"1px solid #e5e7eb",padding:"12px max(20px, calc((100vw - 1040px)/2))",fontSize:13,fontWeight:700}}><a href="#next-steps">Next actions · Nov 27 review</a><a href="#previous-steps">Previous onboarding &amp; starter prompts</a></nav>
   <div style={{maxWidth:1040,margin:"0 auto",padding:"20px 20px 52px"}}>
