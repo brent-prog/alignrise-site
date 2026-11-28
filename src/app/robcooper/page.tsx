@@ -162,7 +162,6 @@ export default function RobCooperOnboarding(){
   <header style={{background:"#fff",color:"#172033",borderBottom:"1px solid #e3e8f1",padding:"9px max(20px, calc((100vw - 1040px) / 2))",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:16}}>
    <a href="https://robcooperphotography.com/" target="_blank" rel="noopener noreferrer" aria-label="Rob Cooper Photography website" style={{display:"inline-flex",alignItems:"center",gap:12,textDecoration:"none"}}>
     <Image src="/robcooper/rob-cooper-photo-logo.svg" alt="Rob Cooper Photography logo" width={104} height={109} priority unoptimized style={{display:"block",width:"clamp(84px,11vw,104px)",height:"auto"}} />
-    <span style={{fontSize:13,fontWeight:750,color:"#344054",lineHeight:1.4}}>Your business workspace</span>
    </a>
    <a href="https://alignrise.ca/" target="_blank" rel="noopener noreferrer" aria-label="AlignRISE by 3P Solutions" style={{display:"flex",alignItems:"center",gap:9,textDecoration:"none",color:"#475569"}}>
     <span style={{fontSize:11,fontWeight:600}}>Powered by</span>
@@ -171,7 +170,10 @@ export default function RobCooperOnboarding(){
     </span>
    </a>
   </header>
-  <nav aria-label="Onboarding navigation" style={{position:"sticky",top:0,zIndex:20,display:"flex",gap:20,flexWrap:"wrap",background:"white",borderBottom:"1px solid #e5e7eb",padding:"12px max(20px, calc((100vw - 1040px)/2))",fontSize:13,fontWeight:700}}><a href="#next-steps">Next actions · Nov 27 review</a><a href="#previous-steps">Previous onboarding &amp; starter prompts</a></nav>
+  <nav aria-label="Rob's AlignRISE page sections" style={{position:"sticky",top:0,zIndex:20,display:"flex",gap:10,alignItems:"center",flexWrap:"wrap",background:"#fff",borderBottom:"1px solid #e0e5ef",padding:"10px max(20px, calc((100vw - 1040px)/2))",boxShadow:"0 2px 9px rgba(16,24,40,.05)"}}>
+   <a href="#next-steps" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#4338ca",color:"#fff",border:"1px solid #4338ca",fontSize:13,fontWeight:800,textDecoration:"none",lineHeight:1.3}}>Current actions <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
+   <a href="#previous-steps" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#eef2ff",color:"#312e81",border:"1px solid #c7d2fe",fontSize:13,fontWeight:750,textDecoration:"none",lineHeight:1.3}}>Earlier setup &amp; prompts <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
+  </nav>
   <div style={{maxWidth:1040,margin:"0 auto",padding:"20px 20px 52px"}}>
    <section id="next-steps" style={{scrollMarginTop:85}}>
     <p style={{fontSize:12,fontWeight:800,letterSpacing:".11em",color:"#4338ca",textTransform:"uppercase",marginBottom:8}}>Your next steps · Following our November 27 review</p>
