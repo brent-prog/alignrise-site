@@ -172,7 +172,7 @@ export default function RobCooperOnboarding(){
    </a>
   </header>
   <nav aria-label="Rob's AlignRISE page sections" style={{position:"sticky",top:0,zIndex:20,display:"flex",gap:10,alignItems:"center",flexWrap:"wrap",background:"#fff",borderBottom:"1px solid #e0e5ef",padding:"10px max(20px, calc((100vw - 1040px)/2))",boxShadow:"0 2px 9px rgba(16,24,40,.05)"}}>
-   <a href="#meeting-recap" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#fff",color:"#312e81",border:"1px solid #c7d2fe",fontSize:13,fontWeight:750,textDecoration:"none",lineHeight:1.3}}>Review recap <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
+   <a href="#meeting-recap" onClick={()=>document.getElementById("meeting-recap")?.setAttribute("open","")} style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#fff",color:"#312e81",border:"1px solid #c7d2fe",fontSize:13,fontWeight:750,textDecoration:"none",lineHeight:1.3}}>Review recap <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
    <a href="#next-steps" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#4338ca",color:"#fff",border:"1px solid #4338ca",fontSize:13,fontWeight:800,textDecoration:"none",lineHeight:1.3}}>Current actions <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
    <a href="#previous-steps" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#eef2ff",color:"#312e81",border:"1px solid #c7d2fe",fontSize:13,fontWeight:750,textDecoration:"none",lineHeight:1.3}}>Earlier setup &amp; prompts <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
   </nav>
@@ -182,10 +182,11 @@ export default function RobCooperOnboarding(){
     <p style={{fontSize:12,fontWeight:800,letterSpacing:".11em",color:"#4338ca",textTransform:"uppercase",marginBottom:8}}>Your next steps · Following our November 27 review</p>
     <h1 style={{fontSize:"clamp(29px,4vw,42px)",color:"#171329",maxWidth:830,lineHeight:1.15,letterSpacing:"-.035em",margin:"5px 0 12px"}}>Rob, let's turn the plan into progress.</h1>
     <p style={{maxWidth:810,fontSize:16,lineHeight:1.55,color:"#475569",marginBottom:18}}>Your Claude project is already set up and you've done the initial work. The next step is to <strong>follow through on what we discussed</strong>: protect the work on your calendar and turn your prospect list into real conversations. Continue in the same two Claude chats — there's nothing new to install.</p>
-    <section id="meeting-recap" aria-label="November 27 business review recap" style={{background:"#fff",border:"1px solid #d9dfeb",borderRadius:16,padding:"20px 22px",margin:"0 0 20px",scrollMarginTop:220}}>
-     <p style={{fontSize:12,color:"#4338ca",fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",margin:"0 0 7px"}}>November 27 · Business review recap</p>
+    <details id="meeting-recap" style={{background:"#fff",border:"1px solid #d9dfeb",borderRadius:16,padding:"0 22px",margin:"0 0 20px",scrollMarginTop:220}}>
+     <summary style={{cursor:"pointer",padding:"17px 0",fontSize:17,fontWeight:800,color:"#201060",lineHeight:1.5}}>November 27 review recap <span style={{fontSize:13,fontWeight:500,color:"#64748b"}}>— what we learned and agreed</span></summary>
+     <div style={{paddingBottom:20}}>
      <h2 style={{fontSize:23,color:"#201060",lineHeight:1.25,margin:"0 0 12px"}}>What we learned and agreed</h2>
-     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(275px,1fr))",gap:18}}>
+     <div style={{display:"flex",flexDirection:"column",gap:18}}>
       <div>
        <h3 style={{fontSize:17,color:"#201060",margin:"0 0 8px"}}>Where things stand</h3>
        <ul style={{paddingLeft:20,margin:"0",fontSize:14,lineHeight:1.65,color:"#334155"}}>
@@ -194,7 +195,7 @@ export default function RobCooperOnboarding(){
         <li><strong>Key lesson:</strong> A paid client request can take priority, but the work it displaces needs a conscious new decision—not simply to disappear.</li>
        </ul>
       </div>
-      <div>
+      <div style={{borderTop:"1px solid #e5e7eb",paddingTop:16}}>
        <h3 style={{fontSize:17,color:"#201060",margin:"0 0 8px"}}>What happens next</h3>
        <ol style={{paddingLeft:20,margin:"0",fontSize:14,lineHeight:1.65,color:"#334155"}}>
         <li><strong>Recover missed tasks:</strong> Review what slipped and assign realistic new times around existing client obligations.</li>
@@ -204,7 +205,8 @@ export default function RobCooperOnboarding(){
       </div>
      </div>
      <p style={{fontSize:13,color:"#475569",lineHeight:1.6,borderTop:"1px solid #e5e7eb",paddingTop:12,margin:"14px 0 0"}}><strong>Opportunity to keep in view:</strong> Amy Rose's hockey portrait idea may be worth pursuing later; capture it for evaluation without letting it displace this week's priorities. <strong>Next review:</strong> Friday, December 11 at 2:00 p.m. — bring your updated plan and what you actually completed.</p>
-    </section>
+     </div>
+    </details>
     <div style={{background:"#eef2ff",border:"1px solid #c7d2fe",borderRadius:12,padding:"13px 16px",marginBottom:19,fontSize:14,lineHeight:1.6,color:"#312e81"}}>
       <strong>Before our next review:</strong> Reschedule displaced activities, ask Melissa at Hospice for introductions on Monday, November 30, and begin a daily AlignRISE check-in habit. Our next review is <strong>Friday, December 11 at 2:00 p.m.</strong> Each prompt below builds on what you've already done.
     </div>
