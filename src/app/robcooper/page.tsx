@@ -158,7 +158,8 @@ export default function RobCooperOnboarding(){
   "Choose one of the two problems below, copy its working prompt and use a separate chat in the same Claude project."
  ];
  const button:React.CSSProperties={background:"#4338ca",color:"#fff",padding:"12px 17px",border:0,borderRadius:9,fontWeight:750,cursor:"pointer",fontSize:14};
- return <main style={{minHeight:"100vh",background:"#f8fafc",color:"#111827",fontFamily:"Arial,Helvetica,sans-serif"}}>
+ return <main style={{minHeight:"100vh",overflow:"visible",background:"#f8fafc",color:"#111827",fontFamily:"Arial,Helvetica,sans-serif"}}>
+  <div style={{position:"sticky",top:0,zIndex:50,background:"#fff",boxShadow:"0 3px 12px rgba(16,24,40,.08)"}}>
   <header style={{background:"#fff",color:"#172033",borderBottom:"1px solid #e3e8f1",padding:"9px max(20px, calc((100vw - 1040px) / 2))",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:16}}>
    <a href="https://robcooperphotography.com/" target="_blank" rel="noopener noreferrer" aria-label="Rob Cooper Photography website" style={{display:"inline-flex",alignItems:"center",gap:12,textDecoration:"none"}}>
     <Image src="/robcooper/rob-cooper-photo-logo.svg" alt="Rob Cooper Photography logo" width={104} height={109} priority unoptimized style={{display:"block",width:"clamp(84px,11vw,104px)",height:"auto"}} />
@@ -174,8 +175,9 @@ export default function RobCooperOnboarding(){
    <a href="#next-steps" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#4338ca",color:"#fff",border:"1px solid #4338ca",fontSize:13,fontWeight:800,textDecoration:"none",lineHeight:1.3}}>Current actions <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
    <a href="#previous-steps" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 15px",borderRadius:9,background:"#eef2ff",color:"#312e81",border:"1px solid #c7d2fe",fontSize:13,fontWeight:750,textDecoration:"none",lineHeight:1.3}}>Earlier setup &amp; prompts <span aria-hidden="true" style={{fontSize:15}}>↓</span></a>
   </nav>
+  </div>
   <div style={{maxWidth:1040,margin:"0 auto",padding:"20px 20px 52px"}}>
-   <section id="next-steps" style={{scrollMarginTop:85}}>
+   <section id="next-steps" style={{scrollMarginTop:220}}>
     <p style={{fontSize:12,fontWeight:800,letterSpacing:".11em",color:"#4338ca",textTransform:"uppercase",marginBottom:8}}>Your next steps · Following our November 27 review</p>
     <h1 style={{fontSize:"clamp(29px,4vw,42px)",color:"#171329",maxWidth:830,lineHeight:1.15,letterSpacing:"-.035em",margin:"5px 0 12px"}}>Rob, let's turn the plan into progress.</h1>
     <p style={{maxWidth:810,fontSize:16,lineHeight:1.55,color:"#475569",marginBottom:18}}>Your Claude project is already set up and you've done the initial work. The next step is to <strong>follow through on what we discussed</strong>: protect the work on your calendar and turn your prospect list into real conversations. Continue in the same two Claude chats — there's nothing new to install.</p>
@@ -198,10 +200,10 @@ export default function RobCooperOnboarding(){
     </div>
     <p style={{fontSize:13,lineHeight:1.55,color:"#475569",margin:"15px 0 0"}}>Copy each prompt into its <strong>existing</strong> Workflow or Biz Dev Claude chat within your AlignRISE project. Nothing here restarts your project, erases previous work or creates another workstream. Confirm any new calendar changes with Claude before authorizing them.</p>
    </section>
-   <details id="previous-steps" style={{background:"#fff",border:"1px solid #d9dfeb",borderRadius:16,marginTop:25,padding:"0 20px",scrollMarginTop:85}}>
+   <details id="previous-steps" style={{background:"#fff",border:"1px solid #d9dfeb",borderRadius:16,marginTop:25,padding:"0 20px",scrollMarginTop:220}}>
     <summary style={{padding:"19px 0",fontWeight:800,color:"#201060",cursor:"pointer",fontSize:17}}>Previously completed onboarding and original starter prompts <span style={{fontSize:13,color:"#64748b",fontWeight:500}}>(expand if needed)</span></summary>
     <div style={{paddingBottom:20}}>
-   <section id="setup" style={{background:"#fff",border:"1px solid #e3e8f1",padding:23,borderRadius:16,marginTop:14,scrollMarginTop:90}}>
+   <section id="setup" style={{background:"#fff",border:"1px solid #e3e8f1",padding:23,borderRadius:16,marginTop:14,scrollMarginTop:220}}>
     <h2 style={{fontSize:23,margin:"0 0 10px"}}>First, set up your Claude project (once)</h2>
     <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>Complete the first three setup steps, then run the verification prompt. Confirm Claude reports READY before starting a working session. The checklist is for your reference and does not lock the prompts.</p>
     <a href="https://claude.ai/projects" rel="noopener noreferrer" target="_blank" style={{...button,display:"inline-block",textDecoration:"none",margin:"7px 0 15px"}}>Open Claude Projects ↗</a>
@@ -213,11 +215,11 @@ export default function RobCooperOnboarding(){
      <button onClick={()=>copy(baseInstructions,"instructions")} style={button}>{copied==="instructions"?"Copied ✓":"Copy 3P project instructions"}</button>
      <a href="/robcooper/3P-Focused-Working-Guide.txt" download="3P-Focused-Working-Guide.txt" style={{...button,background:"#0f766e",textDecoration:"none",display:"inline-block"}}>Download 3P working guide</a><button onClick={downloadContext} style={{...button,background:"#fff",border:"1px solid #cbd5e1",color:"#201060"}}>Download Rob business context</button>
     </div>
-    <div id="verify" style={{background:"#eef2ff",border:"1px solid #c7d2fe",padding:18,borderRadius:12,marginTop:22,scrollMarginTop:90}}><h3 style={{fontSize:19,margin:"0 0 8px"}}>Required first Claude message: Verify setup</h3><p style={{fontSize:14,lineHeight:1.55,color:"#334155"}}>After uploading both files, open your first chat inside the Claude project. Copy this verification prompt and send it. Claude must report READY and demonstrate that it read the actual 3P guide and Rob's context. Only then check item 4 above.</p><div style={{display:"flex",gap:10,flexWrap:"wrap"}}><button onClick={()=>copy(verificationPrompt,"verify")} style={button}>{copied==="verify"?"Copied ✓":"Copy prompt"}</button><button onClick={()=>setShowVerification(v=>!v)} aria-expanded={showVerification} aria-controls="verification-prompt-details" style={{...button,background:"#fff",border:"1px solid #c7d2fe",color:"#201060"}}>{showVerification?"Hide prompt details":"Show prompt details"}</button></div>{showVerification&&<pre id="verification-prompt-details" style={{whiteSpace:"pre-wrap",overflowWrap:"anywhere",marginTop:14,padding:15,background:"#fff",borderRadius:8,maxHeight:320,overflowY:"auto",fontSize:12,lineHeight:1.65}}>{verificationPrompt}</pre>}</div>
+    <div id="verify" style={{background:"#eef2ff",border:"1px solid #c7d2fe",padding:18,borderRadius:12,marginTop:22,scrollMarginTop:220}}><h3 style={{fontSize:19,margin:"0 0 8px"}}>Required first Claude message: Verify setup</h3><p style={{fontSize:14,lineHeight:1.55,color:"#334155"}}>After uploading both files, open your first chat inside the Claude project. Copy this verification prompt and send it. Claude must report READY and demonstrate that it read the actual 3P guide and Rob's context. Only then check item 4 above.</p><div style={{display:"flex",gap:10,flexWrap:"wrap"}}><button onClick={()=>copy(verificationPrompt,"verify")} style={button}>{copied==="verify"?"Copied ✓":"Copy prompt"}</button><button onClick={()=>setShowVerification(v=>!v)} aria-expanded={showVerification} aria-controls="verification-prompt-details" style={{...button,background:"#fff",border:"1px solid #c7d2fe",color:"#201060"}}>{showVerification?"Hide prompt details":"Show prompt details"}</button></div>{showVerification&&<pre id="verification-prompt-details" style={{whiteSpace:"pre-wrap",overflowWrap:"anywhere",marginTop:14,padding:15,background:"#fff",borderRadius:8,maxHeight:320,overflowY:"auto",fontSize:12,lineHeight:1.65}}>{verificationPrompt}</pre>}</div>
     {showInstructions&&<pre style={{whiteSpace:"pre-wrap",overflowWrap:"anywhere",background:"#f8fafc",border:"1px solid #e5e7eb",borderRadius:10,padding:18,maxHeight:360,overflowY:"auto",fontSize:12,lineHeight:1.65}}>{baseInstructions}</pre>}
     <p style={{fontSize:12,color:"#64748b",lineHeight:1.6,marginBottom:0}}>If Claude calls these sections something slightly different, look inside the project settings for Instructions and Knowledge. The 3P guide and Rob business context are two separate downloadable text files, not a ZIP. Upload BOTH files to Project Knowledge. These are starting facts to verify, not a completed business assessment.</p>
    </section>
-   <h2 id="choices" style={{fontSize:22,margin:"24px 0 14px",scrollMarginTop:90}}>Choose which of your two problems to solve</h2>
+   <h2 id="choices" style={{fontSize:22,margin:"24px 0 14px",scrollMarginTop:220}}>Choose which of your two problems to solve</h2>
    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(285px,1fr))",gap:16}}>
     {cards.map(c=><button key={c.key} onClick={()=>{setSelected(c.key as "work"|"growth");document.getElementById("start-prompt")?.scrollIntoView({block:"start",behavior:"smooth"});}} style={{textAlign:"left",padding:23,borderRadius:16,background:"#fff",border:selected===c.key?"2px solid #4338ca":"2px solid #e5e7eb",boxShadow:selected===c.key?"0 5px 22px rgba(67,56,202,.08)":"none",cursor:"pointer",color:"#111827"}}>
      <span style={{fontSize:12,color:"#4338ca",fontWeight:800}}>{c.number} · {c.tag}</span>
@@ -226,7 +228,7 @@ export default function RobCooperOnboarding(){
      <p style={{fontSize:13,fontWeight:750,lineHeight:1.6,marginBottom:0}}>{c.result}</p>
     </button>)}
    </div>
-   <section id="start-prompt" style={{marginTop:25,borderRadius:16,background:"#fff",border:"1px solid #e3e8f1",overflow:"hidden",scrollMarginTop:90}}>
+   <section id="start-prompt" style={{marginTop:25,borderRadius:16,background:"#fff",border:"1px solid #e3e8f1",overflow:"hidden",scrollMarginTop:220}}>
     <div style={{padding:"22px 23px",borderBottom:"1px solid #e3e8f1",display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",flexWrap:"wrap"}}>
      <div><p style={{fontSize:12,fontWeight:800,color:"#4338ca",margin:"0 0 6px"}}>START YOUR FIRST WORKING SESSION</p><h2 style={{fontSize:23,margin:0}}>{item.title}</h2></div>
      <div style={{display:"flex",gap:9,flexWrap:"wrap"}}><button onClick={()=>copy(item.prompt,item.key)} style={button}>{copied===item.key?"Copied ✓":"Copy prompt"}</button><button onClick={()=>setShowSessionPrompt(v=>!v)} aria-expanded={showSessionPrompt} aria-controls="session-prompt-details" style={{...button,background:"#fff",border:"1px solid #cbd5e1",color:"#201060"}}>{showSessionPrompt?"Hide prompt details":"Show prompt details"}</button></div>
@@ -237,7 +239,7 @@ export default function RobCooperOnboarding(){
      <p style={{fontSize:14,color:"#475569",lineHeight:1.6}}>Want to work on the other problem next? Select its card above and open a <strong>separate chat in the same Claude project</strong>. Both chats can use the same 3P instructions and business context.</p>
     </div>
    </section>
-   <section id="review" style={{background:"#201060",color:"#fff",padding:25,borderRadius:16,marginTop:25,scrollMarginTop:90}}>
+   <section id="review" style={{background:"#201060",color:"#fff",padding:25,borderRadius:16,marginTop:25,scrollMarginTop:220}}>
     <h2 style={{fontSize:23,margin:"0 0 12px"}}>What Brent wants to see</h2>
     <p style={{color:"#ebe9ff",lineHeight:1.65,margin:"0 0 10px"}}>From the workload session: your real task list, a workable next-seven-days schedule and agreed rules for managing interruptions. From corporate development: an initial customer profile based on real examples, a credible offer, your first five target organizations and the outreach actions you'll take.</p>
     <p style={{color:"#ebe9ff",lineHeight:1.65,margin:0}}>Do the work, record what happens and share the outputs before your scheduled 30-minute review. We are not starting a whole-company assessment or asking you to abandon the other work that pays the bills.</p>
