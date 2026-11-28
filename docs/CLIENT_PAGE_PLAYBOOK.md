@@ -1,7 +1,7 @@
 # AlignRISE Personalized Client Pages — Repeatable Design & Publishing Standard
 
 **Owner:** 3P Solutions / AlignRISE™  
-**Updated:** 2026-11-26  
+**Updated:** 2026-11-27  
 **Purpose:** Reuse the *format, client experience, media handling, review and publication workflow* demonstrated by the Hand & Stone Guelph/Waterloo page for any appropriate AlignRISE prospect. **Not a KickStart sales script, generic proposal, price sheet, or statement of work.**
 
 **Repository:** `brent-prog/alignrise-site`  
@@ -9,6 +9,25 @@
 **Working example:** `https://clients.alignrise.ca/p/hand-stone-guelph-waterloo`  
 **Companion technical/commercial playbook:** [`docs/PROPOSAL_PLAYBOOK.md`](./PROPOSAL_PLAYBOOK.md)  
 **3P precedent for media transport:** `brent-prog/3p-client-proposals/docs/PROPOSAL_PLAYBOOK.md`
+
+## 0. Mandatory direct-pilot master (2026-11-27)
+
+For a direct pilot without KickStart, this section supersedes older subscription examples and design guidance below. **Reuse the existing Takoda/KW Chair visual implementation, not a fresh design brief.** Inspect current main first. Use ProspectExperience, VisualStory and visual-story.css with the visualStory configuration enabled; preserve the actual shared visual treatments, typography, spacing, connected opportunity journey, system diagram, Assess–Align–Act cycle and onboarding timeline. Use data-driven client names, examples and icons; never hardcode a prospect into a shared component. Match the current Takoda reference visually; personalize only content and supplied media. Do not redesign existing pages or modify their records when adding a prospect.
+
+**Approved direct pilot defaults:** complete 3P toolkit, personalized AI-guided starting package and 30-minute introductory/onboarding call free; pay only for personal accountability: one 45-minute session monthly for three months, CAD $150/month + HST, $450 + HST total commitment, optional continuation CAD $300/month + HST by explicit agreement, no automatic renewal. Toolkit and supplied starting materials remain available for the client's own business use; no transfer of underlying IP. Client supplies separate paid AI subscription (preferably Claude or ChatGPT). No KickStart, done-for-you implementation or guaranteed outcomes. Use existing approved direct-pilot confidentiality and liability conditions as baseline, verify applicability and legal entity; booking is not acceptance. Primary CTA https://calendly.com/brent3p/30min; secondary personalized mailto brent@3psolutions.ca. Do not ask Brent to reconfirm these defaults unless an exception is proposed. Use the current direct-pilot records as copy reference, never copy client-specific facts.
+
+### Asset-first execution gate (all client pages)
+
+1. Locate official client website and exact first-party logo image (inspect header, SVG/image sources, srcset or site assets). Retrieve actual bytes, not a screenshot of the website or a guessed URL. If the official asset is unavailable, try the client's authorized brand files; disclose fallback. Preserve artwork, transparency and aspect ratio. Inspect actual image, verify MIME/decoding and dimensions, optimize to SVG/PNG/WebP as appropriate; retain original source URL in client record. Prefer local same-origin /proposal-media/<slug>-logo.<ext>; never hotlink by default, recreate via AI or use a generic icon. Verify the deployed image renders.
+2. If Brent supplies a video, use that exact uploaded recording. Locate attachment in current session or authorized transfer source; do not ask to re-upload until actual retrieval options have been checked. Inspect duration, audio, orientation and size; encode H.264/AAC MP4, yuv420p, faststart, preserve aspect ratio and entire message. Sample several real frames, choose a natural flattering frame and create a versioned poster. No fabricated likeness, autoplay or Google Drive embed. Use existing ProspectVideo with controls, playsInline and preload=metadata. Do not invent a video if absent.
+3. Test actual binary transport before choosing a method. Prefer an authorized direct binary upload or approved object storage if demonstrably available; do not assume Blob permissions. If unavailable, use the proven connector text-blob/build reconstruction path in §7. Retrieve original bytes (private Drive bridge if needed), chunk Base64 around 350,000 characters, create blobs/tree/commit efficiently, reconstruct using scripts/build-proposal-media.cjs with exact byte count and SHA-256. Small logos/posters can use a single blob via the same mechanism; existing locally stored binary assets are also valid. Never paste Base64 into chat or a React module. Never place confidential media in public Git history; use this fallback only for approved public-facing media.
+4. Verified repository precedents: KW Chair MP4 4,885,828 bytes / 19 chunks; Takoda MP4 5,151,673 bytes / 20 chunks, poster 54,499 bytes and official logo 19,293 bytes via reconstruction. Hand & Stone precedent in §7. These are build manifest facts, not fresh playback verification. Inspect current script rather than guessing names or hashes.
+5. Before preview: check actual asset bytes, versioned filenames, manifest hashes, MIME and local URL references. Before publication: check preview desktop/mobile logo, poster, playback/audio/pause/seek, HTTP 200/206 range where supported, no overflow, all anchors and CTA, correct client name everywhere. Test existing pages for regressions. After approval and deployment: verify READY and exact commit, production alias and deep link, repeat media checks. Report separately any checks impossible with current tools. Never equate a commit or READY status with visual/media validation.
+6. Resolve transport friction proactively in the same task: use available authorized tools, select proven fallback if direct upload fails, and document the actual blocker rather than repeatedly asking for approval or asserting access is broken. Approval of a final page is still required before publication; asset retrieval and preview preparation do not require repeated approval when already authorized.
+
+### Starter instruction for next direct pilot
+
+Create the next personalized AlignRISE direct pilot using this section and the existing Takoda/KW Chair visual components. Apply the approved offer defaults, retrieve the real official logo and locally embed it, process any supplied personal video and poster using the proven asset pipeline, personalize only the client storyline, and preserve every existing client page. Build and validate a preview, obtain approval, then publish and verify the exact production URL. Do not redesign the template or re-open approved commercial decisions.
 
 ## 1. Core operating principle
 
